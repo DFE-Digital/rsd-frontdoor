@@ -1,21 +1,10 @@
-# <REPLACE WITH USEFUL TERRAFORM DESCRIPTION>
+# RSD FrontDoor Terraform project
 
-[![Terraform CI](./actions/workflows/continuous-integration-terraform.yml/badge.svg?branch=main)](./actions/workflows/continuous-integration-terraform.yml?branch=main)
-[![GitHub release](https://img.shields.io/github/release/<ORG>/<REPO>.svg)](./releases)
+[![Terraform CI](https://github.com/DFE-Digital/rsd-frontdoor/actions/workflows/continuous-integration-terraform.yml/badge.svg?branch=main)](./actions/workflows/continuous-integration-terraform.yml?branch=main)
 
-This <module/project> creates and manages <REPLACE WITH MAIN RESOURCE NAMES/URLS>.
+This project creates and manages the RSD FrontDoor CDN.
 
 ## Usage
-
-Example module usage:
-
-```hcl
-module "<MODULE NAME>" {
-  source  = "github.com/<ORG>/<MODULE NAME>?ref=v<VERSION>"
-
-  environment = "dev/staging/test/pre-prod/prod/post-prod"
-}
-```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
