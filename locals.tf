@@ -11,4 +11,10 @@ locals {
   frontdoor_origins                  = var.frontdoor_origins
   enable_frontdoor_vdp_redirects     = var.enable_frontdoor_vdp_redirects
   frontdoor_vdp_destination_hostname = var.frontdoor_vdp_destination_hostname
+  security_http_headers = {
+    "Strict-Transport-Security" = "max-age=31536000; includeSubDomains; preload"
+    "X-Xss-Protection"          = "0"
+    "X-Frame-Options"           = "DENY"
+    "X-Content-Type-Options"    = "nosniff"
+  }
 }

@@ -58,3 +58,32 @@ resource "azurerm_cdn_frontdoor_rule" "vdp_thanks_txt" {
     }
   }
 }
+
+resource "azurerm_cdn_frontdoor_rule_set" "security" {
+  count = local.enable_frontdoor ? 1 : 0
+
+  name                     = "enforcesecurityheaders"
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+}
+
+resource "azurerm_cdn_frontdoor_rule" "security" {
+  count = local.enable_frontdoor ? 1 : 0
+
+  depends_on                = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
+  name                      = "owasp"
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.security[0].id
+  order                     = 1
+  behavior_on_match         = "Continue"
+
+  actions {
+    dynamic "response_header_action" {
+      for_each = local.security_http_headers
+
+      content {
+        header_action = "Overwrite"
+        header_name   = response_header_action.key
+        value         = response_header_action.value
+      }
+    }
+  }
+}
