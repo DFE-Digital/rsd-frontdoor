@@ -83,6 +83,7 @@ resource "azurerm_cdn_frontdoor_route" "rsd" {
   name                          = "${local.environment}-rsd-frontdoor-${each.key}"
   cdn_frontdoor_endpoint_id     = azurerm_cdn_frontdoor_endpoint.rsd[each.key].id
   cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.rsd[each.key].id
+  cdn_frontdoor_rule_set_ids    = local.enable_frontdoor_vdp_redirects ? [azurerm_cdn_frontdoor_rule_set.vdp[0].id] : []
   cdn_frontdoor_origin_ids = [
     azurerm_cdn_frontdoor_origin.rsd[each.key].id
   ]
