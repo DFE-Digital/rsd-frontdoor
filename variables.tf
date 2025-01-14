@@ -80,3 +80,15 @@ variable "frontdoor_response_timeout" {
   type        = number
   default     = 120
 }
+
+variable "enable_frontdoor_vdp_redirects" {
+  description = "Creates a redirect rule set for security.txt and thanks.txt to an external Vulnerability Disclosure Program service"
+  type        = bool
+  default     = true
+}
+
+variable "frontdoor_vdp_destination_hostname" {
+  description = "Requires 'enable_frontdoor_vdp_redirects' to be set to 'true'. Hostname to redirect security.txt and thanks.txt to"
+  type        = string
+  default     = "vdp.security.education.gov.uk"
+}
