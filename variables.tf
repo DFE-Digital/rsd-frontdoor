@@ -71,6 +71,7 @@ variable "frontdoor_origins" {
     health_probe_path         = optional(string, "/")
     private_link_target_id    = optional(string, null)
     forwarding_protocol       = optional(string, "HttpsOnly")
+    enable_security_headers   = optional(bool, true)
   }))
   default = {}
 }
