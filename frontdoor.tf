@@ -62,19 +62,30 @@ resource "azurerm_cdn_frontdoor_endpoint" "rsd" {
 
 resource "azurerm_cdn_frontdoor_custom_domain" "rsd" {
   for_each = toset(flatten([
-    for v in local.frontdoor_origins : [
-      for custom_domain in v.custom_domains : custom_domain
+    for key, value in local.frontdoor_origins : [
+      for domain in value.custom_domains : "${key}:${domain}"
     ]
   ]))
 
-  name                     = "${local.environment}-rsd-frontdoor-${each.value}"
+  name                     = replace(each.value, "/[^[:alnum:]]/", "-") # replace non-alphanumeric with '-'
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
-  host_name                = each.value
+  host_name                = split(":", each.value)[1]
 
   tls {
     certificate_type    = "ManagedCertificate"
     minimum_tls_version = "TLS12"
   }
+}
+
+resource "azurerm_cdn_frontdoor_custom_domain_association" "rsd" {
+  for_each = toset(flatten([
+    for key, value in local.frontdoor_origins : [
+      for domain in value.custom_domains : "${key}:${domain}"
+    ]
+  ]))
+
+  cdn_frontdoor_custom_domain_id = azurerm_cdn_frontdoor_custom_domain.rsd[each.value].id
+  cdn_frontdoor_route_ids        = [azurerm_cdn_frontdoor_route.rsd[split(":", each.value)[0]].id]
 }
 
 resource "azurerm_cdn_frontdoor_route" "rsd" {
@@ -98,7 +109,7 @@ resource "azurerm_cdn_frontdoor_route" "rsd" {
   supported_protocols    = ["Http", "Https"]
 
   cdn_frontdoor_custom_domain_ids = [
-    for domain in each.value["custom_domains"] : azurerm_cdn_frontdoor_custom_domain.rsd[domain].id
+    for domain in each.value["custom_domains"] : azurerm_cdn_frontdoor_custom_domain.rsd["${each.key}:${domain}"].id
   ]
 
   link_to_default_domain = true
