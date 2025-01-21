@@ -17,4 +17,7 @@ locals {
     "X-Frame-Options"           = "DENY"
     "X-Content-Type-Options"    = "nosniff"
   }
+  frontdoor_enable_waf_logs          = var.frontdoor_enable_waf_logs
+  frontdoor_enable_access_logs       = var.frontdoor_enable_access_logs
+  frontdoor_enable_health_probe_logs = var.frontdoor_enable_health_probe_logs
 }
