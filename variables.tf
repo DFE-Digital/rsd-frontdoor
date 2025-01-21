@@ -93,3 +93,21 @@ variable "frontdoor_vdp_destination_hostname" {
   type        = string
   default     = "vdp.security.education.gov.uk"
 }
+
+variable "frontdoor_enable_waf_logs" {
+  description = "Enable logging of WAF events"
+  type        = bool
+  default     = true
+}
+
+variable "frontdoor_enable_access_logs" {
+  description = "Enable logging of HTTP Requests"
+  type        = bool
+  default     = false
+}
+
+variable "frontdoor_enable_health_probe_logs" {
+  description = "Enable logging of Health Probe results"
+  type        = bool
+  default     = false
+}

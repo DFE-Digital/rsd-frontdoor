@@ -36,7 +36,9 @@ This project creates and manages the RSD FrontDoor CDN.
 | [azurerm_cdn_frontdoor_rule.vdp_thanks_txt](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule) | resource |
 | [azurerm_cdn_frontdoor_rule_set.security](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule_set) | resource |
 | [azurerm_cdn_frontdoor_rule_set.vdp](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule_set) | resource |
+| [azurerm_log_analytics_workspace.diagnostics](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace) | resource |
 | [azurerm_management_lock.rsd_frontdoor](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_lock) | resource |
+| [azurerm_monitor_diagnostic_setting.cdn](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting) | resource |
 | [azurerm_resource_group.rsd_frontdoor](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
 | [azurerm_resource_group.existing_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 
@@ -54,6 +56,9 @@ This project creates and manages the RSD FrontDoor CDN.
 | <a name="input_enable_resource_group_lock"></a> [enable\_resource\_group\_lock](#input\_enable\_resource\_group\_lock) | Enabling this will add a Resource Lock to the Resource Group preventing any resources from being deleted | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name | `string` | n/a | yes |
 | <a name="input_existing_resource_group"></a> [existing\_resource\_group](#input\_existing\_resource\_group) | Use an existing resource group instead of launching a new one | `string` | `""` | no |
+| <a name="input_frontdoor_enable_access_logs"></a> [frontdoor\_enable\_access\_logs](#input\_frontdoor\_enable\_access\_logs) | Enable logging of HTTP Requests | `bool` | `false` | no |
+| <a name="input_frontdoor_enable_health_probe_logs"></a> [frontdoor\_enable\_health\_probe\_logs](#input\_frontdoor\_enable\_health\_probe\_logs) | Enable logging of Health Probe results | `bool` | `false` | no |
+| <a name="input_frontdoor_enable_waf_logs"></a> [frontdoor\_enable\_waf\_logs](#input\_frontdoor\_enable\_waf\_logs) | Enable logging of WAF events | `bool` | `true` | no |
 | <a name="input_frontdoor_origins"></a> [frontdoor\_origins](#input\_frontdoor\_origins) | Map of FrontDoor origin objects to add to the FrontDoor CDN | <pre>map(object({<br/>    origin_host               = string<br/>    origin_host_header        = optional(string, null)<br/>    custom_domains            = optional(list(string), [])<br/>    enable_health_probe       = optional(bool, true)<br/>    health_probe_interval     = optional(number, 60)<br/>    health_probe_request_type = optional(string, "HEAD")<br/>    health_probe_path         = optional(string, "/")<br/>    private_link_target_id    = optional(string, null)<br/>    forwarding_protocol       = optional(string, "HttpsOnly")<br/>    enable_security_headers   = optional(bool, true)<br/>  }))</pre> | `{}` | no |
 | <a name="input_frontdoor_response_timeout"></a> [frontdoor\_response\_timeout](#input\_frontdoor\_response\_timeout) | Maximum FrontDoor response timeout in seconds | `number` | `120` | no |
 | <a name="input_frontdoor_sku"></a> [frontdoor\_sku](#input\_frontdoor\_sku) | FrontDoor SKU | `string` | `"Premium_AzureFrontDoor"` | no |
