@@ -25,6 +25,7 @@ This project creates and manages the RSD FrontDoor CDN.
 | Name | Type |
 |------|------|
 | [azurerm_cdn_frontdoor_custom_domain.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_custom_domain) | resource |
+| [azurerm_cdn_frontdoor_custom_domain_association.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_custom_domain_association) | resource |
 | [azurerm_cdn_frontdoor_endpoint.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_endpoint) | resource |
 | [azurerm_cdn_frontdoor_origin.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_origin) | resource |
 | [azurerm_cdn_frontdoor_origin_group.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_origin_group) | resource |
