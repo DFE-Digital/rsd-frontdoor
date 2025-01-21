@@ -97,6 +97,7 @@ resource "azurerm_cdn_frontdoor_route" "rsd" {
   cdn_frontdoor_rule_set_ids = compact([
     local.enable_frontdoor_vdp_redirects ? azurerm_cdn_frontdoor_rule_set.vdp[0].id : null,
     each.value.enable_security_headers ? azurerm_cdn_frontdoor_rule_set.security[0].id : null,
+    length(each.value.add_http_response_headers) > 0 || length(each.value.add_http_response_headers) > 0 ? azurerm_cdn_frontdoor_rule_set.response_headers[each.key].id : null
   ])
   cdn_frontdoor_origin_ids = [
     azurerm_cdn_frontdoor_origin.rsd[each.key].id
