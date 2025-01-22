@@ -51,3 +51,36 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
 
   tags = local.tags
 }
+
+resource "azurerm_cdn_frontdoor_security_policy" "waf" {
+  count = local.enable_frontdoor ? 1 : 0
+
+  name                     = "${replace(local.environment, "/[^[:alnum:]]/", "-")}rsdfrontdoorwaf"
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+
+  security_policies {
+    firewall {
+      cdn_frontdoor_firewall_policy_id = azurerm_cdn_frontdoor_firewall_policy.waf[0].id
+
+      association {
+        dynamic "domain" {
+          for_each = azurerm_cdn_frontdoor_custom_domain.rsd
+
+          content {
+            cdn_frontdoor_domain_id = domain.value.id
+          }
+        }
+
+        dynamic "domain" {
+          for_each = azurerm_cdn_frontdoor_endpoint.rsd
+
+          content {
+            cdn_frontdoor_domain_id = domain.value.id
+          }
+        }
+
+        patterns_to_match = ["/*"]
+      }
+    }
+  }
+}
