@@ -19,7 +19,14 @@ locals {
     "X-Frame-Options"           = "DENY"
     "X-Content-Type-Options"    = "nosniff"
   }
-  frontdoor_enable_waf_logs          = var.frontdoor_enable_waf_logs
-  frontdoor_enable_access_logs       = var.frontdoor_enable_access_logs
-  frontdoor_enable_health_probe_logs = var.frontdoor_enable_health_probe_logs
+  frontdoor_enable_access_logs          = var.frontdoor_enable_access_logs
+  frontdoor_enable_health_probe_logs    = var.frontdoor_enable_health_probe_logs
+  frontdoor_enable_waf_logs             = var.frontdoor_enable_waf_logs
+  enable_frontdoor_waf                  = var.enable_frontdoor_waf
+  waf_mode                              = var.waf_mode
+  waf_enable_bot_protection             = var.waf_enable_bot_protection
+  waf_enable_rate_limiting              = var.waf_enable_rate_limiting
+  waf_rate_limiting_duration_in_minutes = var.waf_rate_limiting_duration_in_minutes
+  waf_rate_limiting_threshold           = var.waf_rate_limiting_threshold
+  waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
 }

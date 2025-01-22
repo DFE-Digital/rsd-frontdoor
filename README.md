@@ -27,6 +27,7 @@ This project creates and manages the RSD FrontDoor CDN.
 | [azurerm_cdn_frontdoor_custom_domain.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_custom_domain) | resource |
 | [azurerm_cdn_frontdoor_custom_domain_association.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_custom_domain_association) | resource |
 | [azurerm_cdn_frontdoor_endpoint.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_endpoint) | resource |
+| [azurerm_cdn_frontdoor_firewall_policy.waf](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_firewall_policy) | resource |
 | [azurerm_cdn_frontdoor_origin.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_origin) | resource |
 | [azurerm_cdn_frontdoor_origin_group.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_origin_group) | resource |
 | [azurerm_cdn_frontdoor_profile.rsd](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_profile) | resource |
@@ -56,6 +57,7 @@ This project creates and manages the RSD FrontDoor CDN.
 | <a name="input_azure_tenant_id"></a> [azure\_tenant\_id](#input\_azure\_tenant\_id) | Service Principal Tenant ID | `string` | n/a | yes |
 | <a name="input_enable_frontdoor"></a> [enable\_frontdoor](#input\_enable\_frontdoor) | Launch the FrontDoor CDN | `bool` | `false` | no |
 | <a name="input_enable_frontdoor_vdp_redirects"></a> [enable\_frontdoor\_vdp\_redirects](#input\_enable\_frontdoor\_vdp\_redirects) | Creates a redirect rule set for security.txt and thanks.txt to an external Vulnerability Disclosure Program service | `bool` | `true` | no |
+| <a name="input_enable_frontdoor_waf"></a> [enable\_frontdoor\_waf](#input\_enable\_frontdoor\_waf) | Enable or Disable the Front Door WAF Policy | `bool` | `true` | no |
 | <a name="input_enable_resource_group_lock"></a> [enable\_resource\_group\_lock](#input\_enable\_resource\_group\_lock) | Enabling this will add a Resource Lock to the Resource Group preventing any resources from being deleted | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name | `string` | n/a | yes |
 | <a name="input_existing_resource_group"></a> [existing\_resource\_group](#input\_existing\_resource\_group) | Use an existing resource group instead of launching a new one | `string` | `""` | no |
@@ -69,6 +71,12 @@ This project creates and manages the RSD FrontDoor CDN.
 | <a name="input_key_vault_access_ipv4"></a> [key\_vault\_access\_ipv4](#input\_key\_vault\_access\_ipv4) | List of IPv4 Addresses that are permitted to access the Key Vault | `list(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be applied to all resources | `map(string)` | `{}` | no |
 | <a name="input_tfvars_filename"></a> [tfvars\_filename](#input\_tfvars\_filename) | tfvars filename. This file is uploaded and stored encrypted within Key Vault, to ensure that the latest tfvars are stored in a shared place. | `string` | n/a | yes |
+| <a name="input_waf_enable_bot_protection"></a> [waf\_enable\_bot\_protection](#input\_waf\_enable\_bot\_protection) | Enable Bot Protection rules in the WAF Policy | `bool` | `true` | no |
+| <a name="input_waf_enable_rate_limiting"></a> [waf\_enable\_rate\_limiting](#input\_waf\_enable\_rate\_limiting) | Enable a Rate Limit rule in the WAF Policy | `bool` | `true` | no |
+| <a name="input_waf_mode"></a> [waf\_mode](#input\_waf\_mode) | Set whether the WAF is in Detection or Prevention mode | `string` | `"Detection"` | no |
+| <a name="input_waf_rate_limiting_bypass_ip_list"></a> [waf\_rate\_limiting\_bypass\_ip\_list](#input\_waf\_rate\_limiting\_bypass\_ip\_list) | List of IPv4 Addresses that should bypass the Rate Limit rules | `list(string)` | `[]` | no |
+| <a name="input_waf_rate_limiting_duration_in_minutes"></a> [waf\_rate\_limiting\_duration\_in\_minutes](#input\_waf\_rate\_limiting\_duration\_in\_minutes) | Number of minutes to block an IP address when it exceeds rate limit | `number` | `5` | no |
+| <a name="input_waf_rate_limiting_threshold"></a> [waf\_rate\_limiting\_threshold](#input\_waf\_rate\_limiting\_threshold) | Number of evaluated requests that are permitted within 'waf\_rate\_limiting\_duration\_in\_minutes' before being rate limited | `number` | `200` | no |
 
 ## Outputs
 

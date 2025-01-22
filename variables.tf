@@ -128,3 +128,45 @@ variable "tfvars_filename" {
   description = "tfvars filename. This file is uploaded and stored encrypted within Key Vault, to ensure that the latest tfvars are stored in a shared place."
   type        = string
 }
+
+variable "enable_frontdoor_waf" {
+  description = "Enable or Disable the Front Door WAF Policy"
+  type        = bool
+  default     = true
+}
+
+variable "waf_mode" {
+  description = "Set whether the WAF is in Detection or Prevention mode"
+  type        = string
+  default     = "Detection"
+}
+
+variable "waf_enable_bot_protection" {
+  description = "Enable Bot Protection rules in the WAF Policy"
+  type        = bool
+  default     = true
+}
+
+variable "waf_enable_rate_limiting" {
+  description = "Enable a Rate Limit rule in the WAF Policy"
+  type        = bool
+  default     = true
+}
+
+variable "waf_rate_limiting_duration_in_minutes" {
+  description = "Number of minutes to block an IP address when it exceeds rate limit"
+  type        = number
+  default     = 5
+}
+
+variable "waf_rate_limiting_threshold" {
+  description = "Number of evaluated requests that are permitted within 'waf_rate_limiting_duration_in_minutes' before being rate limited"
+  type        = number
+  default     = 200
+}
+
+variable "waf_rate_limiting_bypass_ip_list" {
+  description = "List of IPv4 Addresses that should bypass the Rate Limit rules"
+  type        = list(string)
+  default     = []
+}
