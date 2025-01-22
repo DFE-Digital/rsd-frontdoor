@@ -87,3 +87,55 @@ resource "azurerm_cdn_frontdoor_rule" "security" {
     }
   }
 }
+
+resource "azurerm_cdn_frontdoor_rule_set" "response_headers" {
+  for_each = local.enable_frontdoor ? { for key, origin in local.frontdoor_origins : key => origin.add_http_response_headers if(length(origin.add_http_response_headers) > 0 || length(origin.remove_http_response_headers) > 0) } : {}
+
+  name                     = "${replace(each.key, "/[^[:alnum:]]/", "")}responseheaders"
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+}
+
+resource "azurerm_cdn_frontdoor_rule" "remove_response_headers" {
+  for_each = local.enable_frontdoor ? { for key, origin in local.frontdoor_origins : key => origin.remove_http_response_headers if length(origin.remove_http_response_headers) > 0 } : {}
+
+  depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
+
+  name                      = "removeheaders"
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.response_headers[each.key].id
+  order                     = 1
+  behavior_on_match         = "Continue"
+
+  actions {
+    dynamic "response_header_action" {
+      for_each = each.value
+
+      content {
+        header_action = "Delete"
+        header_name   = response_header_action.value.name
+      }
+    }
+  }
+}
+
+resource "azurerm_cdn_frontdoor_rule" "add_response_headers" {
+  for_each = local.enable_frontdoor ? { for key, origin in local.frontdoor_origins : key => origin.add_http_response_headers if length(origin.add_http_response_headers) > 0 } : {}
+
+  depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
+
+  name                      = "addheaders"
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.response_headers[each.key].id
+  order                     = 2
+  behavior_on_match         = "Continue"
+
+  actions {
+    dynamic "response_header_action" {
+      for_each = each.value
+
+      content {
+        header_action = "Overwrite"
+        header_name   = response_header_action.value.name
+        value         = response_header_action.value.value
+      }
+    }
+  }
+}
