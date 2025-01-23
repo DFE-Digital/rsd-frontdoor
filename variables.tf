@@ -79,6 +79,16 @@ variable "frontdoor_origins" {
     remove_http_response_headers = optional(list(object({
       name = string
     })), [])
+    waf_custom_rules = optional(map(object({
+      action = string
+      match_conditions : map(object({
+        match_variable : string,
+        match_values : optional(list(string), []),
+        operator : optional(string, "Any"),
+        selector : optional(string, null),
+        negation_condition : optional(bool, false),
+      }))
+    })), {})
   }))
   default = {}
 }
