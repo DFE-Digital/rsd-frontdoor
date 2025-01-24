@@ -75,7 +75,7 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
           [toset(flatten([
             for key, value in local.frontdoor_origins : [
               for domain in value.custom_domains : azurerm_cdn_frontdoor_custom_domain.rsd["${key}:${domain}"].host_name
-            ] if length(value.custom_domains) > 0
+            ] if length(value.custom_domains) > 0 && key == split(":", custom_rule.key)[0]
           ]))]
         ])
       }
