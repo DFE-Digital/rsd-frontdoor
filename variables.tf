@@ -180,3 +180,9 @@ variable "waf_rate_limiting_bypass_ip_list" {
   type        = list(string)
   default     = []
 }
+
+variable "enable_custom_reroute_ruleset" {
+  description = "Toggle on/off the re-routing of traffic accessing the Ruby Complete app under certain request paths which should route to the .NET Complete app backend origin"
+  type        = bool
+  default     = false
+}

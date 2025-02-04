@@ -29,4 +29,5 @@ locals {
   waf_rate_limiting_duration_in_minutes = var.waf_rate_limiting_duration_in_minutes
   waf_rate_limiting_threshold           = var.waf_rate_limiting_threshold
   waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
+  enable_custom_reroute_ruleset         = var.enable_custom_reroute_ruleset
 }
