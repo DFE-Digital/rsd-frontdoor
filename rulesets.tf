@@ -139,3 +139,51 @@ resource "azurerm_cdn_frontdoor_rule" "add_response_headers" {
     }
   }
 }
+
+/**
+ * This rule set is temporarily added until the .NET rewrite takes over all traffic from the Ruby app
+ * - Ash Davies 27/01/2025
+ */
+resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
+  count = local.enable_frontdoor && local.enable_custom_reroute_ruleset ? 1 : 0
+
+  name                     = "completedotnetreroute"
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+}
+
+resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
+  count = local.enable_frontdoor && local.enable_custom_reroute_ruleset ? 1 : 0
+
+  depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
+
+  name                      = "rerouteorigin"
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id
+  order                     = 1
+  behavior_on_match         = "Continue"
+
+  actions {
+    route_configuration_override_action {
+      cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.rsd["complete-dotnet"].id
+      forwarding_protocol           = "MatchRequest"
+      cache_behavior                = "Disabled"
+    }
+
+    response_header_action {
+      header_action = "Append"
+      header_name   = "X-Backend-Origin"
+      value         = "dotnet"
+    }
+  }
+
+  conditions {
+    url_path_condition {
+      match_values = [
+        "projects/conversions/",
+        "dist",
+        "signin-oidc",
+        "netassets"
+      ]
+      operator = "BeginsWith"
+    }
+  }
+}
