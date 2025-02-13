@@ -98,7 +98,7 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
 
 
 resource "azurerm_cdn_frontdoor_security_policy" "waf" {
-  count = local.enable_frontdoor ? 1 : 0
+  count = local.enable_frontdoor && length(azurerm_cdn_frontdoor_endpoint.rsd) > 0 ? 1 : 0
 
   name                     = "${replace(local.environment, "/[^[:alnum:]]/", "-")}-rsd-frontdoor-global-policy"
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
