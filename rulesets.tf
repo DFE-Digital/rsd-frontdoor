@@ -170,7 +170,7 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
 
     response_header_action {
       header_action = "Append"
-      header_name   = "X-Backend-Origin"
+      header_name   = "X-Backend-Origin-Rerouted"
       value         = "dotnet"
     }
   }
