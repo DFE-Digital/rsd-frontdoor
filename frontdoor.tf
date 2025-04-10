@@ -70,6 +70,7 @@ resource "azurerm_cdn_frontdoor_custom_domain" "rsd" {
   name                     = replace(each.value, "/[^[:alnum:]]/", "-") # replace non-alphanumeric with '-'
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
   host_name                = split(":", each.value)[1]
+  dns_zone_id              = lookup(data.azurerm_dns_zone.zone, split(":", each.value)[0], null) != null ? data.azurerm_dns_zone.zone[split(":", each.value)[0]].id : null
 
   tls {
     certificate_type    = "ManagedCertificate"
