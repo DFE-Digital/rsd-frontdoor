@@ -145,14 +145,14 @@ resource "azurerm_cdn_frontdoor_rule" "add_response_headers" {
  * - Ash Davies 27/01/2025
  */
 resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
-  count = local.enable_frontdoor && local.enable_custom_reroute_ruleset ? 1 : 0
+  count = local.enable_frontdoor
 
   name                     = "completedotnetreroute"
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
 }
 
 resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
-  count = local.enable_frontdoor && local.enable_custom_reroute_ruleset ? 1 : 0
+  count = local.enable_frontdoor
 
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
