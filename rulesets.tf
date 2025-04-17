@@ -178,10 +178,14 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
   conditions {
     url_path_condition {
       match_values = [
-        "projects/conversions/",
         "dist",
         "signin-oidc",
-        "netassets"
+        "netassets",
+        "accessibility",
+        "cookies",
+        "projects/all/in-progress/all",
+        "projects/all/in-progress/conversions",
+        "projects/all/in-progress/transfers",
       ]
       operator = "BeginsWith"
     }
