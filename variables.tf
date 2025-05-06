@@ -79,6 +79,10 @@ variable "frontdoor_origins" {
     private_link_target_id    = optional(string, null)
     forwarding_protocol       = optional(string, "HttpsOnly")
     enable_security_headers   = optional(bool, true)
+    redirects = optional(list(object({
+      from = string
+      to   = string
+    })), [])
     add_http_response_headers = optional(list(object({
       name  = string
       value = string
