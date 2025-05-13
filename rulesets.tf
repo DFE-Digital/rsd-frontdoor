@@ -140,6 +140,52 @@ resource "azurerm_cdn_frontdoor_rule" "add_response_headers" {
   }
 }
 
+resource "azurerm_cdn_frontdoor_rule_set" "host_redirects" {
+  for_each = local.enable_frontdoor && length(local.frontdoor_host_redirects) > 0 ? local.frontdoor_host_redirects : {}
+
+  name                     = "${replace(each.key, "/[^[:alnum:]]/", "")}hostredirects"
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+}
+
+resource "azurerm_cdn_frontdoor_rule" "host_redirects" {
+  for_each = local.enable_frontdoor && length(local.frontdoor_host_redirects) > 0 ? {
+    for rule in flatten([
+      for key, redirects in local.frontdoor_host_redirects : [
+        for redirect in redirects : {
+          order  = index(redirects, redirect) + 1
+          origin = key
+          from   = redirect.from
+          to     = redirect.to
+        }
+      ]
+    ]) : "${rule.origin}-${replace(rule.from, "/[^[:alnum:]]/", "-")}" => rule
+  } : {}
+
+  depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
+
+  name                      = replace(each.key, "/[^[:alnum:]]/", "")
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.host_redirects[each.value.origin].id
+  order                     = each.value.order
+  behavior_on_match         = "Continue"
+
+  actions {
+    url_redirect_action {
+      redirect_type        = "Moved"
+      redirect_protocol    = "Https"
+      destination_hostname = each.value.to
+    }
+  }
+
+  conditions {
+    host_name_condition {
+      operator         = "Equal"
+      negate_condition = false
+      match_values     = [each.value.from]
+      transforms       = ["Lowercase", "Trim"]
+    }
+  }
+}
+
 /**
  * This rule set is temporarily added until the .NET rewrite takes over all traffic from the Ruby app
  * - Ash Davies 27/01/2025

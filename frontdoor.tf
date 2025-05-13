@@ -95,12 +95,13 @@ resource "azurerm_cdn_frontdoor_route" "rsd" {
   name                          = "${local.environment}-rsd-frontdoor-${each.key}"
   cdn_frontdoor_endpoint_id     = azurerm_cdn_frontdoor_endpoint.rsd[each.key].id
   cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.rsd[each.key].id
-  cdn_frontdoor_rule_set_ids = compact([
+  cdn_frontdoor_rule_set_ids = concat(compact([
     local.enable_frontdoor_vdp_redirects ? azurerm_cdn_frontdoor_rule_set.vdp[0].id : null,
     each.value.enable_security_headers ? azurerm_cdn_frontdoor_rule_set.security[0].id : null,
     length(each.value.add_http_response_headers) > 0 || length(each.value.remove_http_response_headers) > 0 ? azurerm_cdn_frontdoor_rule_set.response_headers[each.key].id : null,
     each.key == "complete-ruby" && local.enable_custom_reroute_ruleset ? azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id : null,
-  ])
+    length(each.value.redirects) > 0 ? azurerm_cdn_frontdoor_rule_set.host_redirects[each.key].id : null,
+  ]))
   cdn_frontdoor_origin_ids = [
     azurerm_cdn_frontdoor_origin.rsd[each.key].id
   ]
