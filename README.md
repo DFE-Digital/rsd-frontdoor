@@ -18,7 +18,7 @@ This project creates and manages the RSD FrontDoor CDN.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.26.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.28.0 |
 
 ## Resources
 
