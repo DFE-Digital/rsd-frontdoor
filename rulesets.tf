@@ -228,10 +228,16 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
         "signin-oidc",
         "netassets",
         "accessibility",
-        "cookies",
-        "projects/all/in-progress/all",
-        "projects/all/in-progress/conversions",
-        "projects/all/in-progress/transfers",
+        "projects/all/by-month",
+        "projects/all/completed",
+        "projects/all/in-progress",
+        "projects/all/local-authorities",
+        "projects/all/regions",
+        "projects/all/trusts",
+        "projects/all/users",
+        "projects/team",
+        "projects/yours",
+        "search"
       ]
       operator = "BeginsWith"
     }
