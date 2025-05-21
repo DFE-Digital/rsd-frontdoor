@@ -32,5 +32,27 @@ locals {
   waf_rate_limiting_duration_in_minutes = var.waf_rate_limiting_duration_in_minutes
   waf_rate_limiting_threshold           = var.waf_rate_limiting_threshold
   waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
-  enable_custom_reroute_ruleset         = var.enable_custom_reroute_ruleset
+
+
+  enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
+  complete_dotnet_ruby_migration_paths = {
+    "assets" : [
+      "dist",
+      "signin-oidc",
+      "netassets",
+      "accessibility",
+      "search"
+    ],
+    "projects" : [
+      "projects/all/by-month",
+      "projects/all/completed",
+      "projects/all/in-progress",
+      "projects/all/local-authorities",
+      "projects/all/regions",
+      "projects/all/trusts",
+      "projects/all/users",
+      "projects/team",
+      "projects/yours",
+    ]
+  }
 }

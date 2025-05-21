@@ -198,13 +198,13 @@ resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
 }
 
 resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
-  count = local.enable_frontdoor ? 1 : 0
+  for_each = local.enable_frontdoor ? local.complete_dotnet_ruby_migration_paths : {}
 
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
-  name                      = "rerouteorigin"
+  name                      = "rerouteorigin${each.key}"
   cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id
-  order                     = 1
+  order                     = index(keys(local.complete_dotnet_ruby_migration_paths), each.key) + 1
   behavior_on_match         = "Continue"
 
   actions {
@@ -223,23 +223,8 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
 
   conditions {
     url_path_condition {
-      match_values = [
-        "dist",
-        "signin-oidc",
-        "netassets",
-        "accessibility",
-        "projects/all/by-month",
-        "projects/all/completed",
-        "projects/all/in-progress",
-        "projects/all/local-authorities",
-        "projects/all/regions",
-        "projects/all/trusts",
-        "projects/all/users",
-        "projects/team",
-        "projects/yours",
-        "search"
-      ]
-      operator = "BeginsWith"
+      match_values = each.value
+      operator     = "BeginsWith"
     }
   }
 }
