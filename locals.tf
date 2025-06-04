@@ -36,23 +36,44 @@ locals {
 
   enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
   complete_dotnet_ruby_migration_paths = {
-    "assets" : [
-      "dist",
-      "signin-oidc",
-      "netassets",
-      "accessibility",
-      "search"
-    ],
-    "projects" : [
-      "projects/all/by-month",
-      "projects/all/completed",
-      "projects/all/in-progress",
-      "projects/all/local-authorities",
-      "projects/all/regions",
-      "projects/all/trusts",
-      "projects/all/users",
-      "projects/team",
-      "projects/yours",
-    ]
+    "assets" : {
+      require_cookie : true,
+      routes : [
+        "dist",
+        "signin-oidc",
+        "netassets",
+        "accessibility",
+        "search",
+      ]
+    },
+    "projects" : {
+      require_cookie : true,
+      routes : [
+        "projects/all/by-month",
+        "projects/all/completed",
+        "projects/all/in-progress",
+        "projects/all/local-authorities",
+        "projects/all/regions",
+        "projects/all/trusts",
+        "projects/all/users",
+        "projects/team",
+        "projects/yours",
+      ]
+    }
+    "cookies" : {
+      require_cookie : true,
+      require_header : {
+        name : "Content-Type",
+        values : [
+          "application/x-www-form-urlencoded"
+        ]
+      }
+      append_headers : {
+        "x-request-origin" : "ruby"
+      }
+      routes : [
+        "cookies"
+      ]
+    }
   }
 }
