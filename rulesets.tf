@@ -198,13 +198,13 @@ resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
 }
 
 resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
-  for_each = local.enable_frontdoor ? local.complete_dotnet_ruby_migration_paths : {}
+  for_each = { for key, set in local.complete_dotnet_ruby_migration_paths : key => set if contains(set.environment, local.azure_environment) }
 
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
   name                      = "rerouteorigin${each.key}"
   cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id
-  order                     = index(keys(local.complete_dotnet_ruby_migration_paths), each.key) + 1
+  order                     = (index(keys(local.complete_dotnet_ruby_migration_paths), each.key) + 1) * 10
   behavior_on_match         = "Continue"
 
   actions {
@@ -219,12 +219,41 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
       header_name   = "X-Backend-Origin-Rerouted"
       value         = "dotnet"
     }
+
+    dynamic "response_header_action" {
+      for_each = lookup(each.value, "append_headers", {})
+
+      content {
+        header_action = "Append"
+        header_name   = response_header_action.key
+        value         = response_header_action.value
+      }
+    }
   }
 
   conditions {
     url_path_condition {
-      match_values = each.value
-      operator     = "BeginsWith"
+      match_values = each.value.routes
+      operator     = lookup(each.value, "operator", "BeginsWith")
+    }
+
+    dynamic "cookies_condition" {
+      for_each = lookup(each.value, "require_cookie", false) ? [1] : []
+
+      content {
+        cookie_name = "dotnet-bypass"
+        operator    = "Any"
+      }
+    }
+
+    dynamic "request_header_condition" {
+      for_each = length(lookup(each.value, "require_header", {})) > 0 ? [1] : []
+
+      content {
+        header_name  = each.value.require_header.name
+        operator     = lookup(each.value.require_header, "operator", "Equal")
+        match_values = each.value.require_header.values
+      }
     }
   }
 }
