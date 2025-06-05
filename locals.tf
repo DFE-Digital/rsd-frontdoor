@@ -1,5 +1,6 @@
 locals {
   environment                    = var.environment
+  azure_environment              = strcontains(local.environment, "d") ? "development" : strcontains(local.environment, "t") ? "test" : strcontains(local.environment, "p") ? "production" : ""
   azure_location                 = var.azure_location
   tags                           = var.tags
   existing_resource_group        = var.existing_resource_group
@@ -36,23 +37,53 @@ locals {
 
   enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
   complete_dotnet_ruby_migration_paths = {
-    "assets" : [
-      "dist",
-      "signin-oidc",
-      "netassets",
-      "accessibility",
-      "search"
-    ],
-    "projects" : [
-      "projects/all/by-month",
-      "projects/all/completed",
-      "projects/all/in-progress",
-      "projects/all/local-authorities",
-      "projects/all/regions",
-      "projects/all/trusts",
-      "projects/all/users",
-      "projects/team",
-      "projects/yours",
-    ]
+    "assets" : {
+      environment : [
+        "development", "test",
+      ]
+      require_cookie : true,
+      routes : [
+        "dist",
+        "signin-oidc",
+        "netassets",
+        "accessibility",
+        "search",
+      ]
+    },
+    "projects" : {
+      environment : [
+        "development", "test",
+      ]
+      require_cookie : true,
+      routes : [
+        "projects/all/by-month",
+        "projects/all/completed",
+        "projects/all/in-progress",
+        "projects/all/local-authorities",
+        "projects/all/regions",
+        "projects/all/trusts",
+        "projects/all/users",
+        "projects/team",
+        "projects/yours",
+      ]
+    }
+    "cookies" : {
+      environment : [
+        "development", "test",
+      ]
+      require_cookie : true,
+      require_header : {
+        name : "Content-Type",
+        values : [
+          "application/x-www-form-urlencoded"
+        ]
+      }
+      append_headers : {
+        "x-request-origin" : "ruby"
+      }
+      routes : [
+        "cookies"
+      ]
+    }
   }
 }
