@@ -1,5 +1,6 @@
 locals {
   environment                    = var.environment
+  azure_environment              = strcontains(local.environment, "d") ? "development" : strcontains(local.environment, "t") ? "test" : strcontains(local.environment, "p") ? "production" : ""
   azure_location                 = var.azure_location
   tags                           = var.tags
   existing_resource_group        = var.existing_resource_group
@@ -37,6 +38,9 @@ locals {
   enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
   complete_dotnet_ruby_migration_paths = {
     "assets" : {
+      environment : [
+        "development", "test",
+      ]
       require_cookie : true,
       routes : [
         "dist",
@@ -47,6 +51,9 @@ locals {
       ]
     },
     "projects" : {
+      environment : [
+        "development", "test",
+      ]
       require_cookie : true,
       routes : [
         "projects/all/by-month",
@@ -61,6 +68,9 @@ locals {
       ]
     }
     "cookies" : {
+      environment : [
+        "development", "test",
+      ]
       require_cookie : true,
       require_header : {
         name : "Content-Type",

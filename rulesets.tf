@@ -198,7 +198,7 @@ resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
 }
 
 resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
-  for_each = local.complete_dotnet_ruby_migration_paths
+  for_each = { for key, set in local.complete_dotnet_ruby_migration_paths : key => set if contains(set.environment, local.azure_environment) }
 
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
