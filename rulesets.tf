@@ -234,7 +234,7 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
   conditions {
     url_path_condition {
       match_values = each.value.routes
-      operator     = "BeginsWith"
+      operator     = lookup(each.value, "operator", "BeginsWith")
     }
 
     dynamic "cookies_condition" {
