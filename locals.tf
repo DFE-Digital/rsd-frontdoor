@@ -37,41 +37,12 @@ locals {
 
   enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
   complete_dotnet_ruby_migration_paths = {
-    "assets" : {
-      environment : [
-        "development", "test",
-      ]
-      require_cookie : true,
-      routes : [
-        "dist",
-        "signin-oidc",
-        "netassets",
-        "accessibility",
-        "search",
-      ]
-    },
-    "projects" : {
-      environment : [
-        "development", "test",
-      ]
-      require_cookie : true,
-      routes : [
-        "projects/all/by-month",
-        "projects/all/completed",
-        "projects/all/in-progress",
-        "projects/all/local-authorities",
-        "projects/all/regions",
-        "projects/all/trusts",
-        "projects/all/users",
-        "projects/team",
-        "projects/yours",
-      ]
-    }
     "cookies" : {
       environment : [
         "development", "test",
       ]
-      require_cookie : true,
+      behavior_on_match : "Stop",
+      require_cookie : false,
       require_header : {
         name : "Content-Type",
         values : [
@@ -83,6 +54,56 @@ locals {
       }
       routes : [
         "cookies"
+      ]
+    },
+    "assets" : {
+      environment : [
+        "development", "test",
+      ]
+      require_cookie : false,
+      routes : [
+        "dist",
+        "signin-oidc",
+        "netassets",
+        "accessibility",
+        "cookies",
+      ]
+    },
+    "searchDEV" : {
+      environment : [
+        "development",
+      ]
+      require_cookie : false,
+      routes : [
+        "^search(?:\\?(?:[^\\/#]*))?$",
+      ],
+      operator : "RegEx"
+    },
+    "searchTEST" : {
+      environment : [
+        "test",
+      ]
+      require_cookie : true,
+      routes : [
+        "^search(?:\\?(?:[^\\/#]*))?$",
+      ],
+      operator : "RegEx"
+    },
+    "projects" : {
+      environment : [
+        "development", "test",
+      ]
+      require_cookie : false,
+      routes : [
+        "projects/all/by-month",
+        "projects/all/completed",
+        "projects/all/in-progress",
+        "projects/all/local-authorities",
+        "projects/all/regions",
+        "projects/all/trusts",
+        "projects/all/users",
+        "projects/team",
+        "projects/yours",
       ]
     }
   }
