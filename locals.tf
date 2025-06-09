@@ -69,23 +69,23 @@ locals {
         "cookies",
       ]
     },
-    "search" : {
+    "searchDEV" : {
       environment : [
         "development",
       ]
       require_cookie : false,
       routes : [
-        "search",
+        "^search(?:\\?(?:[^\\/#]*))?$",
       ],
       operator : "RegEx"
     },
-    "search" : {
+    "searchTEST" : {
       environment : [
         "test",
       ]
       require_cookie : true,
       routes : [
-        "search",
+        "^search(?:\\?(?:[^\\/#]*))?$",
       ],
       operator : "RegEx"
     },
