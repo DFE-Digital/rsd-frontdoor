@@ -50,6 +50,26 @@ locals {
         "cookies",
       ]
     },
+    "search" : {
+      environment : [
+        "development",
+      ]
+      require_cookie : false,
+      routes : [
+        "search",
+      ],
+      operator: "RegEx"
+    },
+    "search" : {
+      environment : [
+        "test",
+      ]
+      require_cookie : true,
+      routes : [
+        "search",
+      ],
+      operator: "RegEx"
+    },
     "projects" : {
       environment : [
         "development", "test",
