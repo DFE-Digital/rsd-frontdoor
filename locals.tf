@@ -47,7 +47,7 @@ locals {
         "signin-oidc",
         "netassets",
         "accessibility",
-        "search",
+        "cookies",
       ]
     },
     "projects" : {
