@@ -41,7 +41,7 @@ locals {
       environment : [
         "development", "test",
       ]
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "dist",
         "signin-oidc",
@@ -54,7 +54,7 @@ locals {
       environment : [
         "development", "test",
       ]
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "projects/all/by-month",
         "projects/all/completed",
@@ -71,7 +71,7 @@ locals {
       environment : [
         "development", "test",
       ]
-      require_cookie : true,
+      require_cookie : false,
       require_header : {
         name : "Content-Type",
         values : [
