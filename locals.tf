@@ -69,9 +69,9 @@ locals {
         "cookies",
       ]
     },
-    "searchDEV" : {
+    "search" : {
       environment : [
-        "development",
+        "development", "test",
       ]
       require_cookie : false,
       routes : [
@@ -79,19 +79,9 @@ locals {
       ],
       operator : "RegEx"
     },
-    "searchTEST" : {
+    "projectsDEV" : {
       environment : [
-        "test",
-      ]
-      require_cookie : true,
-      routes : [
-        "^search(?:\\?(?:[^\\/#]*))?$",
-      ],
-      operator : "RegEx"
-    },
-    "projects" : {
-      environment : [
-        "development", "test",
+        "development",
       ]
       require_cookie : false,
       routes : [
@@ -104,6 +94,15 @@ locals {
         "projects/all/users",
         "projects/team",
         "projects/yours",
+      ]
+    },
+    "projectsTEST" : {
+      environment : [
+        "test",
+      ]
+      require_cookie : true,
+      routes : [
+        "projects/all/in-progress/all"
       ]
     }
   }
