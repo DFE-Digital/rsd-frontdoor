@@ -37,7 +37,7 @@ locals {
 
   enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
   complete_dotnet_ruby_migration_paths = {
-    "cookies" : {
+    "cookiesPOST" : {
       environment : [
         "development", "test",
       ]
@@ -49,9 +49,19 @@ locals {
           "application/x-www-form-urlencoded"
         ]
       }
-      append_headers : {
+      append_request_headers : {
         "x-request-origin" : "ruby"
       }
+      routes : [
+        "cookies"
+      ]
+    },
+    "cookies" : {
+      environment : [
+        "development", "test",
+      ]
+      behavior_on_match : "Stop",
+      require_cookie : false,
       routes : [
         "cookies"
       ]
@@ -66,7 +76,6 @@ locals {
         "signin-oidc",
         "netassets",
         "accessibility",
-        "cookies",
       ]
     },
     "search" : {

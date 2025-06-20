@@ -220,13 +220,13 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
       value         = "dotnet"
     }
 
-    dynamic "response_header_action" {
-      for_each = lookup(each.value, "append_headers", {})
+    dynamic "request_header_action" {
+      for_each = lookup(each.value, "append_request_headers", {})
 
       content {
         header_action = "Append"
-        header_name   = response_header_action.key
-        value         = response_header_action.value
+        header_name   = request_header_action.key
+        value         = request_header_action.value
       }
     }
   }
