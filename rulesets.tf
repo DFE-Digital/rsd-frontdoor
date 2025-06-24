@@ -204,7 +204,7 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
 
   name                      = "rerouteorigin${each.key}"
   cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id
-  order                     = (index(keys(local.complete_dotnet_ruby_migration_paths), each.key) + 1) * 10
+  order                     = each.value.order
   behavior_on_match         = lookup(each.value, "behavior_on_match", "Continue")
 
   actions {
