@@ -109,6 +109,64 @@ locals {
       routes : [
         "projects/all/in-progress/all"
       ]
+    },
+
+    /* 2025-06-27 Tristan Collen (tristancollen)
+    I think it will be healthy to maintain a completely separate set of rules for production, even when identical */
+    "cookiesPROD" : {
+      order : 101,
+      environment : [
+        "production",
+      ],
+      behavior_on_match : "Stop",
+      require_cookie : true,
+      require_header : {
+        name : "Content-Type",
+        values : [
+          "application/x-www-form-urlencoded"
+        ]
+      },
+      append_request_headers : {
+        "x-request-origin" : "ruby"
+      },
+      routes : [
+        "cookies"
+      ]
+    },
+    "assetsPROD" : {
+      order : 102,
+      environment : [
+        "production",
+      ],
+      require_cookie : true,
+      routes : [
+        "dist",
+        "signin-oidc",
+        "netassets",
+        "accessibility",
+        "cookies"
+      ]
+    },
+    "searchPROD" : {
+      order : 103,
+      environment : [
+        "production",
+      ],
+      require_cookie : true,
+      routes : [
+        "^search(?:\\?(?:[^\\/#]*))?$",
+      ],
+      operator : "RegEx"
+    },
+    "projectsPROD" : {
+      order : 104,
+      environment : [
+        "production",
+      ],
+      require_cookie : true,
+      routes : [
+        "projects/all/in-progress/all",
+      ]
     }
   }
 }
