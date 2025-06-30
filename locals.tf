@@ -36,12 +36,9 @@ locals {
 
 
   enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
-  complete_dotnet_ruby_migration_paths = {
+  complete_dotnet_ruby_migration_paths_development = {
     "cookies" : {
-      order : 1,
-      environment : [
-        "development", "test",
-      ],
+      order : 10,
       behavior_on_match : "Stop",
       require_cookie : false,
       require_header : {
@@ -58,10 +55,7 @@ locals {
       ]
     },
     "assets" : {
-      order : 2,
-      environment : [
-        "development", "test",
-      ],
+      order : 20,
       require_cookie : false,
       routes : [
         "dist",
@@ -72,21 +66,15 @@ locals {
       ]
     },
     "search" : {
-      order : 3,
-      environment : [
-        "development", "test",
-      ],
+      order : 30,
       require_cookie : false,
       routes : [
         "^search(?:\\?(?:[^\\/#]*))?$",
       ],
       operator : "RegEx"
     },
-    "projectsDEV" : {
-      order : 10,
-      environment : [
-        "development",
-      ],
+    "projects" : {
+      order : 40,
       require_cookie : false,
       routes : [
         "projects/all/by-month",
@@ -99,25 +87,64 @@ locals {
         "projects/team",
         "projects/yours",
       ]
-    },
-    "projectsTEST" : {
-      order : 20,
-      environment : [
-        "test",
-      ],
-      require_cookie : true,
+    }
+  }
+  complete_dotnet_ruby_migration_paths_test = {
+    "cookies" : {
+      order : 10,
+      behavior_on_match : "Stop",
+      require_cookie : false,
+      require_header : {
+        name : "Content-Type",
+        values : [
+          "application/x-www-form-urlencoded"
+        ]
+      },
+      append_request_headers : {
+        "x-request-origin" : "ruby"
+      },
       routes : [
-        "projects/all/in-progress/all"
+        "cookies"
       ]
     },
-
-    /* 2025-06-27 Tristan Collen (tristancollen)
-    I think it will be healthy to maintain a completely separate set of rules for production, even when identical */
-    "cookiesPROD" : {
-      order : 101,
-      environment : [
-        "production",
+    "assets" : {
+      order : 20,
+      require_cookie : false,
+      routes : [
+        "dist",
+        "signin-oidc",
+        "netassets",
+        "accessibility",
+        "cookies"
+      ]
+    },
+    "search" : {
+      order : 30,
+      require_cookie : false,
+      routes : [
+        "^search(?:\\?(?:[^\\/#]*))?$",
       ],
+      operator : "RegEx"
+    },
+    "projects" : {
+      order : 40,
+      require_cookie : false,
+      routes : [
+        "projects/all/by-month",
+        "projects/all/completed",
+        "projects/all/in-progress",
+        "projects/all/local-authorities",
+        "projects/all/regions",
+        "projects/all/trusts",
+        "projects/all/users",
+        "projects/team",
+        "projects/yours",
+      ]
+    }
+  }
+  complete_dotnet_ruby_migration_paths_production = {
+    "cookies" : {
+      order : 10,
       behavior_on_match : "Stop",
       require_cookie : true,
       require_header : {
@@ -133,11 +160,8 @@ locals {
         "cookies"
       ]
     },
-    "assetsPROD" : {
-      order : 102,
-      environment : [
-        "production",
-      ],
+    "assets" : {
+      order : 20,
       require_cookie : true,
       routes : [
         "dist",
@@ -147,26 +171,28 @@ locals {
         "cookies"
       ]
     },
-    "searchPROD" : {
-      order : 103,
-      environment : [
-        "production",
-      ],
+    "search" : {
+      order : 30,
       require_cookie : true,
       routes : [
         "^search(?:\\?(?:[^\\/#]*))?$",
       ],
       operator : "RegEx"
     },
-    "projectsPROD" : {
-      order : 104,
-      environment : [
-        "production",
-      ],
+    "projects" : {
+      order : 40,
       require_cookie : true,
       routes : [
         "projects/all/in-progress/all",
       ]
     }
   }
+
+  complete_dotnet_ruby_migration_all = {
+    development = local.complete_dotnet_ruby_migration_paths_development
+    test        = local.complete_dotnet_ruby_migration_paths_test
+    production  = local.complete_dotnet_ruby_migration_paths_production
+  }
+
+  complete_dotnet_ruby_migration_paths = lookup(local.complete_dotnet_ruby_migration_all, local.azure_environment, {})
 }
