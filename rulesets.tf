@@ -198,13 +198,13 @@ resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
 }
 
 resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
-  for_each = { for key, set in local.complete_dotnet_ruby_migration_paths : key => set if contains(set.environment, local.azure_environment) }
+  for_each = local.complete_dotnet_ruby_migration_paths
 
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
   name                      = "rerouteorigin${each.key}"
   cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id
-  order                     = (index(keys(local.complete_dotnet_ruby_migration_paths), each.key) + 1) * 10
+  order                     = each.value.order
   behavior_on_match         = lookup(each.value, "behavior_on_match", "Continue")
 
   actions {
@@ -220,13 +220,13 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
       value         = "dotnet"
     }
 
-    dynamic "response_header_action" {
-      for_each = lookup(each.value, "append_headers", {})
+    dynamic "request_header_action" {
+      for_each = lookup(each.value, "append_request_headers", {})
 
       content {
         header_action = "Append"
-        header_name   = response_header_action.key
-        value         = response_header_action.value
+        header_name   = request_header_action.key
+        value         = request_header_action.value
       }
     }
   }
