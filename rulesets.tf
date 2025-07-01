@@ -210,7 +210,7 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
   actions {
     route_configuration_override_action {
       cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.rsd["complete-dotnet"].id
-      forwarding_protocol           = "MatchRequest"
+      forwarding_protocol           = azurerm_cdn_frontdoor_route.rsd["complete-dotnet"].forwarding_protocol
       cache_behavior                = "Disabled"
     }
 
