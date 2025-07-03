@@ -66,13 +66,10 @@ variable "frontdoor_origins" {
     origin_host_header  = optional(string, null)
     custom_domains      = optional(list(string), [])
     enable_health_probe = optional(bool, true)
-    managed_dns_zone = optional(object({
+    managed_dns_zones = optional(list(object({
       name                = string
       resource_group_name = string
-      }), {
-      name                = ""
-      resource_group_name = ""
-    })
+    })), [])
     health_probe_interval     = optional(number, 60)
     health_probe_request_type = optional(string, "HEAD")
     health_probe_path         = optional(string, "/")

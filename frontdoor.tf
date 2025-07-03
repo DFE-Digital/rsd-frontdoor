@@ -61,31 +61,23 @@ resource "azurerm_cdn_frontdoor_endpoint" "rsd" {
 }
 
 resource "azurerm_cdn_frontdoor_custom_domain" "rsd" {
-  for_each = toset(flatten([
-    for key, value in local.frontdoor_origins : [
-      for domain in value.custom_domains : "${key}:${domain}"
-    ]
-  ]))
+  for_each = local.frontdoor_custom_domain_map
 
-  name                     = replace(each.value, "/[^[:alnum:]]/", "-") # replace non-alphanumeric with '-'
+  name                     = each.value.name
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
-  host_name                = split(":", each.value)[1]
-  dns_zone_id              = lookup(data.azurerm_dns_zone.zone, split(":", each.value)[0], null) != null ? data.azurerm_dns_zone.zone[split(":", each.value)[0]].id : null
+  host_name                = each.value.hostname
+  dns_zone_id              = each.value.dns_zone_id
 
   tls {
-    certificate_type    = "ManagedCertificate"
+    certificate_type = "ManagedCertificate"
   }
 }
 
 resource "azurerm_cdn_frontdoor_custom_domain_association" "rsd" {
-  for_each = toset(flatten([
-    for key, value in local.frontdoor_origins : [
-      for domain in value.custom_domains : "${key}:${domain}"
-    ]
-  ]))
+  for_each = local.frontdoor_custom_domain_map
 
-  cdn_frontdoor_custom_domain_id = azurerm_cdn_frontdoor_custom_domain.rsd[each.value].id
-  cdn_frontdoor_route_ids        = [azurerm_cdn_frontdoor_route.rsd[split(":", each.value)[0]].id]
+  cdn_frontdoor_custom_domain_id = azurerm_cdn_frontdoor_custom_domain.rsd[each.key].id
+  cdn_frontdoor_route_ids        = [azurerm_cdn_frontdoor_route.rsd[each.value.origin_key].id]
 }
 
 resource "azurerm_cdn_frontdoor_route" "rsd" {
@@ -112,7 +104,7 @@ resource "azurerm_cdn_frontdoor_route" "rsd" {
   supported_protocols    = ["Http", "Https"]
 
   cdn_frontdoor_custom_domain_ids = [
-    for domain in each.value["custom_domains"] : azurerm_cdn_frontdoor_custom_domain.rsd["${each.key}:${domain}"].id
+    for key, value in local.frontdoor_custom_domain_map : azurerm_cdn_frontdoor_custom_domain.rsd[key].id if value.origin_key == each.key
   ]
 
   link_to_default_domain = true
