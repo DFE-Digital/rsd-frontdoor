@@ -68,15 +68,13 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
       action   = custom_rule.value["action"]
 
       match_condition {
-        match_variable = "RequestUri"
-        operator       = "Contains"
-        match_values = flatten([
+        match_variable = "RequestHeader"
+        selector       = "Host"
+        operator       = "Equal"
+        match_values = concat([
           azurerm_cdn_frontdoor_endpoint.rsd[split(":", custom_rule.key)[0]].host_name,
-          [toset(flatten([
-            for key, value in local.frontdoor_origins : [
-              for domain in value.custom_domains : azurerm_cdn_frontdoor_custom_domain.rsd["${key}:${domain}"].host_name
-            ] if length(value.custom_domains) > 0 && key == split(":", custom_rule.key)[0]
-          ]))]
+          ], [
+          for domain in local.frontdoor_custom_domain_map : domain.hostname if domain.origin_key == split(":", custom_rule.key)[0]
         ])
       }
 
