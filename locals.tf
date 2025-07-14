@@ -100,6 +100,14 @@ locals {
       order : 40,
       require_cookie : false,
       routes : [
+        "projects/team",
+        "projects/yours",
+      ]
+    },
+    "all_projects" : {
+      order : 50,
+      require_cookie : false,
+      routes : [
         "projects/all/by-month",
         "projects/all/completed",
         "projects/all/in-progress",
@@ -107,8 +115,25 @@ locals {
         "projects/all/regions",
         "projects/all/trusts",
         "projects/all/users",
-        "projects/team",
-        "projects/yours",
+        "projects/all/statistics",
+      ]
+    },
+    "service_support" : {
+      order : 60,
+      require_cookie : false,
+      routes : [
+        "projects/service-support/with-academy-urn",
+        "projects/service-support/without-academy-urn",
+        "service-support/local-authorities",
+        "projects/all/local-authorities",
+      ]
+    },
+    "exports" : {
+      order : 70,
+      require_cookie : false,
+      routes : [
+        "projects/all/export",
+        "projects/all/reports",
       ]
     }
   }
@@ -153,6 +178,14 @@ locals {
       order : 40,
       require_cookie : false,
       routes : [
+        "projects/team",
+        "projects/yours",
+      ]
+    },
+    "all_projects" : {
+      order : 50,
+      require_cookie : false,
+      routes : [
         "projects/all/by-month",
         "projects/all/completed",
         "projects/all/in-progress",
@@ -160,8 +193,25 @@ locals {
         "projects/all/regions",
         "projects/all/trusts",
         "projects/all/users",
-        "projects/team",
-        "projects/yours",
+        "projects/all/statistics",
+      ]
+    },
+    "service_support" : {
+      order : 60,
+      require_cookie : true,
+      routes : [
+        "projects/service-support/with-academy-urn",
+        "projects/service-support/without-academy-urn",
+        "service-support/local-authorities",
+        "projects/all/local-authorities",
+      ]
+    },
+    "exports" : {
+      order : 70,
+      require_cookie : false,
+      routes : [
+        "projects/all/export",
+        "projects/all/reports",
       ]
     }
   }
@@ -206,9 +256,24 @@ locals {
       order : 40,
       require_cookie : false,
       routes : [
-        "projects/all/in-progress/all",
+        "projects/all/in-progress",
       ]
-    }
+    },
+    "projects_pre_release" : {
+      order : 50,
+      require_cookie : true,
+      routes : [
+        "projects/team",
+        "projects/yours",
+        "projects/all/by-month",
+        "projects/all/completed",
+        "projects/all/local-authorities",
+        "projects/all/regions",
+        "projects/all/trusts",
+        "projects/all/users",
+        "projects/all/statistics",
+      ]
+    },
   }
 
   complete_dotnet_ruby_migration_all = {
