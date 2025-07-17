@@ -169,7 +169,7 @@ locals {
     "cookies" : {
       order : 10,
       behavior_on_match : "Stop",
-      require_cookie : true,
+      require_cookie : false,
       require_header : {
         name : "Content-Type",
         values : [
@@ -185,7 +185,7 @@ locals {
     },
     "assets" : {
       order : 20,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "dist",
         "signin-oidc",
@@ -196,7 +196,7 @@ locals {
     },
     "search" : {
       order : 30,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "^search(?:\\?(?:[^\\/#]*))?$",
       ],
@@ -204,7 +204,7 @@ locals {
     },
     "projects" : {
       order : 40,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "projects/all/in-progress/all",
       ]
