@@ -104,7 +104,7 @@ locals {
         "projects/yours",
       ]
     },
-    "all_projects" : {
+    "allprojects" : {
       order : 50,
       require_cookie : false,
       routes : [
@@ -118,7 +118,7 @@ locals {
         "projects/all/statistics",
       ]
     },
-    "service_support" : {
+    "servicesupport" : {
       order : 60,
       require_cookie : false,
       routes : [
@@ -182,7 +182,7 @@ locals {
         "projects/yours",
       ]
     },
-    "all_projects" : {
+    "allprojects" : {
       order : 50,
       require_cookie : false,
       routes : [
@@ -196,7 +196,7 @@ locals {
         "projects/all/statistics",
       ]
     },
-    "service_support" : {
+    "servicesupport" : {
       order : 60,
       require_cookie : true,
       routes : [
@@ -259,7 +259,7 @@ locals {
         "projects/all/in-progress",
       ]
     },
-    "projects_pre_release" : {
+    "projectsprerelease" : {
       order : 50,
       require_cookie : true,
       routes : [
@@ -274,7 +274,7 @@ locals {
         "projects/all/statistics",
       ]
     },
-    "exports_pre_release" : {
+    "exportsprerelease" : {
       order : 70,
       require_cookie : true,
       routes : [
