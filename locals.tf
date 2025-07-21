@@ -274,6 +274,14 @@ locals {
         "projects/all/statistics",
       ]
     },
+    "exports_pre_release" : {
+      order : 70,
+      require_cookie : true,
+      routes : [
+        "projects/all/export",
+        "projects/all/reports",
+      ]
+    }
   }
 
   complete_dotnet_ruby_migration_all = {
