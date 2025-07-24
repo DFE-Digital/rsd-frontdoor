@@ -125,7 +125,6 @@ locals {
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
         "service-support/local-authorities",
-        "projects/all/local-authorities",
       ]
     },
     "exports" : {
@@ -203,7 +202,6 @@ locals {
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
         "service-support/local-authorities",
-        "projects/all/local-authorities",
       ]
     },
     "exports" : {
