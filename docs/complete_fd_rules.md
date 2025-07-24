@@ -16,16 +16,16 @@ Traffic is redirected to the [dotnet application](https://github.com/DFE-Digital
 
 | Route | Dev | Test | Prod |  
 | - | - | - | - |
-| /projects/team/* | ✅ | ✅ | ⚠️ |
-| /projects/yours/* | ✅ | ✅ | ⚠️ |
-| /projects/all/by-month/* | ✅ | ✅ | ⚠️ |
-| /projects/all/completed/* | ✅ | ✅ | ⚠️ |
+| /projects/team/* | ✅ | ✅ | ✅ |
+| /projects/yours/* | ✅ | ✅ | ✅ |
+| /projects/all/by-month/* | ✅ | ✅ | ✅ |
+| /projects/all/completed/* | ✅ | ✅ | ✅ |
 | /projects/all/in-progress/* | ✅ | ✅ | ✅ |
-| /projects/all/local-authorities/* | ✅ | ✅ | ⚠️ |
-| /projects/all/regions/* | ✅ | ✅ | ⚠️ |
+| /projects/all/local-authorities/* | ✅ | ✅ | ✅ |
+| /projects/all/regions/* | ✅ | ✅ | ✅ |
 | /projects/all/trusts/* | ✅ | ✅ | ⚠️ |
-| /projects/all/users/* | ✅ | ✅ | ⚠️ |
-| /projects/all/statistics/* | ✅ | ✅ | ⚠️ |
+| /projects/all/users/* | ✅ | ✅ | ✅ |
+| /projects/all/statistics/* | ✅ | ✅ | ✅ |
 | /projects/all/exports/* | ✅ | ✅ | ✅ |
 | /projects/all/reports/* | ✅ | ✅ | ✅ |
 | /projects/service-support/with-academy-urn/* | ✅ | ⚠️ | ❌ |
