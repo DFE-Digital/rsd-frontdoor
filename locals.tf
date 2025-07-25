@@ -274,9 +274,9 @@ locals {
         "projects/all/statistics",
       ]
     },
-    "exportsprerelease" : {
+    "exports" : {
       order : 70,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "projects/all/export",
         "projects/all/reports",
