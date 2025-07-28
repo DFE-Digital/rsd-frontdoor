@@ -133,7 +133,8 @@ locals {
       routes : [
         "projects/all/export",
         "projects/all/reports",
-      ]
+      ],
+      operator : "Equal"
     }
   }
   complete_dotnet_ruby_migration_paths_test = {
@@ -210,7 +211,8 @@ locals {
       routes : [
         "projects/all/export",
         "projects/all/reports",
-      ]
+      ],
+      operator : "Equal"
     }
   }
   complete_dotnet_ruby_migration_paths_production = {
@@ -284,7 +286,8 @@ locals {
       routes : [
         "projects/all/export",
         "projects/all/reports",
-      ]
+      ],
+      operator : "Equal"
     }
   }
 
