@@ -47,6 +47,7 @@ resource "azurerm_cdn_frontdoor_origin" "rsd" {
       request_message        = "Request access for Private Link from RSD FrontDoor CDN Origin (${local.environment}-rsd-frontdoor-${each.key})"
       location               = local.azure_location
       private_link_target_id = each.value["private_link_target_id"]
+      target_type            = each.value["private_link_target_type"]
     }
   }
 }
