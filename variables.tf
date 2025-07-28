@@ -74,6 +74,7 @@ variable "frontdoor_origins" {
     health_probe_request_type = optional(string, "HEAD")
     health_probe_path         = optional(string, "/")
     private_link_target_id    = optional(string, null)
+    private_link_target_type  = optional(string, "managedEnvironments")
     forwarding_protocol       = optional(string, "HttpsOnly")
     enable_security_headers   = optional(bool, true)
     redirects = optional(list(object({
