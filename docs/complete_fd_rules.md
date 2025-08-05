@@ -23,8 +23,8 @@ Current "operators" in use include:
 
 | Route | Operator | Dev | Test | Prod |  
 | - | - | - | - | - |
-| /projects/team/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
-| /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ → ✅  |
+| /projects/team/* | Begins With | ✅ | ✅ | ⚠️ |
+| /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ |
 | → /projects/all/handover/* | → Begins With | → ✅ | → ⚠️ | → ⚠️ |
 | /projects/all/by-month/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
 | /projects/all/completed/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
@@ -47,6 +47,7 @@ Current "operators" in use include:
 
 ## Version history:
 
-**3 - 2025-07-31** - release additional listing pages to production
+**3 - 2025-07-31**
+- release additional listing pages to production, excluding "Your projects" and "Team projects"
 **2 - 2025-07-25** - change export and reports to exact match as "All projects by month" has a CSV download that uses `/projects/all/exports/*`  
 **1 - 2025-07-25** - initial documentation. Capture FD rules as they are  

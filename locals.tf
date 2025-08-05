@@ -262,7 +262,7 @@ locals {
     },
     "projects" : {
       order : 40,
-      require_cookie : false,
+      require_cookie : true,
       routes : [
         "projects/team",
         "projects/yours",
