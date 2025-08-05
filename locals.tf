@@ -125,7 +125,6 @@ locals {
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
         "service-support/local-authorities",
-        "projects/all/local-authorities",
       ]
     },
     "exports" : {
@@ -204,7 +203,6 @@ locals {
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
         "service-support/local-authorities",
-        "projects/all/local-authorities",
       ]
     },
     "exports" : {
@@ -258,17 +256,17 @@ locals {
       order : 40,
       require_cookie : false,
       routes : [
-        "projects/all/in-progress",
-      ]
-    },
-    "projectsprerelease" : {
-      order : 50,
-      require_cookie : true,
-      routes : [
         "projects/team",
         "projects/yours",
+      ]
+    },
+    "allprojects" : {
+      order : 50,
+      require_cookie : false,
+      routes : [
         "projects/all/by-month",
         "projects/all/completed",
+        "projects/all/in-progress",
         "projects/all/local-authorities",
         "projects/all/regions",
         "projects/all/trusts",

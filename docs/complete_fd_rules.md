@@ -23,18 +23,18 @@ Current "operators" in use include:
 
 | Route | Operator | Dev | Test | Prod |  
 | - | - | - | - | - |
-| /projects/team/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/all/by-month/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/all/completed/* | Begins With | ✅ | ✅ | ⚠️ |
+| /projects/team/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
+| /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ → ✅  |
+| /projects/all/by-month/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
+| /projects/all/completed/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
 | /projects/all/in-progress/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/local-authorities/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/all/regions/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/all/trusts/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/all/users/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/all/statistics/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/all/export | Begins With → Equal | ✅ | ✅ | ✅ |
-| /projects/all/reports | Begins With → Equal | ✅ | ✅ | ✅ |
+| /projects/all/local-authorities/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
+| /projects/all/regions/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
+| /projects/all/trusts/* | Begins With | ✅ | ✅ | ⚠️ → ✅  |
+| /projects/all/users/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
+| /projects/all/statistics/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
+| /projects/all/export | Equal | ✅ | ✅ | ✅ |
+| /projects/all/reports | Equal | ✅ | ✅ | ✅ |
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ⚠️ | ❌ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ | ⚠️ | ❌ |
 | /service-support/local-authorities/* | Begins With | ✅ | ⚠️ | ❌ |
@@ -46,5 +46,6 @@ Current "operators" in use include:
 
 ## Version history:
 
-**1 - 2025-07-25** - initial documentation. Capture FD rules as they are  
+**3 - 2025-07-31** - release additional listing pages to production
 **2 - 2025-07-25** - change export and reports to exact match as "All projects by month" has a CSV download that uses `/projects/all/exports/*`  
+**1 - 2025-07-25** - initial documentation. Capture FD rules as they are  
