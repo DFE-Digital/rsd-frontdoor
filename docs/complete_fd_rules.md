@@ -47,7 +47,9 @@ Current "operators" in use include:
 
 ## Version history:
 
-**3 - 2025-07-31**
+**3 - 2025-08-05**
 - release additional listing pages to production, excluding "Your projects" and "Team projects"
+- release handover to dev and to test/prod with feature flag  
+
 **2 - 2025-07-25** - change export and reports to exact match as "All projects by month" has a CSV download that uses `/projects/all/exports/*`  
 **1 - 2025-07-25** - initial documentation. Capture FD rules as they are  
