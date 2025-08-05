@@ -25,6 +25,7 @@ Current "operators" in use include:
 | - | - | - | - | - |
 | /projects/team/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ → ✅  |
+| → /projects/all/handover/* | → Begins With | → ✅ | → ⚠️ | → ⚠️ |
 | /projects/all/by-month/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
 | /projects/all/completed/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
 | /projects/all/in-progress/* | Begins With | ✅ | ✅ | ✅ |

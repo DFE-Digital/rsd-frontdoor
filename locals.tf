@@ -116,6 +116,7 @@ locals {
         "projects/all/trusts",
         "projects/all/users",
         "projects/all/statistics",
+        "projects/all/handover",
       ]
     },
     "servicesupport" : {
@@ -213,7 +214,14 @@ locals {
         "projects/all/reports",
       ],
       operator : "Equal"
-    }
+    },
+    "projectsprerelease" : {
+      order : 80,
+      require_cookie : true,
+      routes : [
+        "projects/all/handover",
+      ]
+    },
   }
   complete_dotnet_ruby_migration_paths_production = {
     "cookies" : {
@@ -272,6 +280,13 @@ locals {
         "projects/all/trusts",
         "projects/all/users",
         "projects/all/statistics",
+      ]
+    },
+    "projectsprerelease" : {
+      order : 60,
+      require_cookie : true,
+      routes : [
+        "projects/all/handover",
       ]
     },
     "exports" : {
