@@ -85,7 +85,8 @@ locals {
         "signin-oidc",
         "netassets",
         "accessibility",
-        "cookies"
+        "cookies",
+        "access-denied",
       ]
     },
     "search" : {
@@ -164,7 +165,8 @@ locals {
         "signin-oidc",
         "netassets",
         "accessibility",
-        "cookies"
+        "cookies",
+        "access-denied",
       ]
     },
     "search" : {
@@ -249,7 +251,8 @@ locals {
         "signin-oidc",
         "netassets",
         "accessibility",
-        "cookies"
+        "cookies",
+        "access-denied",
       ]
     },
     "search" : {
