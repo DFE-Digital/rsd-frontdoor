@@ -331,6 +331,15 @@ locals {
         "groups",
       ]
     },
+    "servicesupportprerelease" : {
+      order : 100,
+      require_cookie : true,
+      routes : [
+        "projects/service-support/with-academy-urn",
+        "projects/service-support/without-academy-urn",
+        "service-support/local-authorities",
+      ]
+    },
   }
 
   complete_dotnet_ruby_migration_all = {

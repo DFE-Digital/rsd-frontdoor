@@ -37,9 +37,9 @@ Current "operators" in use include:
 | /projects/all/export | Equal | ✅ | ✅ | ✅ |
 | /projects/all/reports | Equal | ✅ | ✅ | ✅ |
 | **/groups** | **Begins With** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| /projects/service-support/with-academy-urn/* | Begins With | ✅ | ⚠️ | ❌ |
-| /projects/service-support/without-academy-urn/* | Begins With | ✅ | ⚠️ | ❌ |
-| /service-support/local-authorities/* | Begins With | ✅ | ⚠️ | ❌ |
+| /projects/service-support/with-academy-urn/* | Begins With | ✅ | ⚠️ | ⚠️ |
+| /projects/service-support/without-academy-urn/* | Begins With | ✅ | ⚠️ | ⚠️ |
+| /service-support/local-authorities/* | Begins With | ✅ | ⚠️ | ⚠️ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
@@ -50,7 +50,7 @@ Current "operators" in use include:
 
 ## Version history:
 
-**5 - 2025-08-15** - add privacy notice, groups  
+**5 - 2025-08-15** - add privacy notice and groups routes, and add feature flag to service support (LAs and URNs) in production  
 **4 - 2025-08-07** - add access-denied route, which exists only on .NET. Otherwise, access denied pages present as "Page not found"  
 **3 - 2025-08-05**
 - release additional listing pages to production, excluding "Your projects" and "Team projects"
