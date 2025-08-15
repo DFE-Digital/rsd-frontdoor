@@ -10,7 +10,7 @@ Traffic is redirected to the [dotnet application](https://github.com/DFE-Digital
 ✅ - included. Hitting this route in ruby app will redirect through front door to dotnet for this environment  
 ❌ - not included. This page is routed fully by ruby and does not come through the front door  
 ⚠️ - feature flagged. Hitting this route in ruby with the session cookie `"dotnet-bypass"` (any value) will redirect through front door to dotnet. Otherwise, the route will be handled by ruby  
-❌ → ✅ - represents a rule change in the most recent update
+❌ → ✅ - represents a rule change in the most recent update  
 🆕 - route added. There are new rules in place for this route as of this release
 ## Operators
 
@@ -43,12 +43,14 @@ Current "operators" in use include:
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
 | /accessibility | Begins With | ✅ | ✅ | ✅ |
-| **/access-denied** | **Begins With** | 🆕 | 🆕 | 🆕 |
+| **/privacy** | **Begins With** | 🆕✅ | 🆕✅ | 🆕⚠️ |
+| /access-denied | Begins With | ✅ | ✅ | ✅ |
 
 
 ## Version history:
 
-**4 - 2025-08-07** - add access-denied route, which exists only on .NET. Otherwise, access denied pages present as "Page not found"
+**5 - 2025-08-15** - add privacy notice
+**4 - 2025-08-07** - add access-denied route, which exists only on .NET. Otherwise, access denied pages present as "Page not found"  
 **3 - 2025-08-05**
 - release additional listing pages to production, excluding "Your projects" and "Team projects"
 - release handover to dev and to test/prod with feature flag  

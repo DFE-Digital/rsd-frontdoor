@@ -87,6 +87,7 @@ locals {
         "accessibility",
         "cookies",
         "access-denied",
+        "privacy",
       ]
     },
     "search" : {
@@ -167,6 +168,7 @@ locals {
         "accessibility",
         "cookies",
         "access-denied",
+        "privacy",
       ]
     },
     "search" : {
@@ -300,7 +302,14 @@ locals {
         "projects/all/reports",
       ],
       operator : "Equal"
-    }
+    },
+    "assetsprerelease" : {
+      order : 80,
+      require_cookie : true,
+      routes : [
+        "privacy",
+      ]
+    },
   }
 
   complete_dotnet_ruby_migration_all = {
