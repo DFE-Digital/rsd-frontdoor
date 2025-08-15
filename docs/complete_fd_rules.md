@@ -37,9 +37,9 @@ Current "operators" in use include:
 | /projects/all/export | Equal | ✅ | ✅ | ✅ |
 | /projects/all/reports | Equal | ✅ | ✅ | ✅ |
 | **/groups** | **Begins With** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| /projects/service-support/with-academy-urn/* | Begins With | ✅ | ⚠️ | ⚠️ |
-| /projects/service-support/without-academy-urn/* | Begins With | ✅ | ⚠️ | ⚠️ |
-| /service-support/local-authorities/* | Begins With | ✅ | ⚠️ | ⚠️ |
+| /projects/service-support/with-academy-urn/* | Begins With | ✅ | ⚠️ | ❌ → ⚠️ |
+| /projects/service-support/without-academy-urn/* | Begins With | ✅ | ⚠️ | ❌ → ⚠️ |
+| /service-support/local-authorities/* | Begins With | ✅ | ⚠️ | ❌ → ⚠️ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
