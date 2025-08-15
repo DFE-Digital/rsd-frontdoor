@@ -138,7 +138,14 @@ locals {
         "projects/all/reports",
       ],
       operator : "Equal"
-    }
+    },
+    "groups" : {
+      order : 90,
+      require_cookie : false,
+      routes : [
+        "groups",
+      ]
+    },
   }
   complete_dotnet_ruby_migration_paths_test = {
     "cookies" : {
@@ -226,6 +233,13 @@ locals {
         "projects/all/handover",
       ]
     },
+    "groupsprerelease" : {
+      order : 90,
+      require_cookie : true,
+      routes : [
+        "groups",
+      ]
+    },
   }
   complete_dotnet_ruby_migration_paths_production = {
     "cookies" : {
@@ -308,6 +322,13 @@ locals {
       require_cookie : true,
       routes : [
         "privacy",
+      ]
+    },
+    "groupsprerelease" : {
+      order : 90,
+      require_cookie : true,
+      routes : [
+        "groups",
       ]
     },
   }
