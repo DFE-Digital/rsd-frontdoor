@@ -87,6 +87,7 @@ locals {
         "accessibility",
         "cookies",
         "access-denied",
+        "privacy",
       ]
     },
     "search" : {
@@ -137,7 +138,14 @@ locals {
         "projects/all/reports",
       ],
       operator : "Equal"
-    }
+    },
+    "groups" : {
+      order : 90,
+      require_cookie : false,
+      routes : [
+        "groups",
+      ]
+    },
   }
   complete_dotnet_ruby_migration_paths_test = {
     "cookies" : {
@@ -167,6 +175,7 @@ locals {
         "accessibility",
         "cookies",
         "access-denied",
+        "privacy",
       ]
     },
     "search" : {
@@ -222,6 +231,13 @@ locals {
       require_cookie : true,
       routes : [
         "projects/all/handover",
+      ]
+    },
+    "groupsprerelease" : {
+      order : 90,
+      require_cookie : true,
+      routes : [
+        "groups",
       ]
     },
   }
@@ -300,7 +316,30 @@ locals {
         "projects/all/reports",
       ],
       operator : "Equal"
-    }
+    },
+    "assetsprerelease" : {
+      order : 80,
+      require_cookie : true,
+      routes : [
+        "privacy",
+      ]
+    },
+    "groupsprerelease" : {
+      order : 90,
+      require_cookie : true,
+      routes : [
+        "groups",
+      ]
+    },
+    "servicesupportprerelease" : {
+      order : 100,
+      require_cookie : true,
+      routes : [
+        "projects/service-support/with-academy-urn",
+        "projects/service-support/without-academy-urn",
+        "service-support/local-authorities",
+      ]
+    },
   }
 
   complete_dotnet_ruby_migration_all = {
