@@ -134,7 +134,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "^projects/*/academy-urn$",
+        "^projects/.*/academy-urn$",
       ],
       operator : "RegEx",
     },
@@ -229,7 +229,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "projects/*/academy-urn",
+        "projects/.*/academy-urn",
       ],
       operator : "RegEx"
     },
@@ -354,7 +354,7 @@ locals {
       order : 110,
       require_cookie : false,
       routes : [
-        "projects/*/academy-urn",
+        "projects/.*/academy-urn",
       ],
       operator : "RegEx"
     },
