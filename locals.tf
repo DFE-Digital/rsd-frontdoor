@@ -130,8 +130,16 @@ locals {
         "service-support/local-authorities",
       ]
     },
-    "exports" : {
+    "servicesupportcreateurns" : {
       order : 70,
+      require_cookie : false,
+      routes : [
+        "projects/*/academy-urn",
+      ],
+      operator : "Wildcard"
+    },
+    "exports" : {
+      order : 80,
       require_cookie : false,
       routes : [
         "projects/all/export",
@@ -210,15 +218,23 @@ locals {
     },
     "servicesupport" : {
       order : 60,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
         "service-support/local-authorities",
       ]
     },
-    "exports" : {
+    "servicesupportcreateurns" : {
       order : 70,
+      require_cookie : false,
+      routes : [
+        "projects/*/academy-urn",
+      ],
+      operator : "Wildcard"
+    },
+    "exports" : {
+      order : 80,
       require_cookie : false,
       routes : [
         "projects/all/export",
@@ -226,18 +242,18 @@ locals {
       ],
       operator : "Equal"
     },
+    "groups" : {
+      order : 90,
+      require_cookie : false,
+      routes : [
+        "groups",
+      ]
+    },
     "projectsprerelease" : {
-      order : 80,
+      order : 100,
       require_cookie : true,
       routes : [
         "projects/all/handover",
-      ]
-    },
-    "groupsprerelease" : {
-      order : 90,
-      require_cookie : true,
-      routes : [
-        "groups",
       ]
     },
   }
@@ -269,6 +285,7 @@ locals {
         "accessibility",
         "cookies",
         "access-denied",
+        "privacy",
       ]
     },
     "search" : {
@@ -317,28 +334,29 @@ locals {
       ],
       operator : "Equal"
     },
-    "assetsprerelease" : {
-      order : 80,
-      require_cookie : true,
-      routes : [
-        "privacy",
-      ]
-    },
-    "groupsprerelease" : {
+    "groups" : {
       order : 90,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "groups",
       ]
     },
     "servicesupportprerelease" : {
       order : 100,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
         "service-support/local-authorities",
       ]
+    },
+    "servicesupportcreateurns" : {
+      order : 110,
+      require_cookie : false,
+      routes : [
+        "projects/*/academy-urn",
+      ],
+      operator : "Wildcard"
     },
   }
 
