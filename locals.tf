@@ -134,9 +134,9 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "projects/*/academy-urn",
+        "^projects/*/academy-urn$",
       ],
-      operator : "Wildcard"
+      operator : "RegEx",
     },
     "exports" : {
       order : 80,
@@ -231,7 +231,7 @@ locals {
       routes : [
         "projects/*/academy-urn",
       ],
-      operator : "Wildcard"
+      operator : "RegEx"
     },
     "exports" : {
       order : 80,
@@ -356,7 +356,7 @@ locals {
       routes : [
         "projects/*/academy-urn",
       ],
-      operator : "Wildcard"
+      operator : "RegEx"
     },
   }
 
