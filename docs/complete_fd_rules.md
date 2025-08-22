@@ -27,8 +27,8 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 
 | Route | Operator | Dev | Test | Prod |  
 | - | - | - | - | - |
-| /projects/team/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ |
+| /projects/team/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
+| /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
 | /projects/all/handover/* | Begins With | ✅ | ⚠️ | ⚠️ |
 | /projects/all/by-month/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/completed/* | Begins With | ✅ | ✅ | ✅ |
@@ -40,24 +40,25 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 | /projects/all/statistics/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/export | Equal | ✅ | ✅ | ✅ |
 | /projects/all/reports | Equal | ✅ | ✅ | ✅ |
-| /groups | Begins With | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /projects/service-support/with-academy-urn/* | Begins With | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /projects/service-support/without-academy-urn/* | Begins With | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /service-support/local-authorities/* | Begins With | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| **/projects/*/academy-urn** | **RegEx** | 🆕✅ | 🆕✅ | 🆕✅ |
+| /groups | Begins With | ✅ | ✅ | ✅ |
+| /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
+| /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
+| /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
+| /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
 | /accessibility | Begins With | ✅ | ✅ | ✅ |
-| /privacy | Begins With | ✅ | ✅ | ⚠️ → ✅ |
+| /privacy | Begins With | ✅ | ✅ | ✅ |
 | /access-denied | Begins With | ✅ | ✅ | ✅ |
 
 
 ## Version history:
 
+**7 - 2925-08-22** - Promote team projects, your projects to production  
 **6 - 2025-08-20**
 - add privacy notice, groups, service support (LAs and URNs) in production
-- add `/projects/{project_id}/academy-urn` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `projects/*/academy-urn`
+- add `/projects/{project_id}/academy-urn` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `projects/.*/academy-urn`
 - for tighter checks, we could consider RegEx: `^\/projects\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\/academy-urn$`
 
 **5 - 2025-08-15** - add privacy notice and groups routes, and add feature flag to service support (LAs and URNs) in production  

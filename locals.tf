@@ -298,7 +298,7 @@ locals {
     },
     "projects" : {
       order : 40,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "projects/team",
         "projects/yours",
@@ -341,7 +341,7 @@ locals {
         "groups",
       ]
     },
-    "servicesupportprerelease" : {
+    "servicesupport" : {
       order : 100,
       require_cookie : false,
       routes : [
