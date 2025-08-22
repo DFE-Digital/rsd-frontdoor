@@ -190,6 +190,38 @@ variable "waf_rate_limiting_bypass_ip_list" {
   default     = []
 }
 
+variable "waf_custom_rules" {
+  description = "Map of all Custom rules you want to apply to the WAF"
+  type = map(object({
+    priority : number,
+    action : string
+    match_conditions : map(object({
+      match_variable : string,
+      match_values : optional(list(string), []),
+      operator : optional(string, "Any"),
+      selector : optional(string, null),
+      negation_condition : optional(bool, false),
+    }))
+  }))
+  default = {}
+}
+
+variable "waf_managed_rulesets" {
+  description = "A map of managed rule sets and their group-level overrides. The key is the rule set type and version, e.g., 'Microsoft_DefaultRuleSet_2.1'."
+  type = map(object({
+    action = optional(string, "Block")
+    overrides = optional(map(object({
+      disabled_rules = optional(list(string), [])
+      exclusions = optional(list(object({
+        match_variable = string
+        operator       = string
+        selector       = string
+      })), [])
+    })), {})
+  }))
+  default = {}
+}
+
 variable "enable_custom_reroute_ruleset" {
   description = "Toggle on/off the re-routing of traffic accessing the Ruby Complete app under certain request paths which should route to the .NET Complete app backend origin"
   type        = bool
