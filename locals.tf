@@ -214,6 +214,7 @@ locals {
         "projects/all/trusts",
         "projects/all/users",
         "projects/all/statistics",
+        "projects/all/handover",
       ]
     },
     "servicesupport" : {
@@ -247,13 +248,6 @@ locals {
       require_cookie : false,
       routes : [
         "groups",
-      ]
-    },
-    "projectsprerelease" : {
-      order : 100,
-      require_cookie : true,
-      routes : [
-        "projects/all/handover",
       ]
     },
   }
@@ -316,12 +310,6 @@ locals {
         "projects/all/trusts",
         "projects/all/users",
         "projects/all/statistics",
-      ]
-    },
-    "projectsprerelease" : {
-      order : 60,
-      require_cookie : true,
-      routes : [
         "projects/all/handover",
       ]
     },

@@ -29,7 +29,7 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 | - | - | - | - | - |
 | /projects/team/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
-| /projects/all/handover/* | Begins With | ✅ | ⚠️ | ⚠️ |
+| /projects/all/handover/* | Begins With | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/all/by-month/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/completed/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/in-progress/* | Begins With | ✅ | ✅ | ✅ |
@@ -55,7 +55,7 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 
 ## Version history:
 
-**7 - 2925-08-22** - Promote team projects, your projects to production  
+**7 - 2925-08-22** - Promote team projects, your projects and project handover to production  
 **6 - 2025-08-20**
 - add privacy notice, groups, service support (LAs and URNs) in production
 - add `/projects/{project_id}/academy-urn` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `projects/.*/academy-urn`
