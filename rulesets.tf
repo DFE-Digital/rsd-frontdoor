@@ -197,6 +197,38 @@ resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
 }
 
+resource "azurerm_cdn_frontdoor_rule" "ruby_bypass_override" {
+  count = local.enable_frontdoor ? 1 : 0
+
+  depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
+
+  name                      = "rubybypassoverride"
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id
+  order                     = 1
+  behavior_on_match         = "Stop"
+
+  conditions {
+    cookies_condition {
+      cookie_name = "ruby-bypass"
+      operator    = "Any"
+    }
+  }
+
+  actions {
+    route_configuration_override_action {
+      cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.rsd["complete-ruby"].id
+      forwarding_protocol           = azurerm_cdn_frontdoor_route.rsd["complete-ruby"].forwarding_protocol
+      cache_behavior                = "Disabled"
+    }
+
+    response_header_action {
+      header_action = "Append"
+      header_name   = "X-Backend-Origin-Rerouted"
+      value         = "ruby-bypass"
+    }
+  }
+}
+
 resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
   for_each = local.complete_dotnet_ruby_migration_paths
 
