@@ -25,6 +25,8 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 
 **NB**: The table only includes routes that have forwarding enabled for any environment. It is not an exhaustive list of routes that are available on either app.
 
+## Routes  
+
 | Route | Operator | Dev | Test | Prod |  
 | - | - | - | - | - |
 | /projects/team/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
