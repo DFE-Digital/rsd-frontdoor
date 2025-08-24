@@ -29,9 +29,9 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 
 | Route | Operator | Dev | Test | Prod |  
 | - | - | - | - | - |
-| /projects/team/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
-| /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
-| /projects/all/handover/* | Begins With | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/team/* | Begins With | ✅ | ✅ | ⚠️ |
+| /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ |
+| /projects/all/handover/* | Begins With | ✅ | ⚠️ | ⚠️ |
 | /projects/all/by-month/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/completed/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/in-progress/* | Begins With | ✅ | ✅ | ✅ |
@@ -40,7 +40,8 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 | /projects/all/trusts/* | Begins With | ✅ | ✅ | ✅  |
 | /projects/all/users/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/statistics/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/export | Equal | ✅ | ✅ | ✅ |
+| /projects/all/export | Equal | ✅ → ❌ | ✅ | ✅ |
+| **/projects/all/export** | **Equal** → **BeginsWith** | ❌ → ✅ | ❌ | ❌ |
 | /projects/all/reports | Equal | ✅ | ✅ | ✅ |
 | /groups | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
@@ -56,6 +57,9 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 
 
 ## Version history:
+
+**8 - 2025-08-28**
+- trial enabling /export sub routes on dev env
 
 **7 - 2925-08-22** - Promote team projects, your projects and project handover to production  
 **6 - 2025-08-20**
