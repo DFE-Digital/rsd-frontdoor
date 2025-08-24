@@ -31,9 +31,10 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | **/projects/*/internal-contacts** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| /projects/team/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/yours/* | Begins With | ✅ | ✅ | ⚠️ |
-| /projects/all/handover/* | Begins With | ✅ | ⚠️ | ⚠️ |
+| **/projects/*/tasks** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /projects/team/* | Begins With | ✅ | ✅ | ✅ |
+| /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
+| /projects/all/handover/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/by-month/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/completed/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/in-progress/* | Begins With | ✅ | ✅ | ✅ |
@@ -62,6 +63,7 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 **8 - 2025-08-28**
 - trial enabling /export sub routes on dev env
 - add `/projects/{project_id}/internal-contacts/*` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `^projects/.*/internal-contacts`
+- add `/projects/{project_id}/tasks` to all environments using a regex match. RegEx: `^projects/.*/tasks$`
 
 **7 - 2925-08-22** - Promote team projects, your projects and project handover to production  
 **6 - 2025-08-20**

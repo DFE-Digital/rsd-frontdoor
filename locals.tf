@@ -154,11 +154,12 @@ locals {
         "groups",
       ]
     },
-    "internalcontacts" : {
+    "projectpage" : {
       order : 100,
       require_cookie : false,
       routes : [
         "^projects/.*/internal-contacts",
+        "^projects/.*/tasks$", # Note the $, so that we don't get a wildcard /* match
       ],
       operator : "RegEx",
     },
@@ -258,11 +259,12 @@ locals {
         "groups",
       ]
     },
-    "internalcontacts" : {
+    "projectpageprerelease" : {
       order : 100,
       require_cookie : true,
       routes : [
         "^projects/.*/internal-contacts",
+        "^projects/.*/tasks$", # Note the $, so that we don't get a wildcard /* match
       ],
       operator : "RegEx",
     },
@@ -362,11 +364,12 @@ locals {
         "groups",
       ]
     },
-    "internalcontacts" : {
+    "projectpageprerelease" : {
       order : 100,
       require_cookie : true,
       routes : [
         "^projects/.*/internal-contacts",
+        "^projects/.*/tasks$", # Note the $, so that we don't get a wildcard /* match
       ],
       operator : "RegEx",
     },
