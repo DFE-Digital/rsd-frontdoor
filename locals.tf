@@ -154,6 +154,14 @@ locals {
         "groups",
       ]
     },
+    "internalcontacts" : {
+      order : 100,
+      require_cookie : false,
+      routes : [
+        "^projects/.*/internal-contacts",
+      ],
+      operator : "RegEx",
+    },
   }
   complete_dotnet_ruby_migration_paths_test = {
     "cookies" : {
@@ -250,6 +258,14 @@ locals {
         "groups",
       ]
     },
+    "internalcontacts" : {
+      order : 100,
+      require_cookie : true,
+      routes : [
+        "^projects/.*/internal-contacts",
+      ],
+      operator : "RegEx",
+    },
   }
   complete_dotnet_ruby_migration_paths_production = {
     "cookies" : {
@@ -313,8 +329,25 @@ locals {
         "projects/all/handover",
       ]
     },
-    "exports" : {
+    "servicesupport" : {
+      order : 60,
+      require_cookie : false,
+      routes : [
+        "projects/service-support/with-academy-urn",
+        "projects/service-support/without-academy-urn",
+        "service-support/local-authorities",
+      ]
+    },
+    "servicesupportcreateurns" : {
       order : 70,
+      require_cookie : false,
+      routes : [
+        "projects/.*/academy-urn",
+      ],
+      operator : "RegEx"
+    },
+    "exports" : {
+      order : 80,
       require_cookie : false,
       routes : [
         "projects/all/export",
@@ -329,22 +362,13 @@ locals {
         "groups",
       ]
     },
-    "servicesupport" : {
+    "internalcontacts" : {
       order : 100,
-      require_cookie : false,
+      require_cookie : true,
       routes : [
-        "projects/service-support/with-academy-urn",
-        "projects/service-support/without-academy-urn",
-        "service-support/local-authorities",
-      ]
-    },
-    "servicesupportcreateurns" : {
-      order : 110,
-      require_cookie : false,
-      routes : [
-        "projects/.*/academy-urn",
+        "^projects/.*/internal-contacts",
       ],
-      operator : "RegEx"
+      operator : "RegEx",
     },
   }
 
