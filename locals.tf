@@ -159,6 +159,7 @@ locals {
       require_cookie : false,
       routes : [
         "^projects/.*/internal-contacts",
+        "^projects/.*/notes",
         "^projects/.*/tasks$", # Note the $, so that we don't get a wildcard /* match
       ],
       operator : "RegEx",
@@ -264,6 +265,7 @@ locals {
       require_cookie : true,
       routes : [
         "^projects/.*/internal-contacts",
+        "^projects/.*/notes",
         "^projects/.*/tasks$", # Note the $, so that we don't get a wildcard /* match
       ],
       operator : "RegEx",
@@ -369,6 +371,7 @@ locals {
       require_cookie : true,
       routes : [
         "^projects/.*/internal-contacts",
+        "^projects/.*/notes",
         "^projects/.*/tasks$", # Note the $, so that we don't get a wildcard /* match
       ],
       operator : "RegEx",
