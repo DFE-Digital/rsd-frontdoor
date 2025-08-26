@@ -44,8 +44,7 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 | /projects/all/trusts/* | Begins With | ✅ | ✅ | ✅  |
 | /projects/all/users/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/statistics/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/export | Equal | ✅ → ❌ | ✅ | ✅ |
-| **/projects/all/export** | **Equal** → **BeginsWith** | ❌ → ✅ | ❌ | ❌ |
+| /projects/all/export | Equal | ✅ | ✅ | ✅ |
 | /projects/all/reports | Equal | ✅ | ✅ | ✅ |
 | /groups | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
@@ -62,7 +61,6 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 ## Version history:
 
 **8 - 2025-08-28**
-- trial enabling /export sub routes on dev env
 - add notes, internal contacts and task list to dev, feature flagged in test/prod
 - add `/projects/{project_id}/internal-contacts/*` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `^projects/.*/internal-contacts`
 - add `/projects/{project_id}/tasks` to all environments using a regex match. RegEx: `^projects/.*/tasks$`

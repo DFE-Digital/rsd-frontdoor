@@ -145,7 +145,7 @@ locals {
         "projects/all/export",
         "projects/all/reports",
       ],
-      operator : "BeginsWith"
+      operator : "Equal"
     },
     "groups" : {
       order : 90,
