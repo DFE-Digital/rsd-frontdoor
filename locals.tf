@@ -97,6 +97,7 @@ locals {
       require_cookie : false,
       routes : [
         "^search(?:\\?(?:[^\\/#]*))?$",
+        "^search/user(?:\\?(?:[^\\/#]*))?$",
       ],
       operator : "RegEx"
     },
@@ -272,6 +273,14 @@ locals {
       ],
       operator : "RegEx",
     },
+    "searchprerelease" : {
+      order : 110,
+      require_cookie : true,
+      routes : [
+        "^search/user(?:\\?(?:[^\\/#]*))?$",
+      ],
+      operator : "RegEx"
+    },
   }
   complete_dotnet_ruby_migration_paths_production = {
     "cookies" : {
@@ -377,6 +386,14 @@ locals {
         "${complete_dotnet_project_prefix}/tasks$",
       ],
       operator : "RegEx",
+    },
+    "searchprerelease" : {
+      order : 110,
+      require_cookie : true,
+      routes : [
+        "^search/user(?:\\?(?:[^\\/#]*))?$",
+      ],
+      operator : "RegEx"
     },
   }
 

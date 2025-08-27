@@ -57,6 +57,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
 | /search | RegEx | ✅ | ✅ | ✅ |
+| **/search/user** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
 | /accessibility | Begins With | ✅ | ✅ | ✅ |
@@ -71,6 +72,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 - add `/projects/{project_id}/internal-contacts/*` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `^projects/.*/internal-contacts.*`
 - add `/projects/{project_id}/tasks` to all environments using a regex match. RegEx: `^projects/[^/]+/tasks$`
 - add `/projects/{project_id}/notes` to all environments using a regex match. RegEx: `^projects/[^/]+/notes.*` - **Note** This needs testing thoroughly with task notes because there's metadata that impacts flow
+- add `/search/user` to all environments using a regex match. RegEx: `^search/user(?:\\?(?:[^\\/#]*))?$`
 
 **7 - 2925-08-22** - Promote team projects, your projects and project handover to production  
 **6 - 2025-08-20**
