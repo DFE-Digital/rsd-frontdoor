@@ -58,7 +58,9 @@ locals {
   waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
 
 
-  enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
+  enable_custom_reroute_ruleset  = var.enable_custom_reroute_ruleset
+  complete_dotnet_project_prefix = "^projects/[^/]+"
+
   complete_dotnet_ruby_migration_paths_development = {
     "cookies" : {
       order : 10,
@@ -95,6 +97,7 @@ locals {
       require_cookie : false,
       routes : [
         "^search(?:\\?(?:[^\\/#]*))?$",
+        "^search/user(?:\\?(?:[^\\/#]*))?$",
       ],
       operator : "RegEx"
     },
@@ -134,7 +137,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "^projects/.*/academy-urn$",
+        "${local.complete_dotnet_project_prefix}/academy-urn$",
       ],
       operator : "RegEx",
     },
@@ -153,6 +156,16 @@ locals {
       routes : [
         "groups",
       ]
+    },
+    "projectpage" : {
+      order : 100,
+      require_cookie : false,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/internal-contacts.*",
+        "${local.complete_dotnet_project_prefix}/notes.*",
+        "${local.complete_dotnet_project_prefix}/tasks$",
+      ],
+      operator : "RegEx",
     },
   }
   complete_dotnet_ruby_migration_paths_test = {
@@ -230,7 +243,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "projects/.*/academy-urn",
+        "${local.complete_dotnet_project_prefix}/academy-urn",
       ],
       operator : "RegEx"
     },
@@ -249,6 +262,24 @@ locals {
       routes : [
         "groups",
       ]
+    },
+    "projectpageprerelease" : {
+      order : 100,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/internal-contacts.*",
+        "${local.complete_dotnet_project_prefix}/notes.*",
+        "${local.complete_dotnet_project_prefix}/tasks$",
+      ],
+      operator : "RegEx",
+    },
+    "searchprerelease" : {
+      order : 110,
+      require_cookie : true,
+      routes : [
+        "^search/user(?:\\?(?:[^\\/#]*))?$",
+      ],
+      operator : "RegEx"
     },
   }
   complete_dotnet_ruby_migration_paths_production = {
@@ -313,8 +344,25 @@ locals {
         "projects/all/handover",
       ]
     },
-    "exports" : {
+    "servicesupport" : {
+      order : 60,
+      require_cookie : false,
+      routes : [
+        "projects/service-support/with-academy-urn",
+        "projects/service-support/without-academy-urn",
+        "service-support/local-authorities",
+      ]
+    },
+    "servicesupportcreateurns" : {
       order : 70,
+      require_cookie : false,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/academy-urn",
+      ],
+      operator : "RegEx"
+    },
+    "exports" : {
+      order : 80,
       require_cookie : false,
       routes : [
         "projects/all/export",
@@ -329,20 +377,21 @@ locals {
         "groups",
       ]
     },
-    "servicesupport" : {
+    "projectpageprerelease" : {
       order : 100,
-      require_cookie : false,
+      require_cookie : true,
       routes : [
-        "projects/service-support/with-academy-urn",
-        "projects/service-support/without-academy-urn",
-        "service-support/local-authorities",
-      ]
+        "${local.complete_dotnet_project_prefix}/internal-contacts.*",
+        "${local.complete_dotnet_project_prefix}/notes.*",
+        "${local.complete_dotnet_project_prefix}/tasks$",
+      ],
+      operator : "RegEx",
     },
-    "servicesupportcreateurns" : {
+    "searchprerelease" : {
       order : 110,
-      require_cookie : false,
+      require_cookie : true,
       routes : [
-        "projects/.*/academy-urn",
+        "^search/user(?:\\?(?:[^\\/#]*))?$",
       ],
       operator : "RegEx"
     },
