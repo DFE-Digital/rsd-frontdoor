@@ -59,6 +59,8 @@ locals {
 
 
   enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
+  complete_dotnet_project_prefix = "^projects/[^/]+"
+
   complete_dotnet_ruby_migration_paths_development = {
     "cookies" : {
       order : 10,
@@ -134,7 +136,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "^projects/.*/academy-urn$",
+        "${complete_dotnet_project_prefix}/academy-urn$",
       ],
       operator : "RegEx",
     },
@@ -158,9 +160,9 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "^projects/.*/internal-contacts",
-        "^projects/.*/notes",
-        "^projects/.*/tasks$", # Note the $, so that we don't get a wildcard /* match
+        "${complete_dotnet_project_prefix}/internal-contacts",
+        "${complete_dotnet_project_prefix}/notes",
+        "${complete_dotnet_project_prefix}/tasks$", # Note the $, so that we don't get a wildcard /* match
       ],
       operator : "RegEx",
     },
@@ -240,7 +242,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "projects/.*/academy-urn",
+        "${complete_dotnet_project_prefix}/academy-urn",
       ],
       operator : "RegEx"
     },
@@ -264,9 +266,9 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "^projects/.*/internal-contacts",
-        "^projects/.*/notes",
-        "^projects/.*/tasks$", # Note the $, so that we don't get a wildcard /* match
+        "${complete_dotnet_project_prefix}/internal-contacts",
+        "${complete_dotnet_project_prefix}/notes",
+        "${complete_dotnet_project_prefix}/tasks$", # Note the $, so that we don't get a wildcard /* match
       ],
       operator : "RegEx",
     },
@@ -346,7 +348,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "projects/.*/academy-urn",
+        "${complete_dotnet_project_prefix}/academy-urn",
       ],
       operator : "RegEx"
     },
@@ -370,9 +372,9 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "^projects/.*/internal-contacts",
-        "^projects/.*/notes",
-        "^projects/.*/tasks$", # Note the $, so that we don't get a wildcard /* match
+        "${complete_dotnet_project_prefix}/internal-contacts",
+        "${complete_dotnet_project_prefix}/notes",
+        "${complete_dotnet_project_prefix}/tasks$", # Note the $, so that we don't get a wildcard /* match
       ],
       operator : "RegEx",
     },
