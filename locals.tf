@@ -58,7 +58,7 @@ locals {
   waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
 
 
-  enable_custom_reroute_ruleset = var.enable_custom_reroute_ruleset
+  enable_custom_reroute_ruleset  = var.enable_custom_reroute_ruleset
   complete_dotnet_project_prefix = "^projects/[^/]+"
 
   complete_dotnet_ruby_migration_paths_development = {
@@ -137,7 +137,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "${complete_dotnet_project_prefix}/academy-urn$",
+        "${local.complete_dotnet_project_prefix}/academy-urn$",
       ],
       operator : "RegEx",
     },
@@ -161,9 +161,9 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${complete_dotnet_project_prefix}/internal-contacts.*",
-        "${complete_dotnet_project_prefix}/notes.*",
-        "${complete_dotnet_project_prefix}/tasks$",
+        "${local.complete_dotnet_project_prefix}/internal-contacts.*",
+        "${local.complete_dotnet_project_prefix}/notes.*",
+        "${local.complete_dotnet_project_prefix}/tasks$",
       ],
       operator : "RegEx",
     },
@@ -243,7 +243,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "${complete_dotnet_project_prefix}/academy-urn",
+        "${local.complete_dotnet_project_prefix}/academy-urn",
       ],
       operator : "RegEx"
     },
@@ -267,9 +267,9 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${complete_dotnet_project_prefix}/internal-contacts.*",
-        "${complete_dotnet_project_prefix}/notes.*",
-        "${complete_dotnet_project_prefix}/tasks$",
+        "${local.complete_dotnet_project_prefix}/internal-contacts.*",
+        "${local.complete_dotnet_project_prefix}/notes.*",
+        "${local.complete_dotnet_project_prefix}/tasks$",
       ],
       operator : "RegEx",
     },
@@ -357,7 +357,7 @@ locals {
       order : 70,
       require_cookie : false,
       routes : [
-        "${complete_dotnet_project_prefix}/academy-urn",
+        "${local.complete_dotnet_project_prefix}/academy-urn",
       ],
       operator : "RegEx"
     },
@@ -381,9 +381,9 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${complete_dotnet_project_prefix}/internal-contacts.*",
-        "${complete_dotnet_project_prefix}/notes.*",
-        "${complete_dotnet_project_prefix}/tasks$",
+        "${local.complete_dotnet_project_prefix}/internal-contacts.*",
+        "${local.complete_dotnet_project_prefix}/notes.*",
+        "${local.complete_dotnet_project_prefix}/tasks$",
       ],
       operator : "RegEx",
     },
