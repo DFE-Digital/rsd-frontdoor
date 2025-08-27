@@ -96,8 +96,7 @@ locals {
       order : 30,
       require_cookie : false,
       routes : [
-        "^search(?:\\?(?:[^\\/#]*))?$",
-        "^search/user(?:\\?(?:[^\\/#]*))?$",
+        "^search(?:/user)?(?:\\?[^/#]*)?$"
       ],
       operator : "RegEx"
     },
@@ -161,9 +160,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/internal-contacts.*",
-        "${local.complete_dotnet_project_prefix}/notes.*",
-        "${local.complete_dotnet_project_prefix}/tasks$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|notes)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -267,9 +264,7 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/internal-contacts.*",
-        "${local.complete_dotnet_project_prefix}/notes.*",
-        "${local.complete_dotnet_project_prefix}/tasks$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|notes)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -381,9 +376,7 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/internal-contacts.*",
-        "${local.complete_dotnet_project_prefix}/notes.*",
-        "${local.complete_dotnet_project_prefix}/tasks$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|notes)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
