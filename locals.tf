@@ -160,9 +160,9 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${complete_dotnet_project_prefix}/internal-contacts",
-        "${complete_dotnet_project_prefix}/notes",
-        "${complete_dotnet_project_prefix}/tasks$", # Note the $, so that we don't get a wildcard /* match
+        "${complete_dotnet_project_prefix}/internal-contacts.*",
+        "${complete_dotnet_project_prefix}/notes.*",
+        "${complete_dotnet_project_prefix}/tasks$",
       ],
       operator : "RegEx",
     },
@@ -266,9 +266,9 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${complete_dotnet_project_prefix}/internal-contacts",
-        "${complete_dotnet_project_prefix}/notes",
-        "${complete_dotnet_project_prefix}/tasks$", # Note the $, so that we don't get a wildcard /* match
+        "${complete_dotnet_project_prefix}/internal-contacts.*",
+        "${complete_dotnet_project_prefix}/notes.*",
+        "${complete_dotnet_project_prefix}/tasks$",
       ],
       operator : "RegEx",
     },
@@ -372,9 +372,9 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${complete_dotnet_project_prefix}/internal-contacts",
-        "${complete_dotnet_project_prefix}/notes",
-        "${complete_dotnet_project_prefix}/tasks$", # Note the $, so that we don't get a wildcard /* match
+        "${complete_dotnet_project_prefix}/internal-contacts.*",
+        "${complete_dotnet_project_prefix}/notes.*",
+        "${complete_dotnet_project_prefix}/tasks$",
       ],
       operator : "RegEx",
     },

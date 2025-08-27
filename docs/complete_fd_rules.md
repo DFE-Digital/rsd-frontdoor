@@ -68,14 +68,14 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 
 **8 - 2025-08-28**
 - add notes, internal contacts and task list to dev, feature flagged in test/prod
-- add `/projects/{project_id}/internal-contacts/*` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `^projects/.*/internal-contacts`
-- add `/projects/{project_id}/tasks` to all environments using a regex match. RegEx: `^projects/.*/tasks$`
-- add `/projects/{project_id}/notes` to all environments using a regex match. RegEx: `^projects/.*/notes` - **Note** This needs testing thoroughly with task notes because there's metadata that impacts flow
+- add `/projects/{project_id}/internal-contacts/*` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `^projects/.*/internal-contacts.*`
+- add `/projects/{project_id}/tasks` to all environments using a regex match. RegEx: `^projects/[^/]+/tasks$`
+- add `/projects/{project_id}/notes` to all environments using a regex match. RegEx: `^projects/[^/]+/notes.*` - **Note** This needs testing thoroughly with task notes because there's metadata that impacts flow
 
 **7 - 2925-08-22** - Promote team projects, your projects and project handover to production  
 **6 - 2025-08-20**
 - add privacy notice, groups, service support (LAs and URNs) in production
-- add `/projects/{project_id}/academy-urn` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `^projects/.*/academy-urn$`
+- add `/projects/{project_id}/academy-urn` to all environments using a regex match. GET and POST requests expected for creating urns. RegEx: `^projects/[^/]+/academy-urn$`
 - for tighter checks, we could consider RegEx: `^\/projects\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\/academy-urn$`
 
 **5 - 2025-08-15** - add privacy notice and groups routes, and add feature flag to service support (LAs and URNs) in production  
