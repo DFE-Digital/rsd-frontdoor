@@ -25,6 +25,12 @@ See a more definitive list of operators [here](https://learn.microsoft.com/en-us
 
 **NB**: The table only includes routes that have forwarding enabled for any environment. It is not an exhaustive list of routes that are available on either app.
 
+## Ruby fallback
+
+It is possible to ignore all of the rerouting rules in your local browser, which can be very useful for testing and debugging.
+
+By providing the request cookie `dotnet-disable`, all routes will revert to ruby rather than redirecting to .net.
+
 ## Routes  
 
 | Route | Operator | Dev | Test | Prod |  
