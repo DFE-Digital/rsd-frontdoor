@@ -31,6 +31,26 @@ It is possible to ignore all of the rerouting rules in your local browser, which
 
 By providing the request cookie `dotnet-disable`, all routes will revert to ruby rather than redirecting to .net.
 
+## Task identifiers
+
+We are releasing various tasks through the front door - a list of tasks which will progressively get longer.
+
+For brevity, I've just referenced these tasks as {task_identifiers} in the Routes table (see below).
+
+The full "route" looks something like this: **/projects/\*/tasks/{task_identifiers}** - where {task_identifiers} matches one of the promoted tasks.
+
+At present, these tasks are:
+- handover
+- stakeholder_kick_off
+- proposed_capacity_of_the_academy
+- supplemental_funding_agreement
+- articles_of_association
+- deed_of_variation
+- conditions_met
+- redact_and_send
+- receive_grant_payment_certificate
+- deed_of_novation_and_variation
+
 ## Routes  
 
 | Route | Operator | Dev | Test | Prod |  
@@ -39,6 +59,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ | ⚠️ |
 | /projects/*/tasks | RegEx | ✅ | ⚠️ | ⚠️ |
 | /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ❌ | ⚠️ → ❌  |
+| **/projects/\*/tasks/{task_identifiers}** | **Regex** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/handover/* | Begins With | ✅ | ✅ | ✅ |
@@ -69,6 +90,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 
 **9 - 2025-10-02**
 - remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
+- add various tasks routes (10 in total) using a regex pattern
 
 **8 - 2025-08-28**
 - add notes, internal contacts and task list to dev, feature flagged in test/prod

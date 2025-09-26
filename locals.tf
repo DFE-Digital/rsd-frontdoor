@@ -58,8 +58,20 @@ locals {
   waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
 
 
-  enable_custom_reroute_ruleset  = var.enable_custom_reroute_ruleset
-  complete_dotnet_project_prefix = "^projects/[^/]+"
+  enable_custom_reroute_ruleset    = var.enable_custom_reroute_ruleset
+  complete_dotnet_project_prefix   = "^projects/[^/]+"
+  complete_dotnet_task_identifiers = [
+    "handover",
+    "stakeholder_kick_off",
+    "proposed_capacity_of_the_academy",
+    "supplemental_funding_agreement",
+    "articles_of_association",
+    "deed_of_variation",
+    "conditions_met",
+    "redact_and_send",
+    "receive_grant_payment_certificate",
+    "deed_of_novation_and_variation"
+  ]
 
   complete_dotnet_ruby_migration_paths_development = {
     "cookies" : {
@@ -161,6 +173,14 @@ locals {
       require_cookie : false,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|notes)(?:/.*)?|tasks)$",
+      ],
+      operator : "RegEx",
+    },
+    "projecttasks" : {
+      order : 110,
+      require_cookie : false,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/tasks/(?:${join("|", local.complete_dotnet_task_identifiers)})$",
       ],
       operator : "RegEx",
     },
@@ -276,6 +296,14 @@ locals {
       ],
       operator : "RegEx"
     },
+    "projecttasksprerelease" : {
+      order : 120,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/tasks/(?:${join("|", local.complete_dotnet_task_identifiers)})$",
+      ],
+      operator : "RegEx",
+    },
   }
   complete_dotnet_ruby_migration_paths_production = {
     "cookies" : {
@@ -387,6 +415,14 @@ locals {
         "^search/user(?:\\?(?:[^\\/#]*))?$",
       ],
       operator : "RegEx"
+    },
+    "projecttasksprerelease" : {
+      order : 120,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/tasks/(?:${join("|", local.complete_dotnet_task_identifiers)})$",
+      ],
+      operator : "RegEx",
     },
   }
 
