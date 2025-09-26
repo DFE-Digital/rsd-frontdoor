@@ -38,7 +38,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ | ⚠️ |
 | /projects/*/tasks | RegEx | ✅ | ⚠️ | ⚠️ |
-| /projects/\*/notes/\* | RegEx | ✅ | ⚠️ | ⚠️ |
+| /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ❌ | ⚠️ → ❌  |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/handover/* | Begins With | ✅ | ✅ | ✅ |
@@ -66,6 +66,9 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 
 
 ## Version history:
+
+**9 - 2025-10-02**
+- remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
 
 **8 - 2025-08-28**
 - add notes, internal contacts and task list to dev, feature flagged in test/prod

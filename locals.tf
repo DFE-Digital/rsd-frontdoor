@@ -264,7 +264,7 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|notes)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -376,7 +376,7 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|notes)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
