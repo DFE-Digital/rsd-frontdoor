@@ -36,9 +36,9 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 | Route | Operator | Dev | Test | Prod |  
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
-| **/projects/*/internal-contacts/\*** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| **/projects/*/tasks** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| **/projects/*/notes/\*** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ | ⚠️ |
+| /projects/*/tasks | RegEx | ✅ | ⚠️ | ⚠️ |
+| /projects/\*/notes/\* | RegEx | ✅ | ⚠️ | ⚠️ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/handover/* | Begins With | ✅ | ✅ | ✅ |
@@ -57,7 +57,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
 | /search | RegEx | ✅ | ✅ | ✅ |
-| **/search/user** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /search/user | RegEx | ✅ | ⚠️ | ⚠️ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
 | /accessibility | Begins With | ✅ | ✅ | ✅ |
