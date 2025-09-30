@@ -58,8 +58,9 @@ locals {
   waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
 
 
-  enable_custom_reroute_ruleset    = var.enable_custom_reroute_ruleset
-  complete_dotnet_project_prefix   = "^projects/[^/]+"
+  enable_custom_reroute_ruleset  = var.enable_custom_reroute_ruleset
+  complete_dotnet_project_prefix = "^projects/[^/]+"
+
   complete_dotnet_task_identifiers = [
     "handover",
     "stakeholder_kick_off",
