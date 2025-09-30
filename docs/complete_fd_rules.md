@@ -31,14 +31,38 @@ It is possible to ignore all of the rerouting rules in your local browser, which
 
 By providing the request cookie `dotnet-disable`, all routes will revert to ruby rather than redirecting to .net.
 
+## Task identifiers
+
+We are releasing various tasks through the front door - a list of tasks which will progressively get longer.
+
+For brevity, I've just referenced these tasks as {task_identifiers} in the Routes table (see below).
+
+The full "route" looks something like this: **/projects/\*/tasks/{task_identifiers}** - where {task_identifiers} matches one of the promoted tasks.
+
+At present, these tasks are:
+- handover
+- stakeholder_kick_off
+- proposed_capacity_of_the_academy
+- supplemental_funding_agreement
+- articles_of_association
+- deed_of_variation
+- conditions_met
+- redact_and_send
+- redact_and_send_documents
+- receive_grant_payment_certificate
+- declaration_of_expenditure_certificate
+- deed_of_novation_and_variation
+
 ## Routes  
 
 | Route | Operator | Dev | Test | Prod |  
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
-| **/projects/*/internal-contacts/\*** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| **/projects/*/tasks** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| **/projects/*/notes/\*** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ | ⚠️ |
+| /projects/*/tasks | RegEx | ✅ | ⚠️ | ⚠️ |
+| /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ❌ | ⚠️ → ❌  |
+| **/projects/\*/date_history/\*** | **Regex** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| **/projects/\*/tasks/{task_identifiers}** | **Regex** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/handover/* | Begins With | ✅ | ✅ | ✅ |
@@ -57,7 +81,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
 | /search | RegEx | ✅ | ✅ | ✅ |
-| **/search/user** | **RegEx** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /search/user | RegEx | ✅ | ⚠️ | ⚠️ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
 | /accessibility | Begins With | ✅ | ✅ | ✅ |
@@ -66,6 +90,11 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 
 
 ## Version history:
+
+**9 - 2025-10-02**
+- remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
+- add various tasks routes (10 in total) using a regex pattern  
+- add date history using the same regex as project notes, internal contacts  
 
 **8 - 2025-08-28**
 - add notes, internal contacts and task list to dev, feature flagged in test/prod
