@@ -69,7 +69,9 @@ locals {
     "deed_of_variation",
     "conditions_met",
     "redact_and_send",
+    "redact_and_send_documents",
     "receive_grant_payment_certificate",
+    "declaration_of_expenditure_certificate",
     "deed_of_novation_and_variation"
   ]
 
