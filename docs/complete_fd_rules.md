@@ -15,7 +15,8 @@ Traffic is redirected to the [dotnet application](https://github.com/DFE-Digital
 ## Operators
 
 Current "operators" in use include:
- - Begins With - any request route that begins with the specified route will be have the front door rule applied. `projects/*` matches: `projects/foo`, `projects/bar`  
+ - BeginsWith - any request route that begins with the specified route will be have the front door rule applied. `projects/*` matches: `projects/foo`, `projects/bar`  
+ - EndWith - any request route that end with the specified route will be have the front door rule applied. `/tasks/handover` matches: `project/123/tasks/handover`    
  - Equal - the route must be an exact match. `projects/foo/bar` matches only: `projects/foo/bar` 
  - RegEx - the route will have to match a RegEx pattern
 
@@ -93,7 +94,7 @@ At present, these tasks are:
 
 **9 - 2025-10-02**
 - remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
-- add various tasks routes (10 in total) using a regex pattern  
+- add various tasks routes (10 in total) using an EndsWith pattern  
 - add date history using the same regex as project notes, internal contacts  
 
 **8 - 2025-08-28**
