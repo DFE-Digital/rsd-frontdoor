@@ -61,21 +61,6 @@ locals {
   enable_custom_reroute_ruleset  = var.enable_custom_reroute_ruleset
   complete_dotnet_project_prefix = "^projects/[^/]+"
 
-  complete_dotnet_task_identifiers = [
-    "handover",
-    "stakeholder_kick_off",
-    "proposed_capacity_of_the_academy",
-    "supplemental_funding_agreement",
-    "articles_of_association",
-    "deed_of_variation",
-    "conditions_met",
-    "redact_and_send",
-    "redact_and_send_documents",
-    "receive_grant_payment_certificate",
-    "declaration_of_expenditure_certificate",
-    "deed_of_novation_and_variation"
-  ]
-
   complete_dotnet_ruby_migration_paths_development = {
     "cookies" : {
       order : 10,
@@ -179,13 +164,31 @@ locals {
       ],
       operator : "RegEx",
     },
-    "projecttasks" : {
+    "projecttasksgroupone" : {
       order : 110,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/tasks/(?:${join("|", local.complete_dotnet_task_identifiers)})$",
+        "/tasks/handover",
+        "/tasks/stakeholder_kick_off",
+        "/tasks/proposed_capacity_of_the_academy",
+        "/tasks/supplemental_funding_agreement",
+        "/tasks/articles_of_association",
+        "/tasks/deed_of_variation",
+        "/tasks/conditions_met",
+        "/tasks/redact_and_send",
+        "/tasks/redact_and_send_documents",
+        "/tasks/receive_grant_payment_certificate"
       ],
-      operator : "RegEx",
+      operator : "EndsWith",
+    },
+    "projecttasksgrouptwo" : {
+      order : 120,
+      require_cookie : false,
+      routes : [
+        "/tasks/declaration_of_expenditure_certificate",
+        "/tasks/deed_of_novation_and_variation"
+      ],
+      operator : "EndsWith",
     },
   }
   complete_dotnet_ruby_migration_paths_test = {
@@ -299,13 +302,31 @@ locals {
       ],
       operator : "RegEx"
     },
-    "projecttasksprerelease" : {
+    "projecttasksgrouponeprerelease" : {
       order : 120,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/tasks/(?:${join("|", local.complete_dotnet_task_identifiers)})$",
+        "/tasks/handover",
+        "/tasks/stakeholder_kick_off",
+        "/tasks/proposed_capacity_of_the_academy",
+        "/tasks/supplemental_funding_agreement",
+        "/tasks/articles_of_association",
+        "/tasks/deed_of_variation",
+        "/tasks/conditions_met",
+        "/tasks/redact_and_send",
+        "/tasks/redact_and_send_documents",
+        "/tasks/receive_grant_payment_certificate"
       ],
-      operator : "RegEx",
+      operator : "EndsWith",
+    },
+    "projecttasksgrouptwoprerelease" : {
+      order : 130,
+      require_cookie : true,
+      routes : [
+        "/tasks/declaration_of_expenditure_certificate",
+        "/tasks/deed_of_novation_and_variation"
+      ],
+      operator : "EndsWith",
     },
   }
   complete_dotnet_ruby_migration_paths_production = {
@@ -419,13 +440,31 @@ locals {
       ],
       operator : "RegEx"
     },
-    "projecttasksprerelease" : {
+    "projecttasksgrouponeprerelease" : {
       order : 120,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/tasks/(?:${join("|", local.complete_dotnet_task_identifiers)})$",
+        "/tasks/handover",
+        "/tasks/stakeholder_kick_off",
+        "/tasks/proposed_capacity_of_the_academy",
+        "/tasks/supplemental_funding_agreement",
+        "/tasks/articles_of_association",
+        "/tasks/deed_of_variation",
+        "/tasks/conditions_met",
+        "/tasks/redact_and_send",
+        "/tasks/redact_and_send_documents",
+        "/tasks/receive_grant_payment_certificate"
       ],
-      operator : "RegEx",
+      operator : "EndsWith",
+    },
+    "projecttasksgrouptwoprerelease" : {
+      order : 130,
+      require_cookie : true,
+      routes : [
+        "/tasks/declaration_of_expenditure_certificate",
+        "/tasks/deed_of_novation_and_variation"
+      ],
+      operator : "EndsWith",
     },
   }
 
