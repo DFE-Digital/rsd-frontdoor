@@ -160,7 +160,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|notes|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|notes|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -189,6 +189,14 @@ locals {
         "/tasks/deed_of_novation_and_variation"
       ],
       operator : "EndsWith",
+    },
+    "editaboutproject" : {
+      order : 130,
+      require_cookie : false,
+      routes : [
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+      ],
+      operator : "RegEx",
     },
   }
   complete_dotnet_ruby_migration_paths_test = {
@@ -290,7 +298,7 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -327,6 +335,14 @@ locals {
         "/tasks/deed_of_novation_and_variation"
       ],
       operator : "EndsWith",
+    },
+    "editaboutprojectprerelease" : {
+      order : 140,
+      require_cookie : true,
+      routes : [
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+      ],
+      operator : "RegEx",
     },
   }
   complete_dotnet_ruby_migration_paths_production = {
@@ -428,7 +444,7 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -465,6 +481,14 @@ locals {
         "/tasks/deed_of_novation_and_variation"
       ],
       operator : "EndsWith",
+    },
+    "editaboutprojectprerelease" : {
+      order : 140,
+      require_cookie : true,
+      routes : [
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+      ],
+      operator : "RegEx",
     },
   }
 
