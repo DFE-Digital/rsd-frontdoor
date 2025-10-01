@@ -190,6 +190,14 @@ locals {
       ],
       operator : "EndsWith",
     },
+    "editaboutproject" : {
+      order : 100,
+      require_cookie : false,
+      routes : [
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+      ],
+      operator : "RegEx",
+    },
   }
   complete_dotnet_ruby_migration_paths_test = {
     "cookies" : {
@@ -328,6 +336,14 @@ locals {
       ],
       operator : "EndsWith",
     },
+    "editaboutprojectprerelease" : {
+      order : 140,
+      require_cookie : true,
+      routes : [
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+      ],
+      operator : "RegEx",
+    },
   }
   complete_dotnet_ruby_migration_paths_production = {
     "cookies" : {
@@ -465,6 +481,14 @@ locals {
         "/tasks/deed_of_novation_and_variation"
       ],
       operator : "EndsWith",
+    },
+    "editaboutprojectprerelease" : {
+      order : 140,
+      require_cookie : true,
+      routes : [
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+      ],
+      operator : "RegEx",
     },
   }
 

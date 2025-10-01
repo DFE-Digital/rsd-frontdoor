@@ -64,7 +64,8 @@ At present, these tasks are:
 | /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ❌ | ⚠️ → ❌  |
 | **/projects/\*/date_history/\*** | **Regex** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | **/projects/\*/tasks/{task_identifiers}** | **Regex** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| /projects/*/information/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /projects/\*/information/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /projects/{project_type}/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/handover/* | Begins With | ✅ | ✅ | ✅ |
@@ -97,6 +98,7 @@ At present, these tasks are:
 - remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
 - add various tasks routes (10 in total) using an EndsWith pattern  
 - add date history and about the project (/information) using the same regex as project notes, internal contacts
+- add `/projects/{project_type}/{project_id}*` to all environments using a regex match. RegEx: `^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$`
 
 **8 - 2025-08-28**
 - add notes, internal contacts and task list to dev, feature flagged in test/prod
