@@ -160,7 +160,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|notes|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|notes|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -290,7 +290,7 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -428,7 +428,7 @@ locals {
       order : 100,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:internal-contacts|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
