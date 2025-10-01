@@ -61,9 +61,9 @@ At present, these tasks are:
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ | ⚠️ |
 | /projects/*/tasks | RegEx | ✅ | ⚠️ | ⚠️ |
-| /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ❌ | ⚠️ → ❌  |
-| **/projects/\*/date_history/\*** | **Regex** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| **/projects/\*/tasks/{task_identifiers}** | **Regex** | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /projects/\*/notes/\* | RegEx | ✅ | ❌ | ❌  |
+| /projects/\*/date_history/\*** | Regex | ✅ | ⚠️ | ⚠️ |
+| /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ | ⚠️ |
 | /projects/\*/information/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /projects/{project_type}/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
