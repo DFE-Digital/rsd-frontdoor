@@ -191,7 +191,7 @@ locals {
       operator : "EndsWith",
     },
     "editaboutproject" : {
-      order : 100,
+      order : 130,
       require_cookie : false,
       routes : [
         "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
