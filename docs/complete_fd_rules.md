@@ -57,39 +57,39 @@ At present, these tasks are:
 ## Routes  
 
 | Route | Operator | Dev | Test | Prod |  
-| - | - | - | - | - |
-| /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
-| /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ | ⚠️ |
+| - | - | - |----| - |
+| /projects/*/academy-urn | RegEx | ✅ | ✅  | ✅ |
+| /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/*/tasks | RegEx | ✅ | ⚠️ | ⚠️ |
-| /projects/\*/notes/\* | RegEx | ✅ | ❌ | ❌  |
-| /projects/\*/date_history/\*** | Regex | ✅ | ⚠️ | ⚠️ |
+| /projects/\*/notes/\* | RegEx | ✅ | ❌  | ❌ |
+| /projects/\*/date_history/\*** | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ | ⚠️ |
-| /projects/\*/information/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| /projects/{project_type}/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| /projects/team/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/handover/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/by-month/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/completed/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/in-progress/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/regions/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/trusts/* | Begins With | ✅ | ✅ | ✅  |
-| /projects/all/users/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/statistics/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/all/export | Equal | ✅ | ✅ | ✅ |
-| /projects/all/reports | Equal | ✅ | ✅ | ✅ |
-| /groups | Begins With | ✅ | ✅ | ✅ |
-| /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
-| /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
-| /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
-| /search | RegEx | ✅ | ✅ | ✅ |
+| /projects/\*/information/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/{project_type}/\* | RegEx | ✅ | ⚠️ | ⚠️ |
+| /projects/team/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/yours/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/handover/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/by-month/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/completed/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/in-progress/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/local-authorities/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/regions/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/trusts/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/users/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/statistics/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/all/export | Equal | ✅ | ✅  | ✅ |
+| /projects/all/reports | Equal | ✅ | ✅  | ✅ |
+| /groups | Begins With | ✅ | ✅  | ✅ |
+| /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅  | ✅ |
+| /projects/service-support/without-academy-urn/* | Begins With | ✅ | ✅  | ✅ |
+| /service-support/local-authorities/* | Begins With | ✅ | ✅  | ✅ |
+| /search | RegEx | ✅ | ✅  | ✅ |
 | /search/user | RegEx | ✅ | ⚠️ | ⚠️ |
-| /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
-| /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
-| /accessibility | Begins With | ✅ | ✅ | ✅ |
-| /privacy | Begins With | ✅ | ✅ | ✅ |
-| /access-denied | Begins With | ✅ | ✅ | ✅ |
+| /cookies (GET) | Begins With | ✅ | ✅  | ✅ |
+| /cookies (POST) | Begins With | ✅ | ✅  | ✅ |
+| /accessibility | Begins With | ✅ | ✅  | ✅ |
+| /privacy | Begins With | ✅ | ✅  | ✅ |
+| /access-denied | Begins With | ✅ | ✅  | ✅ |
 
 
 ## Version history:
