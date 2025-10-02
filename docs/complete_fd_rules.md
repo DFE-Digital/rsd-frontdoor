@@ -84,7 +84,7 @@ At present, these tasks are:
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ | ✅  | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅  | ✅ |
 | /search | RegEx | ✅ | ✅  | ✅ |
-| /search/user | RegEx | ✅ | ⚠️ | ⚠️ |
+| /search/user | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅  | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅  | ✅ |
 | /accessibility | Begins With | ✅ | ✅  | ✅ |

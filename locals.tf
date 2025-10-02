@@ -234,7 +234,7 @@ locals {
       order : 30,
       require_cookie : false,
       routes : [
-        "^search(?:\\?(?:[^\\/#]*))?$",
+        "^search(?:/user)?(?:\\?[^/#]*)?$"
       ],
       operator : "RegEx"
     },
@@ -302,16 +302,8 @@ locals {
       ],
       operator : "RegEx",
     },
-    "searchprerelease" : {
-      order : 110,
-      require_cookie : true,
-      routes : [
-        "^search/user(?:\\?(?:[^\\/#]*))?$",
-      ],
-      operator : "RegEx"
-    },
     "projecttasksgrouponeprerelease" : {
-      order : 120,
+      order : 110,
       require_cookie : true,
       routes : [
         "/tasks/handover",
@@ -328,7 +320,7 @@ locals {
       operator : "EndsWith",
     },
     "projecttasksgrouptwoprerelease" : {
-      order : 130,
+      order : 120,
       require_cookie : true,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
@@ -337,7 +329,7 @@ locals {
       operator : "EndsWith",
     },
     "editaboutprojectprerelease" : {
-      order : 140,
+      order : 130,
       require_cookie : true,
       routes : [
         "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
@@ -345,7 +337,7 @@ locals {
       operator : "RegEx",
     },
     "tasklistprerelease" : {
-      order : 150,
+      order : 140,
       require_cookie : true,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:tasks)$",
@@ -388,7 +380,7 @@ locals {
       order : 30,
       require_cookie : false,
       routes : [
-        "^search(?:\\?(?:[^\\/#]*))?$",
+        "^search(?:/user)?(?:\\?[^/#]*)?$"
       ],
       operator : "RegEx"
     },
@@ -456,16 +448,8 @@ locals {
       ],
       operator : "RegEx",
     },
-    "searchprerelease" : {
-      order : 110,
-      require_cookie : true,
-      routes : [
-        "^search/user(?:\\?(?:[^\\/#]*))?$",
-      ],
-      operator : "RegEx"
-    },
     "projecttasksgrouponeprerelease" : {
-      order : 120,
+      order : 110,
       require_cookie : true,
       routes : [
         "/tasks/handover",
@@ -482,7 +466,7 @@ locals {
       operator : "EndsWith",
     },
     "projecttasksgrouptwoprerelease" : {
-      order : 130,
+      order : 120,
       require_cookie : true,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
@@ -491,7 +475,7 @@ locals {
       operator : "EndsWith",
     },
     "editaboutprojectprerelease" : {
-      order : 140,
+      order : 130,
       require_cookie : true,
       routes : [
         "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
@@ -499,7 +483,7 @@ locals {
       operator : "RegEx",
     },
     "tasklistprerelease" : {
-      order : 150,
+      order : 140,
       require_cookie : true,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:tasks)$",
