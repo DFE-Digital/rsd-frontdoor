@@ -57,7 +57,7 @@ jobs:
           args: fmt -check=true -diff=true
 
       - name: Setup TFLint
-        uses: terraform-linters/setup-tflint@v4
+        uses: terraform-linters/setup-tflint@v5
         with:
           tflint_version: v0.44.1
 
