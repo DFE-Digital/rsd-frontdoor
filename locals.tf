@@ -234,7 +234,7 @@ locals {
       order : 30,
       require_cookie : false,
       routes : [
-        "^search(?:\\?(?:[^\\/#]*))?$",
+        "^search(?:/user)?(?:\\?[^/#]*)?$"
       ],
       operator : "RegEx"
     },
@@ -294,21 +294,21 @@ locals {
         "groups",
       ]
     },
-    "projectpageprerelease" : {
+    "projectpage" : {
       order : 100,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?)$",
       ],
       operator : "RegEx",
     },
-    "searchprerelease" : {
+    "editaboutproject" : {
       order : 110,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
-        "^search/user(?:\\?(?:[^\\/#]*))?$",
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
       ],
-      operator : "RegEx"
+      operator : "RegEx",
     },
     "projecttasksgrouponeprerelease" : {
       order : 120,
@@ -336,11 +336,11 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "editaboutprojectprerelease" : {
+    "tasklistprerelease" : {
       order : 140,
       require_cookie : true,
       routes : [
-        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+        "${local.complete_dotnet_project_prefix}/(?:tasks)$",
       ],
       operator : "RegEx",
     },
@@ -380,7 +380,7 @@ locals {
       order : 30,
       require_cookie : false,
       routes : [
-        "^search(?:\\?(?:[^\\/#]*))?$",
+        "^search(?:/user)?(?:\\?[^/#]*)?$"
       ],
       operator : "RegEx"
     },
@@ -440,21 +440,21 @@ locals {
         "groups",
       ]
     },
-    "projectpageprerelease" : {
+    "projectpage" : {
       order : 100,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?)$",
       ],
       operator : "RegEx",
     },
-    "searchprerelease" : {
+    "editaboutproject" : {
       order : 110,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
-        "^search/user(?:\\?(?:[^\\/#]*))?$",
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
       ],
-      operator : "RegEx"
+      operator : "RegEx",
     },
     "projecttasksgrouponeprerelease" : {
       order : 120,
@@ -482,11 +482,11 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "editaboutprojectprerelease" : {
+    "tasklistprerelease" : {
       order : 140,
       require_cookie : true,
       routes : [
-        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+        "${local.complete_dotnet_project_prefix}/(?:tasks)$",
       ],
       operator : "RegEx",
     },

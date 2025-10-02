@@ -59,13 +59,13 @@ At present, these tasks are:
 | Route | Operator | Dev | Test | Prod |  
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
-| /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ | ⚠️ |
+| /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/*/tasks | RegEx | ✅ | ⚠️ | ⚠️ |
 | /projects/\*/notes/\* | RegEx | ✅ | ❌ | ❌  |
-| /projects/\*/date_history/\*** | Regex | ✅ | ⚠️ | ⚠️ |
+| /projects/\*/date_history/\*** | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ | ⚠️ |
-| /projects/\*/information/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| /projects/{project_type}/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /projects/\*/information/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/{project_type}/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/handover/* | Begins With | ✅ | ✅ | ✅ |
@@ -84,7 +84,7 @@ At present, these tasks are:
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
 | /search | RegEx | ✅ | ✅ | ✅ |
-| /search/user | RegEx | ✅ | ⚠️ | ⚠️ |
+| /search/user | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
 | /accessibility | Begins With | ✅ | ✅ | ✅ |
