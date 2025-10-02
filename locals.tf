@@ -302,8 +302,16 @@ locals {
       ],
       operator : "RegEx",
     },
-    "projecttasksgrouponeprerelease" : {
+    "editaboutproject" : {
       order : 110,
+      require_cookie : false,
+      routes : [
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+      ],
+      operator : "RegEx",
+    },
+    "projecttasksgrouponeprerelease" : {
+      order : 120,
       require_cookie : true,
       routes : [
         "/tasks/handover",
@@ -320,21 +328,13 @@ locals {
       operator : "EndsWith",
     },
     "projecttasksgrouptwoprerelease" : {
-      order : 120,
+      order : 130,
       require_cookie : true,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
         "/tasks/deed_of_novation_and_variation"
       ],
       operator : "EndsWith",
-    },
-    "editaboutprojectprerelease" : {
-      order : 130,
-      require_cookie : true,
-      routes : [
-        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
-      ],
-      operator : "RegEx",
     },
     "tasklistprerelease" : {
       order : 140,
@@ -448,8 +448,16 @@ locals {
       ],
       operator : "RegEx",
     },
-    "projecttasksgrouponeprerelease" : {
+    "editaboutproject" : {
       order : 110,
+      require_cookie : false,
+      routes : [
+        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
+      ],
+      operator : "RegEx",
+    },
+    "projecttasksgrouponeprerelease" : {
+      order : 120,
       require_cookie : true,
       routes : [
         "/tasks/handover",
@@ -466,21 +474,13 @@ locals {
       operator : "EndsWith",
     },
     "projecttasksgrouptwoprerelease" : {
-      order : 120,
+      order : 130,
       require_cookie : true,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
         "/tasks/deed_of_novation_and_variation"
       ],
       operator : "EndsWith",
-    },
-    "editaboutprojectprerelease" : {
-      order : 130,
-      require_cookie : true,
-      routes : [
-        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
-      ],
-      operator : "RegEx",
     },
     "tasklistprerelease" : {
       order : 140,

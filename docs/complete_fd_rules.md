@@ -65,7 +65,7 @@ At present, these tasks are:
 | /projects/\*/date_history/\*** | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ | ⚠️ |
 | /projects/\*/information/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /projects/{project_type}/\* | RegEx | ✅ | ⚠️ | ⚠️ |
+| /projects/{project_type}/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/team/* | Begins With | ✅ | ✅  | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅  | ✅ |
 | /projects/all/handover/* | Begins With | ✅ | ✅  | ✅ |
