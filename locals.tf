@@ -186,7 +186,13 @@ locals {
       require_cookie : false,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
-        "/tasks/deed_of_novation_and_variation"
+        "/tasks/deed_of_novation_and_variation",
+        "/tasks/confirm_date_academy_opened",
+        "/tasks/confirm_date_academy_transferred",
+        "/tasks/church_supplemental_agreement",
+        "/tasks/commercial_transfer_agreement",
+        "/tasks/main_contact",
+        "/tasks/land_questionnaire"
       ],
       operator : "EndsWith",
     },
@@ -332,7 +338,13 @@ locals {
       require_cookie : true,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
-        "/tasks/deed_of_novation_and_variation"
+        "/tasks/deed_of_novation_and_variation",
+        "/tasks/confirm_date_academy_opened",
+        "/tasks/confirm_date_academy_transferred",
+        "/tasks/church_supplemental_agreement",
+        "/tasks/commercial_transfer_agreement",
+        "/tasks/main_contact",
+        "/tasks/land_questionnaire"
       ],
       operator : "EndsWith",
     },
@@ -341,6 +353,14 @@ locals {
       require_cookie : true,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:tasks)$",
+      ],
+      operator : "RegEx",
+    },
+    "notesprerelease" : {
+      order : 150,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/(?:(?:notes)(?:/.*)?)$",
       ],
       operator : "RegEx",
     },
@@ -478,7 +498,13 @@ locals {
       require_cookie : true,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
-        "/tasks/deed_of_novation_and_variation"
+        "/tasks/deed_of_novation_and_variation",
+        "/tasks/confirm_date_academy_opened",
+        "/tasks/confirm_date_academy_transferred",
+        "/tasks/church_supplemental_agreement",
+        "/tasks/commercial_transfer_agreement",
+        "/tasks/main_contact",
+        "/tasks/land_questionnaire"
       ],
       operator : "EndsWith",
     },
@@ -487,6 +513,14 @@ locals {
       require_cookie : true,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:tasks)$",
+      ],
+      operator : "RegEx",
+    },
+    "notesprerelease" : {
+      order : 150,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/(?:(?:notes)(?:/.*)?)$",
       ],
       operator : "RegEx",
     },
