@@ -53,6 +53,9 @@ At present, these tasks are:
 - receive_grant_payment_certificate
 - declaration_of_expenditure_certificate
 - deed_of_novation_and_variation
+- confirm_date_academy_opened
+- confirm_date_academy_transferred
+- church_supplemental_agreement
 
 ## Routes  
 
@@ -96,6 +99,7 @@ At present, these tasks are:
 
 **10 - 2025-10-06**
 - add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`
+- add 3 more task routes using the EndsWith pattern
 
 **9 - 2025-10-02**
 - remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  

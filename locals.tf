@@ -186,7 +186,10 @@ locals {
       require_cookie : false,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
-        "/tasks/deed_of_novation_and_variation"
+        "/tasks/deed_of_novation_and_variation",
+        "/tasks/confirm_date_academy_opened",
+        "/tasks/confirm_date_academy_transferred",
+        "/tasks/church_supplemental_agreement"
       ],
       operator : "EndsWith",
     },
@@ -332,7 +335,10 @@ locals {
       require_cookie : true,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
-        "/tasks/deed_of_novation_and_variation"
+        "/tasks/deed_of_novation_and_variation",
+        "/tasks/confirm_date_academy_opened",
+        "/tasks/confirm_date_academy_transferred",
+        "/tasks/church_supplemental_agreement"
       ],
       operator : "EndsWith",
     },
@@ -486,7 +492,10 @@ locals {
       require_cookie : true,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
-        "/tasks/deed_of_novation_and_variation"
+        "/tasks/deed_of_novation_and_variation",
+        "/tasks/confirm_date_academy_opened",
+        "/tasks/confirm_date_academy_transferred",
+        "/tasks/church_supplemental_agreement"
       ],
       operator : "EndsWith",
     },
