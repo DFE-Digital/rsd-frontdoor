@@ -344,6 +344,14 @@ locals {
       ],
       operator : "RegEx",
     },
+    "notesprerelease" : {
+      order : 150,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/(?:(?:notes)(?:/.*)?)$",
+      ],
+      operator : "RegEx",
+    },
   }
   complete_dotnet_ruby_migration_paths_production = {
     "cookies" : {
@@ -487,6 +495,14 @@ locals {
       require_cookie : true,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:tasks)$",
+      ],
+      operator : "RegEx",
+    },
+    "notesprerelease" : {
+      order : 150,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/(?:(?:notes)(?:/.*)?)$",
       ],
       operator : "RegEx",
     },

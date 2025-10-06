@@ -61,7 +61,7 @@ At present, these tasks are:
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/*/tasks | RegEx | ✅ | ⚠️ | ⚠️ |
-| /projects/\*/notes/\* | RegEx | ✅ | ❌ | ❌  |
+| /projects/\*/notes/\* | RegEx | ✅ | ❌ → ⚠️ | ❌ → ⚠️ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ | ⚠️ |
 | /projects/\*/information/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
@@ -93,6 +93,9 @@ At present, these tasks are:
 
 
 ## Version history:
+
+**10 - 2025-10-06**
+- add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`
 
 **9 - 2025-10-02**
 - remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
