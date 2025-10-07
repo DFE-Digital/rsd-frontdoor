@@ -304,7 +304,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|internal-contacts|date-history)(?:/.*)?)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -347,14 +347,6 @@ locals {
         "/tasks/land_questionnaire"
       ],
       operator : "EndsWith",
-    },
-    "tasklistprerelease" : {
-      order : 140,
-      require_cookie : true,
-      routes : [
-        "${local.complete_dotnet_project_prefix}/(?:tasks)$",
-      ],
-      operator : "RegEx",
     },
   }
   complete_dotnet_ruby_migration_paths_production = {
@@ -456,7 +448,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|internal-contacts|date-history)(?:/.*)?)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -499,14 +491,6 @@ locals {
         "/tasks/land_questionnaire"
       ],
       operator : "EndsWith",
-    },
-    "tasklistprerelease" : {
-      order : 140,
-      require_cookie : true,
-      routes : [
-        "${local.complete_dotnet_project_prefix}/(?:tasks)$",
-      ],
-      operator : "RegEx",
     },
   }
 
