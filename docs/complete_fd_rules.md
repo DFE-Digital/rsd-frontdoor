@@ -69,7 +69,7 @@ At present, these tasks are:
 | /projects/*/tasks | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
-| /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ | ⚠️ |
+| /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/information/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/{project_type}/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |

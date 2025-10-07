@@ -316,9 +316,9 @@ locals {
       ],
       operator : "RegEx",
     },
-    "projecttasksgrouponeprerelease" : {
+    "projecttasksgroupone" : {
       order : 120,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "/tasks/handover",
         "/tasks/stakeholder_kick_off",
@@ -333,9 +333,9 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "projecttasksgrouptwoprerelease" : {
+    "projecttasksgrouptwo" : {
       order : 130,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
         "/tasks/deed_of_novation_and_variation",
@@ -460,9 +460,9 @@ locals {
       ],
       operator : "RegEx",
     },
-    "projecttasksgrouponeprerelease" : {
+    "projecttasksgroupone" : {
       order : 120,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "/tasks/handover",
         "/tasks/stakeholder_kick_off",
@@ -477,9 +477,9 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "projecttasksgrouptwoprerelease" : {
+    "projecttasksgrouptwo" : {
       order : 130,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
         "/tasks/deed_of_novation_and_variation",
