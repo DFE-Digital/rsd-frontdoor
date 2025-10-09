@@ -192,7 +192,9 @@ locals {
         "/tasks/church_supplemental_agreement",
         "/tasks/commercial_transfer_agreement",
         "/tasks/main_contact",
-        "/tasks/land_questionnaire"
+        "/tasks/land_questionnaire",
+        "/tasks/land_registry",
+        "/tasks/master_funding_agreement"
       ],
       operator : "EndsWith",
     },
@@ -344,7 +346,9 @@ locals {
         "/tasks/church_supplemental_agreement",
         "/tasks/commercial_transfer_agreement",
         "/tasks/main_contact",
-        "/tasks/land_questionnaire"
+        "/tasks/land_questionnaire",
+        "/tasks/land_registry",
+        "/tasks/master_funding_agreement"
       ],
       operator : "EndsWith",
     },
@@ -488,7 +492,9 @@ locals {
         "/tasks/church_supplemental_agreement",
         "/tasks/commercial_transfer_agreement",
         "/tasks/main_contact",
-        "/tasks/land_questionnaire"
+        "/tasks/land_questionnaire",
+        "/tasks/land_registry",
+        "/tasks/master_funding_agreement"
       ],
       operator : "EndsWith",
     },

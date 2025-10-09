@@ -59,6 +59,8 @@ At present, these tasks are:
 - commercial_transfer_agreement
 - main_contact
 - land_questionnaire
+- land_registry
+- master_funding_agreement
 
 ## Routes  
 
@@ -102,7 +104,7 @@ At present, these tasks are:
 
 **10 - 2025-10-06**
 - add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`
-- add 6 more task routes using the EndsWith pattern
+- add 8 more task routes using the EndsWith pattern
 - release task list to test and prod. RegEx: `^projects/[^/]+/tasks$`
 
 **9 - 2025-10-02**
