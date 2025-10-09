@@ -160,7 +160,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|notes|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|external-contacts|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -192,7 +192,9 @@ locals {
         "/tasks/church_supplemental_agreement",
         "/tasks/commercial_transfer_agreement",
         "/tasks/main_contact",
-        "/tasks/land_questionnaire"
+        "/tasks/land_questionnaire",
+        "/tasks/land_registry",
+        "/tasks/master_funding_agreement"
       ],
       operator : "EndsWith",
     },
@@ -304,7 +306,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -316,9 +318,9 @@ locals {
       ],
       operator : "RegEx",
     },
-    "projecttasksgrouponeprerelease" : {
+    "projecttasksgroupone" : {
       order : 120,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "/tasks/handover",
         "/tasks/stakeholder_kick_off",
@@ -333,9 +335,9 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "projecttasksgrouptwoprerelease" : {
+    "projecttasksgrouptwo" : {
       order : 130,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
         "/tasks/deed_of_novation_and_variation",
@@ -344,23 +346,17 @@ locals {
         "/tasks/church_supplemental_agreement",
         "/tasks/commercial_transfer_agreement",
         "/tasks/main_contact",
-        "/tasks/land_questionnaire"
+        "/tasks/land_questionnaire",
+        "/tasks/land_registry",
+        "/tasks/master_funding_agreement"
       ],
       operator : "EndsWith",
     },
-    "tasklistprerelease" : {
+    "externalcontactsprerelease" : {
       order : 140,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:tasks)$",
-      ],
-      operator : "RegEx",
-    },
-    "notesprerelease" : {
-      order : 150,
-      require_cookie : true,
-      routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:notes)(?:/.*)?)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",
       ],
       operator : "RegEx",
     },
@@ -464,7 +460,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|internal-contacts|date-history)(?:/.*)?)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -476,9 +472,9 @@ locals {
       ],
       operator : "RegEx",
     },
-    "projecttasksgrouponeprerelease" : {
+    "projecttasksgroupone" : {
       order : 120,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "/tasks/handover",
         "/tasks/stakeholder_kick_off",
@@ -493,9 +489,9 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "projecttasksgrouptwoprerelease" : {
+    "projecttasksgrouptwo" : {
       order : 130,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "/tasks/declaration_of_expenditure_certificate",
         "/tasks/deed_of_novation_and_variation",
@@ -504,23 +500,17 @@ locals {
         "/tasks/church_supplemental_agreement",
         "/tasks/commercial_transfer_agreement",
         "/tasks/main_contact",
-        "/tasks/land_questionnaire"
+        "/tasks/land_questionnaire",
+        "/tasks/land_registry",
+        "/tasks/master_funding_agreement"
       ],
       operator : "EndsWith",
     },
-    "tasklistprerelease" : {
+    "externalcontactsprerelease" : {
       order : 140,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:tasks)$",
-      ],
-      operator : "RegEx",
-    },
-    "notesprerelease" : {
-      order : 150,
-      require_cookie : true,
-      routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:notes)(?:/.*)?)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",
       ],
       operator : "RegEx",
     },
