@@ -160,7 +160,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|internal-contacts|date-history)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|external-contacts|internal-contacts|date-history)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -352,6 +352,14 @@ locals {
       ],
       operator : "EndsWith",
     },
+    "externalcontactsprerelease" : {
+      order : 140,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",
+      ],
+      operator : "RegEx",
+    },
   }
   complete_dotnet_ruby_migration_paths_production = {
     "cookies" : {
@@ -497,6 +505,14 @@ locals {
         "/tasks/master_funding_agreement"
       ],
       operator : "EndsWith",
+    },
+    "externalcontactsprerelease" : {
+      order : 140,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",
+      ],
+      operator : "RegEx",
     },
   }
 

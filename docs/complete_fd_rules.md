@@ -68,6 +68,7 @@ At present, these tasks are:
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
+| /projects/*/external-contacts/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /projects/*/tasks | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
@@ -106,6 +107,7 @@ At present, these tasks are:
 - add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`
 - add 8 more task routes using the EndsWith pattern
 - release task list to test and prod. RegEx: `^projects/[^/]+/tasks$`
+- external contacts to dev, feature flagged in test/prod using a regex match. RegEx: `/projects/{project_id}external-contacts/*`
 
 **9 - 2025-10-02**
 - remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
