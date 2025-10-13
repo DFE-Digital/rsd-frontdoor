@@ -206,6 +206,13 @@ locals {
       ],
       operator : "RegEx",
     },
+    formamattrust = {
+      order : 140,
+      require_cookie : false,
+      routes : [
+        "form-a-multi-academy-trust/",
+      ],
+    }
   }
   complete_dotnet_ruby_migration_paths_test = {
     "cookies" : {
@@ -352,8 +359,15 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "externalcontactsprerelease" : {
+    formamattrust = {
       order : 140,
+      require_cookie : false,
+      routes : [
+        "form-a-multi-academy-trust/",
+      ],
+    },
+    "externalcontactsprerelease" : {
+      order : 150,
       require_cookie : true,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",
@@ -506,8 +520,15 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "externalcontactsprerelease" : {
+    formamattrust = {
       order : 140,
+      require_cookie : false,
+      routes : [
+        "form-a-multi-academy-trust/",
+      ],
+    },
+    "externalcontactsprerelease" : {
+      order : 150,
       require_cookie : true,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",

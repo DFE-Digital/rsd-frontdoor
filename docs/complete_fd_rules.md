@@ -88,6 +88,7 @@ At present, these tasks are:
 | /projects/all/statistics/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/export | Equal | ✅ | ✅ | ✅ |
 | /projects/all/reports | Equal | ✅ | ✅ | ✅ |
+| /form-a-multi-academy-trust | Begins With | 🆕✅ | 🆕✅ | 🆕✅ |
 | /groups | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
@@ -108,6 +109,7 @@ At present, these tasks are:
 - add 8 more task routes using the EndsWith pattern
 - release task list to test and prod. RegEx: `^projects/[^/]+/tasks$`
 - external contacts to dev, feature flagged in test/prod using a regex match. RegEx: `/projects/{project_id}external-contacts/*`
+- /form-a-multi-academy-trust to all environments using a BeginsWith pattern
 
 **9 - 2025-10-02**
 - remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
