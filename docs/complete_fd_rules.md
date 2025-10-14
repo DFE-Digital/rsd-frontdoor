@@ -77,6 +77,8 @@ At present, these tasks are:
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
 | /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/information/\* | RegEx | ✅ | ✅ | ✅ |
+| /projects/\*/complete/\* | RegEx | 🆕✅ | 🆕✅ | 🆕✅ |
+| /projects/\*/dao-revocation/\* | RegEx | 🆕✅ | 🆕✅ | 🆕✅ |
 | /projects/{project_type}/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
@@ -113,6 +115,7 @@ At present, these tasks are:
 - release task list to test and prod. RegEx: `^projects/[^/]+/tasks$`
 - external contacts to dev, feature flagged in test/prod using a regex match. RegEx: `/projects/{project_id}external-contacts/*`
 - /form-a-multi-academy-trust to all environments using a BeginsWith pattern
+- add dao-revocation & complete to all environments using a regex match. RegEx: `/projects/{project_id}dao-revocation/*` and `/projects/{project_id}complete/*`
 
 **9 - 2025-10-02**
 - remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
