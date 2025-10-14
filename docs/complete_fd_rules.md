@@ -61,6 +61,9 @@ At present, these tasks are:
 - land_questionnaire
 - land_registry
 - master_funding_agreement
+- confirm_incoming_trust_ceo_contact
+- risk_protection_arrangement
+- rpa_policy
 
 ## Routes  
 
@@ -106,7 +109,7 @@ At present, these tasks are:
 
 **10 - 2025-10-06**
 - add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`
-- add 8 more task routes using the EndsWith pattern
+- add 11 more task routes using the EndsWith pattern
 - release task list to test and prod. RegEx: `^projects/[^/]+/tasks$`
 - external contacts to dev, feature flagged in test/prod using a regex match. RegEx: `/projects/{project_id}external-contacts/*`
 - /form-a-multi-academy-trust to all environments using a BeginsWith pattern

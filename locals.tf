@@ -198,8 +198,18 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "editaboutproject" : {
+    "projecttasksgroupthree" : {
       order : 130,
+      require_cookie : false,
+      routes : [
+        "/tasks/confirm_incoming_trust_ceo_contact",
+        "/tasks/risk_protection_arrangement",
+        "/tasks/rpa_policy"
+      ],
+      operator : "EndsWith",
+    },
+    "editaboutproject" : {
+      order : 140,
       require_cookie : false,
       routes : [
         "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
@@ -207,7 +217,7 @@ locals {
       operator : "RegEx",
     },
     formamattrust = {
-      order : 140,
+      order : 150,
       require_cookie : false,
       routes : [
         "form-a-multi-academy-trust/",
@@ -359,15 +369,25 @@ locals {
       ],
       operator : "EndsWith",
     },
-    formamattrust = {
+    "projecttasksgroupthree" : {
       order : 140,
+      require_cookie : false,
+      routes : [
+        "/tasks/confirm_incoming_trust_ceo_contact",
+        "/tasks/risk_protection_arrangement",
+        "/tasks/rpa_policy"
+      ],
+      operator : "EndsWith",
+    },
+    formamattrust = {
+      order : 150,
       require_cookie : false,
       routes : [
         "form-a-multi-academy-trust/",
       ],
     },
     "externalcontactsprerelease" : {
-      order : 150,
+      order : 160,
       require_cookie : true,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",
@@ -520,15 +540,25 @@ locals {
       ],
       operator : "EndsWith",
     },
-    formamattrust = {
+    "projecttasksgroupthree" : {
       order : 140,
+      require_cookie : false,
+      routes : [
+        "/tasks/confirm_incoming_trust_ceo_contact",
+        "/tasks/risk_protection_arrangement",
+        "/tasks/rpa_policy"
+      ],
+      operator : "EndsWith",
+    },
+    formamattrust = {
+      order : 150,
       require_cookie : false,
       routes : [
         "form-a-multi-academy-trust/",
       ],
     },
     "externalcontactsprerelease" : {
-      order : 150,
+      order : 160,
       require_cookie : true,
       routes : [
         "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",
