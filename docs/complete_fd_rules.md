@@ -59,19 +59,27 @@ At present, these tasks are:
 - commercial_transfer_agreement
 - main_contact
 - land_questionnaire
+- land_registry
+- master_funding_agreement
+- confirm_incoming_trust_ceo_contact
+- risk_protection_arrangement
+- rpa_policy
 
 ## Routes  
 
 | Route | Operator | Dev | Test | Prod |  
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
-| /projects/*/internal-contacts/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /projects/*/tasks | RegEx | ✅ | ⚠️ | ⚠️ |
-| /projects/\*/notes/\* | RegEx | ✅ | ❌ → ⚠️ | ❌ → ⚠️ |
-| /projects/\*/date_history/\*** | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ | ⚠️ |
-| /projects/\*/information/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /projects/{project_type}/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
+| /projects/*/external-contacts/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /projects/*/tasks | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
+| /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/\*/information/\* | RegEx | ✅ | ✅ | ✅ |
+| /projects/\*/complete/\* | RegEx | 🆕✅ | 🆕✅ | 🆕✅ |
+| /projects/\*/dao-revocation/\* | RegEx | 🆕✅ | 🆕✅ | 🆕✅ |
+| /projects/{project_type}/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/handover/* | Begins With | ✅ | ✅ | ✅ |
@@ -85,12 +93,13 @@ At present, these tasks are:
 | /projects/all/statistics/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/export | Equal | ✅ | ✅ | ✅ |
 | /projects/all/reports | Equal | ✅ | ✅ | ✅ |
+| /form-a-multi-academy-trust | Begins With | 🆕✅ | 🆕✅ | 🆕✅ |
 | /groups | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
 | /search | RegEx | ✅ | ✅ | ✅ |
-| /search/user | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /search/user | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
 | /cookies (POST) | Begins With | ✅ | ✅ | ✅ |
 | /accessibility | Begins With | ✅ | ✅ | ✅ |
@@ -102,7 +111,11 @@ At present, these tasks are:
 
 **10 - 2025-10-06**
 - add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`
-- add 6 more task routes using the EndsWith pattern
+- add 11 more task routes using the EndsWith pattern
+- release task list to test and prod. RegEx: `^projects/[^/]+/tasks$`
+- external contacts to dev, feature flagged in test/prod using a regex match. RegEx: `/projects/{project_id}external-contacts/*`
+- /form-a-multi-academy-trust to all environments using a BeginsWith pattern
+- add dao-revocation & complete to all environments using a regex match. RegEx: `/projects/{project_id}dao-revocation/*` and `/projects/{project_id}complete/*`
 
 **9 - 2025-10-02**
 - remove notes feature flag from test and prod to allow for "clean" testing. Notes will need releasing after all tasks due to TmpData buglets  
