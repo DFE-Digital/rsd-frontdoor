@@ -73,7 +73,7 @@ At present, these tasks are:
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
-| /projects/*/external-contacts/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /projects/*/external-contacts/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/*/tasks | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
@@ -113,6 +113,7 @@ At present, these tasks are:
 
 **11 - 2025-10-21**
 - add 2 more task routes using the EndsWith pattern
+- release external contacts to test and prod. RegEx: `/projects/{project_id}external-contacts/*`
 
 **10 - 2025-10-06**
 - add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`
