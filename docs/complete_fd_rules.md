@@ -100,6 +100,7 @@ At present, these tasks are:
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
+| /service-support/users/* | Begins With | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /search/user | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
@@ -114,6 +115,7 @@ At present, these tasks are:
 **11 - 2025-10-21**
 - add 2 more task routes using the EndsWith pattern
 - release external contacts to test and prod. RegEx: `/projects/{project_id}external-contacts/*`
+- service support users to dev, feature flagged in test/prod using a BeginsWith pattern. Route: `/service-support/users/*`
 
 **10 - 2025-10-06**
 - add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`

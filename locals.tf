@@ -295,6 +295,7 @@ locals {
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
         "service-support/local-authorities",
+        "service-support/users",
       ]
     },
     "servicesupportcreateurns" : {
@@ -389,6 +390,13 @@ locals {
       routes : [
         "form-a-multi-academy-trust/",
       ],
+    },
+    "serviceupportusers" : {
+      order : 160,
+      require_cookie : true,
+      routes : [
+        "service-support/users",
+      ]
     },
   }
   complete_dotnet_ruby_migration_paths_production = {
@@ -554,6 +562,13 @@ locals {
       routes : [
         "form-a-multi-academy-trust/",
       ],
+    },
+    "serviceupportusers" : {
+      order : 160,
+      require_cookie : true,
+      routes : [
+        "service-support/users",
+      ]
     },
   }
 
