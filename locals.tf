@@ -391,7 +391,7 @@ locals {
         "form-a-multi-academy-trust/",
       ],
     },
-    "serviceupportusers" : {
+    "servicesupportusersprerelease" : {
       order : 160,
       require_cookie : true,
       routes : [
@@ -563,7 +563,7 @@ locals {
         "form-a-multi-academy-trust/",
       ],
     },
-    "serviceupportusers" : {
+    "servicesupportusersprerelease" : {
       order : 160,
       require_cookie : true,
       routes : [
