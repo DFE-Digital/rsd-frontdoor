@@ -64,6 +64,8 @@ At present, these tasks are:
 - confirm_incoming_trust_ceo_contact
 - risk_protection_arrangement
 - rpa_policy
+- confirm_headteacher_contact
+- check_and_confirm_financial_information
 
 ## Routes  
 
@@ -108,6 +110,9 @@ At present, these tasks are:
 
 
 ## Version history:
+
+**11 - 2025-10-21**
+- add 2 more task routes using the EndsWith pattern
 
 **10 - 2025-10-06**
 - add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`

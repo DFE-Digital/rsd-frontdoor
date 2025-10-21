@@ -204,7 +204,9 @@ locals {
       routes : [
         "/tasks/confirm_incoming_trust_ceo_contact",
         "/tasks/risk_protection_arrangement",
-        "/tasks/rpa_policy"
+        "/tasks/rpa_policy",
+        "/tasks/confirm_headteacher_contact",
+        "/tasks/check_and_confirm_financial_information"
       ],
       operator : "EndsWith",
     },
@@ -375,7 +377,9 @@ locals {
       routes : [
         "/tasks/confirm_incoming_trust_ceo_contact",
         "/tasks/risk_protection_arrangement",
-        "/tasks/rpa_policy"
+        "/tasks/rpa_policy",
+        "/tasks/confirm_headteacher_contact",
+        "/tasks/check_and_confirm_financial_information"
       ],
       operator : "EndsWith",
     },
@@ -546,7 +550,9 @@ locals {
       routes : [
         "/tasks/confirm_incoming_trust_ceo_contact",
         "/tasks/risk_protection_arrangement",
-        "/tasks/rpa_policy"
+        "/tasks/rpa_policy",
+        "/tasks/confirm_headteacher_contact",
+        "/tasks/check_and_confirm_financial_information"
       ],
       operator : "EndsWith",
     },
