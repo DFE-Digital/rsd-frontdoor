@@ -74,13 +74,13 @@ At present, these tasks are:
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/external-contacts/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /projects/*/tasks | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/*/tasks | RegEx | ✅ | ✅ | ✅ |
+| /projects/\*/notes/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
-| /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ✅ | ✅ |
 | /projects/\*/information/\* | RegEx | ✅ | ✅ | ✅ |
-| /projects/\*/complete/\* | RegEx | 🆕✅ | 🆕✅ | 🆕✅ |
-| /projects/\*/dao-revocation/\* | RegEx | 🆕✅ | 🆕✅ | 🆕✅ |
+| /projects/\*/complete/\* | RegEx | ✅ | ✅ | ✅ |
+| /projects/\*/dao-revocation/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/{project_type}/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
@@ -95,7 +95,7 @@ At present, these tasks are:
 | /projects/all/statistics/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/export | Equal | ✅ | ✅ | ✅ |
 | /projects/all/reports | Equal | ✅ | ✅ | ✅ |
-| /form-a-multi-academy-trust | Begins With | 🆕✅ | 🆕✅ | 🆕✅ |
+| /form-a-multi-academy-trust | Begins With | ✅ | ✅ | ✅ |
 | /groups | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
