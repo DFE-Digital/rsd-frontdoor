@@ -130,6 +130,7 @@ locals {
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
         "service-support/local-authorities",
+        "service-support/users",
       ]
     },
     "servicesupportcreateurns" : {
@@ -294,8 +295,7 @@ locals {
       routes : [
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
-        "service-support/local-authorities",
-        "service-support/users",
+        "service-support/local-authorities"
       ]
     },
     "servicesupportcreateurns" : {
