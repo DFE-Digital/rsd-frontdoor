@@ -130,6 +130,7 @@ locals {
         "projects/service-support/with-academy-urn",
         "projects/service-support/without-academy-urn",
         "service-support/local-authorities",
+        "service-support/users",
       ]
     },
     "servicesupportcreateurns" : {
@@ -204,7 +205,9 @@ locals {
       routes : [
         "/tasks/confirm_incoming_trust_ceo_contact",
         "/tasks/risk_protection_arrangement",
-        "/tasks/rpa_policy"
+        "/tasks/rpa_policy",
+        "/tasks/confirm_headteacher_contact",
+        "/tasks/check_and_confirm_financial_information"
       ],
       operator : "EndsWith",
     },
@@ -216,7 +219,7 @@ locals {
       ],
       operator : "RegEx",
     },
-    formamattrust = {
+    "formamattrust" : {
       order : 150,
       require_cookie : false,
       routes : [
@@ -323,7 +326,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|internal-contacts|date-history|dao-revocation|complete)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|external-contacts|internal-contacts|date-history|dao-revocation|complete)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -375,24 +378,25 @@ locals {
       routes : [
         "/tasks/confirm_incoming_trust_ceo_contact",
         "/tasks/risk_protection_arrangement",
-        "/tasks/rpa_policy"
+        "/tasks/rpa_policy",
+        "/tasks/confirm_headteacher_contact",
+        "/tasks/check_and_confirm_financial_information"
       ],
       operator : "EndsWith",
     },
-    formamattrust = {
+    "formamattrust" : {
       order : 150,
       require_cookie : false,
       routes : [
         "form-a-multi-academy-trust/",
       ],
     },
-    "externalcontactsprerelease" : {
+    "servicesupportusersprerelease" : {
       order : 160,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",
-      ],
-      operator : "RegEx",
+        "service-support/users",
+      ]
     },
   }
   complete_dotnet_ruby_migration_paths_production = {
@@ -494,7 +498,7 @@ locals {
       order : 100,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|internal-contacts|date-history|dao-revocation|complete)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|external-contacts|internal-contacts|date-history|dao-revocation|complete)(?:/.*)?|tasks)$",
       ],
       operator : "RegEx",
     },
@@ -546,24 +550,25 @@ locals {
       routes : [
         "/tasks/confirm_incoming_trust_ceo_contact",
         "/tasks/risk_protection_arrangement",
-        "/tasks/rpa_policy"
+        "/tasks/rpa_policy",
+        "/tasks/confirm_headteacher_contact",
+        "/tasks/check_and_confirm_financial_information"
       ],
       operator : "EndsWith",
     },
-    formamattrust = {
+    "formamattrust" : {
       order : 150,
       require_cookie : false,
       routes : [
         "form-a-multi-academy-trust/",
       ],
     },
-    "externalcontactsprerelease" : {
+    "servicesupportusersprerelease" : {
       order : 160,
       require_cookie : true,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:external-contacts)(?:/.*)?)$",
-      ],
-      operator : "RegEx",
+        "service-support/users",
+      ]
     },
   }
 

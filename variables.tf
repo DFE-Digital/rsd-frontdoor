@@ -195,3 +195,9 @@ variable "enable_custom_reroute_ruleset" {
   type        = bool
   default     = false
 }
+
+variable "enable_custom_reroute_reversal" {
+  description = "Enable traffic reversal from dotnet to ruby in development environment"
+  type        = bool
+  default     = false
+}
