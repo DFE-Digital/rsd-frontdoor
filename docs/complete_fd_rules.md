@@ -64,6 +64,8 @@ At present, these tasks are:
 - confirm_incoming_trust_ceo_contact
 - risk_protection_arrangement
 - rpa_policy
+- confirm_headteacher_contact
+- check_and_confirm_financial_information
 
 ## Routes  
 
@@ -71,14 +73,14 @@ At present, these tasks are:
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
-| /projects/*/external-contacts/\* | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
-| /projects/*/tasks | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
-| /projects/\*/notes/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/*/external-contacts/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/*/tasks | RegEx | ✅ | ✅ | ✅ |
+| /projects/\*/notes/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
-| /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ✅ | ✅ |
 | /projects/\*/information/\* | RegEx | ✅ | ✅ | ✅ |
-| /projects/\*/complete/\* | RegEx | 🆕✅ | 🆕✅ | 🆕✅ |
-| /projects/\*/dao-revocation/\* | RegEx | 🆕✅ | 🆕✅ | 🆕✅ |
+| /projects/\*/complete/\* | RegEx | ✅ | ✅ | ✅ |
+| /projects/\*/dao-revocation/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/{project_type}/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/team/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/yours/* | Begins With | ✅ | ✅ | ✅ |
@@ -93,11 +95,12 @@ At present, these tasks are:
 | /projects/all/statistics/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/all/export | Equal | ✅ | ✅ | ✅ |
 | /projects/all/reports | Equal | ✅ | ✅ | ✅ |
-| /form-a-multi-academy-trust | Begins With | 🆕✅ | 🆕✅ | 🆕✅ |
+| /form-a-multi-academy-trust | Begins With | ✅ | ✅ | ✅ |
 | /groups | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
+| /service-support/users/* | Begins With | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /search/user | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
@@ -108,6 +111,11 @@ At present, these tasks are:
 
 
 ## Version history:
+
+**11 - 2025-10-21**
+- add 2 more task routes using the EndsWith pattern
+- release external contacts to test and prod. RegEx: `/projects/{project_id}external-contacts/*`
+- service support users to dev, feature flagged in test/prod using a BeginsWith pattern. Route: `/service-support/users/*`
 
 **10 - 2025-10-06**
 - add notes to test and prod environments using a regex match. RegEx: `^projects/[^/]+/(?:(?:notes)(?:/.*)?)$`
