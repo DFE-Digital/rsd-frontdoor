@@ -21,7 +21,7 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
     content {
       name                           = "RateLimiting"
       enabled                        = true
-      priority                       = 1000
+      priority                       = 2000
       rate_limit_duration_in_minutes = local.waf_rate_limiting_duration_in_minutes
       rate_limit_threshold           = local.waf_rate_limiting_threshold
       type                           = "RateLimitRule"
@@ -48,12 +48,73 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
   }
 
   dynamic "managed_rule" {
-    for_each = local.waf_enable_bot_protection ? [1] : []
+    for_each = contains(keys(local.waf_managed_rulesets), "Microsoft_BotManagerRuleSet_1.1") == false && local.waf_enable_bot_protection && azurerm_cdn_frontdoor_profile.rsd[0].sku_name == "Premium_AzureFrontDoor" ? [1] : []
 
     content {
       type    = "Microsoft_BotManagerRuleSet"
       version = "1.1"
       action  = "Block"
+    }
+  }
+
+  dynamic "managed_rule" {
+    for_each = azurerm_cdn_frontdoor_profile.rsd[0].sku_name == "Premium_AzureFrontDoor" ? local.waf_managed_rulesets : {}
+
+    content {
+      type    = replace(managed_rule.key, "_${element(split("_", managed_rule.key), -1)}", "")
+      version = element(split("_", managed_rule.key), -1)
+      action  = managed_rule.value.action
+
+      dynamic "override" {
+        for_each = managed_rule.value.overrides
+
+        content {
+          rule_group_name = override.key
+
+          dynamic "exclusion" {
+            for_each = lookup(override.value, "exclusions", [])
+
+            content {
+              match_variable = exclusion.value.match_variable
+              operator       = exclusion.value.operator
+              selector       = exclusion.value.selector
+            }
+          }
+
+          dynamic "rule" {
+            for_each = toset(lookup(override.value, "disabled_rules", []))
+
+            content {
+              rule_id = rule.value
+              enabled = false
+              action  = "Log"
+            }
+          }
+        }
+      }
+    }
+  }
+
+  dynamic "custom_rule" {
+    for_each = local.waf_custom_rules
+
+    content {
+      name     = custom_rule.key
+      enabled  = true
+      priority = custom_rule.value["priority"]
+      type     = "MatchRule"
+      action   = custom_rule.value["action"]
+
+      dynamic "match_condition" {
+        for_each = custom_rule.value["match_conditions"]
+
+        content {
+          match_variable = match_condition.value["match_variable"]
+          match_values   = match_condition.value["match_values"]
+          operator       = match_condition.value["operator"]
+          selector       = match_condition.value["selector"]
+        }
+      }
     }
   }
 
@@ -63,7 +124,7 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
     content {
       name     = replace(custom_rule.key, "/[^[:alnum:]]/", "")
       enabled  = true
-      priority = index(tolist(keys(local.per_origin_custom_rules)), custom_rule.key) + 1
+      priority = (index(tolist(keys(local.per_origin_custom_rules)), custom_rule.key) * 10) + (length(var.waf_custom_rules) > 0 ? sum([for rule in values(var.waf_custom_rules) : rule.priority]) : 10)
       type     = "MatchRule"
       action   = custom_rule.value["action"]
 
@@ -93,7 +154,6 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
 
   tags = local.tags
 }
-
 
 resource "azurerm_cdn_frontdoor_security_policy" "waf" {
   count = local.enable_frontdoor && length(azurerm_cdn_frontdoor_endpoint.rsd) > 0 ? 1 : 0
