@@ -219,7 +219,7 @@ locals {
       ],
       operator : "RegEx",
     },
-    "formamattrust" = {
+    "formamattrust" : {
       order : 150,
       require_cookie : false,
       routes : [
@@ -384,7 +384,7 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "formamattrust" = {
+    "formamattrust" : {
       order : 150,
       require_cookie : false,
       routes : [
@@ -556,7 +556,7 @@ locals {
       ],
       operator : "EndsWith",
     },
-    "formamattrust" = {
+    "formamattrust" : {
       order : 150,
       require_cookie : false,
       routes : [
