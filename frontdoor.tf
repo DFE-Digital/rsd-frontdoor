@@ -91,7 +91,8 @@ resource "azurerm_cdn_frontdoor_route" "rsd" {
     local.enable_frontdoor_vdp_redirects ? azurerm_cdn_frontdoor_rule_set.vdp[0].id : null,
     each.value.enable_security_headers ? azurerm_cdn_frontdoor_rule_set.security[0].id : null,
     length(each.value.add_http_response_headers) > 0 || length(each.value.remove_http_response_headers) > 0 ? azurerm_cdn_frontdoor_rule_set.response_headers[each.key].id : null,
-    each.key == "complete-ruby" && local.enable_custom_reroute_ruleset ? azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id : null,
+    each.key == "complete-ruby" && local.enable_custom_reroute_ruleset && !local.enable_development_traffic_reversal ? azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id : null,
+    each.key == "complete-dotnet" && local.enable_custom_reroute_ruleset && local.enable_development_traffic_reversal ? azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id : null,
     length(each.value.redirects) > 0 ? azurerm_cdn_frontdoor_rule_set.host_redirects[each.key].id : null,
   ]))
   cdn_frontdoor_origin_ids = [
