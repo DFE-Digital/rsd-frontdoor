@@ -59,7 +59,7 @@ locals {
 
 
   enable_custom_reroute_ruleset       = var.enable_custom_reroute_ruleset
-  enable_development_traffic_reversal = var.enable_development_traffic_reversal
+  enable_custom_reroute_reversal = var.enable_custom_reroute_reversal
   complete_dotnet_project_prefix      = "^projects/[^/]+"
 
   complete_dotnet_ruby_migration_paths_development = {
