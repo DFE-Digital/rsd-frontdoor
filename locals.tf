@@ -58,175 +58,78 @@ locals {
   waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
 
 
-  enable_custom_reroute_ruleset     = var.enable_custom_reroute_ruleset
+  enable_custom_reroute_ruleset       = var.enable_custom_reroute_ruleset
   enable_development_traffic_reversal = var.enable_development_traffic_reversal
-  complete_dotnet_project_prefix = "^projects/[^/]+"
+  complete_dotnet_project_prefix      = "^projects/[^/]+"
 
   complete_dotnet_ruby_migration_paths_development = {
-    "cookies" : {
+    "assets" : {
       order : 10,
-      behavior_on_match : "Stop",
       require_cookie : false,
-      require_header : {
-        name : "Content-Type",
-        values : [
-          "application/x-www-form-urlencoded"
-        ]
-      },
-      append_request_headers : {
-        "x-request-origin" : "ruby"
-      },
       routes : [
-        "cookies"
+        "/auth/:provider/callback",
+        "/auth/failure"
       ]
     },
-    "assets" : {
+    "exports" : {
       order : 20,
       require_cookie : false,
       routes : [
-        "dist",
-        "signin-oidc",
-        "netassets",
-        "accessibility",
-        "cookies",
-        "access-denied",
-        "privacy",
-      ]
-    },
-    "search" : {
-      order : 30,
-      require_cookie : false,
-      routes : [
-        "^search(?:/user)?(?:\\?[^/#]*)?$"
-      ],
-      operator : "RegEx"
-    },
-    "projects" : {
-      order : 40,
-      require_cookie : false,
-      routes : [
-        "projects/team",
-        "projects/yours",
-      ]
-    },
-    "allprojects" : {
-      order : 50,
-      require_cookie : false,
-      routes : [
-        "projects/all/by-month",
-        "projects/all/completed",
-        "projects/all/in-progress",
-        "projects/all/local-authorities",
-        "projects/all/regions",
-        "projects/all/trusts",
-        "projects/all/users",
-        "projects/all/statistics",
-        "projects/all/handover",
-      ]
-    },
-    "servicesupport" : {
-      order : 60,
-      require_cookie : false,
-      routes : [
-        "projects/service-support/with-academy-urn",
-        "projects/service-support/without-academy-urn",
-        "service-support/local-authorities",
-        "service-support/users",
-      ]
-    },
-    "servicesupportcreateurns" : {
-      order : 70,
-      require_cookie : false,
-      routes : [
-        "${local.complete_dotnet_project_prefix}/academy-urn$",
-      ],
-      operator : "RegEx",
-    },
-    "exports" : {
-      order : 80,
-      require_cookie : false,
-      routes : [
-        "projects/all/export",
-        "projects/all/reports",
-      ],
-      operator : "Equal"
-    },
-    "groups" : {
-      order : 90,
-      require_cookie : false,
-      routes : [
-        "groups",
+        "/projects/all/export/by-significant-date/"
       ]
     },
     "projectpage" : {
-      order : 100,
+      order : 30,
       require_cookie : false,
       routes : [
-        "${local.complete_dotnet_project_prefix}/(?:(?:information|notes|external-contacts|internal-contacts|date-history|dao-revocation|complete)(?:/.*)?|tasks)$",
+        "${local.complete_dotnet_project_prefix}/confirm_delete",
       ],
       operator : "RegEx",
     },
     "projecttasksgroupone" : {
-      order : 110,
+      order : 40,
       require_cookie : false,
       routes : [
-        "/tasks/handover",
-        "/tasks/stakeholder_kick_off",
-        "/tasks/proposed_capacity_of_the_academy",
-        "/tasks/supplemental_funding_agreement",
-        "/tasks/articles_of_association",
-        "/tasks/deed_of_variation",
-        "/tasks/conditions_met",
-        "/tasks/redact_and_send",
-        "/tasks/redact_and_send_documents",
-        "/tasks/receive_grant_payment_certificate"
+        "/tasks/check_accuracy_of_higher_needs",
+        "/tasks/conversion_grant",
+        "/tasks/sponsored_support_grant",
+        "/tasks/confirm_chair_of_governors_contact",
+        "/tasks/trust_modification_order",
+        "/tasks/direction_to_transfer",
+        "/tasks/one_hundred_and_twenty_five_year_lease",
+        "/tasks/subleases",
+        "/tasks/tenancy_at_will",
+        "/tasks/school_completed"
       ],
       operator : "EndsWith",
     },
     "projecttasksgrouptwo" : {
-      order : 120,
+      order : 50,
       require_cookie : false,
       routes : [
-        "/tasks/declaration_of_expenditure_certificate",
-        "/tasks/deed_of_novation_and_variation",
-        "/tasks/confirm_date_academy_opened",
-        "/tasks/confirm_date_academy_transferred",
-        "/tasks/church_supplemental_agreement",
-        "/tasks/commercial_transfer_agreement",
-        "/tasks/main_contact",
-        "/tasks/land_questionnaire",
-        "/tasks/land_registry",
-        "/tasks/master_funding_agreement"
+        "/tasks/share_information",
+        "/tasks/confirm_outgoing_trust_ceo_contact",
+        "/tasks/request_new_urn_and_record",
+        "/tasks/form_m",
+        "/tasks/land_consent_letter",
+        "/tasks/deed_of_termination_for_the_master_funding_agreement",
+        "/tasks/deed_termination_church_agreement",
+        "/tasks/closure_or_transfer_declaration",
+        "/tasks/bank_details_changing",
+        "/tasks/confirm_incoming_trust_has_completed_all_actions"
       ],
       operator : "EndsWith",
     },
-    "projecttasksgroupthree" : {
-      order : 130,
+    "rubyapi" : {
+      order : 60,
       require_cookie : false,
       routes : [
-        "/tasks/confirm_incoming_trust_ceo_contact",
-        "/tasks/risk_protection_arrangement",
-        "/tasks/rpa_policy",
-        "/tasks/confirm_headteacher_contact",
-        "/tasks/check_and_confirm_financial_information"
+        "/api/docs",
+        "/projects/transfers",
+        "/projects/conversions"
       ],
-      operator : "EndsWith",
+      operator : "Equal",
     },
-    "editaboutproject" : {
-      order : 140,
-      require_cookie : false,
-      routes : [
-        "^projects/(?:conversions|transfers)/[^/]+(?:/.*)?(?:#.*)?$",
-      ],
-      operator : "RegEx",
-    },
-    "formamattrust" : {
-      order : 150,
-      require_cookie : false,
-      routes : [
-        "form-a-multi-academy-trust/",
-      ],
-    }
   }
   complete_dotnet_ruby_migration_paths_test = {
     "cookies" : {
