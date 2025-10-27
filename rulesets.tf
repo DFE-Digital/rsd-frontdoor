@@ -253,7 +253,6 @@ resource "azurerm_cdn_frontdoor_rule" "dotnet_disable_override_reverse" {
       cache_behavior                = "Disabled"
     }
   }
-
 }
 
 resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {

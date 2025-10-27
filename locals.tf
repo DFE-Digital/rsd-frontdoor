@@ -72,7 +72,6 @@ locals {
         "/auth/azure_activedirectory_v2",
         "/sign-in",
         "/sign-out"
-
       ]
     },
     "exports" : {
@@ -94,7 +93,6 @@ locals {
       order : 40,
       require_cookie : false,
       routes : [
-        "/tasks/check_accuracy_of_higher_needs",
         "/tasks/conversion_grant",
         "/tasks/sponsored_support_grant",
         "/tasks/confirm_chair_of_governors_contact",
@@ -103,7 +101,8 @@ locals {
         "/tasks/one_hundred_and_twenty_five_year_lease",
         "/tasks/subleases",
         "/tasks/tenancy_at_will",
-        "/tasks/school_completed"
+        "/tasks/school_completed",
+        "/tasks/share_information"
       ],
       operator : "EndsWith",
     },
@@ -111,15 +110,12 @@ locals {
       order : 50,
       require_cookie : false,
       routes : [
-        "/tasks/share_information",
         "/tasks/confirm_outgoing_trust_ceo_contact",
         "/tasks/request_new_urn_and_record",
         "/tasks/form_m",
-        "/tasks/land_consent_letter",
         "/tasks/deed_of_termination_for_the_master_funding_agreement",
         "/tasks/deed_termination_church_agreement",
         "/tasks/closure_or_transfer_declaration",
-        "/tasks/bank_details_changing",
         "/tasks/confirm_incoming_trust_has_completed_all_actions"
       ],
       operator : "EndsWith",
