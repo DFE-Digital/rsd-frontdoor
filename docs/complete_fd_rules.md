@@ -124,11 +124,12 @@ At present, these tasks are:
 > This is the first release that will see the ruby to complete frontdoor reversed.  
 > Instead of traffic being sent from ruby to .net, this will now be the other way round.  
 > The reversal is release on dev environment only at the moment  
-- add a new variable `enable_custom_reroute_reversal` in \[env\].tfvars to toggle front door reversal for this environment. **N.B** - this is a "transition" variable. Once dev/test/prod are all reversed, we will no longer need it
-- move forwarding ruleset from ruby to .net container when the `enable_custom_reroute_reversal` flag is true
-- ensure that `dotnet-bypass` and `dotnet-disable` conditions still work with the reversal
-- update routing rules to be the inverse of what they were - drop any routes that are live on dev, add any routes that are not
-- release 3 new tasks on dev environment
+- add a new variable `enable_custom_reroute_reversal` in \[env\].tfvars to toggle front door reversal for this environment. **N.B** - this is a "transition" variable. Once dev/test/prod are all reversed, we will no longer need it  
+- move forwarding ruleset from ruby to .net container when the `enable_custom_reroute_reversal` flag is true  
+- ensure that `dotnet-bypass` and `dotnet-disable` conditions still work with the reversal  
+- update routing rules to be the inverse of what they were - drop any routes that are live on dev, add any routes that are not  
+- release 3 new tasks on dev environment  
+- switch beta.dev.* and dev.* domains - not source tracked, dev.tfvars only
 
 **11 - 2025-10-21**
 - add 2 more task routes using the EndsWith pattern
