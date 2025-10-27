@@ -63,12 +63,16 @@ locals {
   complete_dotnet_project_prefix = "^projects/[^/]+"
 
   complete_dotnet_ruby_migration_paths_development = {
-    "assets" : {
+    "rubyauth" : {
       order : 10,
       require_cookie : false,
       routes : [
         "/auth/:provider/callback",
-        "/auth/failure"
+        "/auth/failure",
+        "/auth/azure_activedirectory_v2",
+        "/sign-in",
+        "/sign-out"
+
       ]
     },
     "exports" : {
@@ -124,11 +128,8 @@ locals {
       order : 60,
       require_cookie : false,
       routes : [
-        "/api/docs",
-        "/projects/transfers",
-        "/projects/conversions"
+        "/api"
       ],
-      operator : "Equal",
     },
   }
   complete_dotnet_ruby_migration_paths_test = {
