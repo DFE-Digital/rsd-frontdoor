@@ -35,6 +35,7 @@ This project creates and manages the RSD FrontDoor CDN.
 | [azurerm_cdn_frontdoor_rule.add_response_headers](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule) | resource |
 | [azurerm_cdn_frontdoor_rule.complete_dotnet_ruby_migration](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule) | resource |
 | [azurerm_cdn_frontdoor_rule.dotnet_disable_override](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule) | resource |
+| [azurerm_cdn_frontdoor_rule.dotnet_disable_override_reverse](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule) | resource |
 | [azurerm_cdn_frontdoor_rule.host_redirects](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule) | resource |
 | [azurerm_cdn_frontdoor_rule.remove_response_headers](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule) | resource |
 | [azurerm_cdn_frontdoor_rule.security](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/cdn_frontdoor_rule) | resource |
@@ -62,6 +63,7 @@ This project creates and manages the RSD FrontDoor CDN.
 | <a name="input_azure_location"></a> [azure\_location](#input\_azure\_location) | Azure location in which to launch resources. | `string` | n/a | yes |
 | <a name="input_azure_subscription_id"></a> [azure\_subscription\_id](#input\_azure\_subscription\_id) | Service Principal Subscription ID | `string` | n/a | yes |
 | <a name="input_azure_tenant_id"></a> [azure\_tenant\_id](#input\_azure\_tenant\_id) | Service Principal Tenant ID | `string` | n/a | yes |
+| <a name="input_enable_custom_reroute_reversal"></a> [enable\_custom\_reroute\_reversal](#input\_enable\_custom\_reroute\_reversal) | Enable traffic reversal from dotnet to ruby in development environment | `bool` | `false` | no |
 | <a name="input_enable_custom_reroute_ruleset"></a> [enable\_custom\_reroute\_ruleset](#input\_enable\_custom\_reroute\_ruleset) | Toggle on/off the re-routing of traffic accessing the Ruby Complete app under certain request paths which should route to the .NET Complete app backend origin | `bool` | `false` | no |
 | <a name="input_enable_frontdoor"></a> [enable\_frontdoor](#input\_enable\_frontdoor) | Launch the FrontDoor CDN | `bool` | `false` | no |
 | <a name="input_enable_frontdoor_vdp_redirects"></a> [enable\_frontdoor\_vdp\_redirects](#input\_enable\_frontdoor\_vdp\_redirects) | Creates a redirect rule set for security.txt and thanks.txt to an external Vulnerability Disclosure Program service | `bool` | `true` | no |

@@ -198,6 +198,8 @@ resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
 }
 
 resource "azurerm_cdn_frontdoor_rule" "dotnet_disable_override" {
+  /* If reversing the front door, don't include this rule */
+  count      = local.enable_custom_reroute_reversal == true ? 0 : 1
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
   name                      = "dotnetdisableoverride"
@@ -221,6 +223,38 @@ resource "azurerm_cdn_frontdoor_rule" "dotnet_disable_override" {
   }
 }
 
+resource "azurerm_cdn_frontdoor_rule" "dotnet_disable_override_reverse" {
+  /* If reversing the front door, include this rule */
+  count      = local.enable_custom_reroute_reversal == true ? 1 : 0
+  depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
+
+  name                      = "dotnetdisableoverridereverse"
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.complete_dotnet_ruby_migration[0].id
+  order                     = 1
+  behavior_on_match         = "Stop"
+
+  conditions {
+    cookies_condition {
+      cookie_name = "dotnet-disable"
+      operator    = "Any"
+    }
+  }
+
+  actions {
+    response_header_action {
+      header_action = "Append"
+      header_name   = "X-Backend-Origin-Rerouted"
+      value         = "ruby"
+    }
+
+    route_configuration_override_action {
+      cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.rsd["complete-ruby"].id
+      forwarding_protocol           = azurerm_cdn_frontdoor_route.rsd["complete-ruby"].forwarding_protocol
+      cache_behavior                = "Disabled"
+    }
+  }
+}
+
 resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
   for_each = local.complete_dotnet_ruby_migration_paths
 
@@ -233,15 +267,15 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
 
   actions {
     route_configuration_override_action {
-      cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.rsd["complete-dotnet"].id
-      forwarding_protocol           = azurerm_cdn_frontdoor_route.rsd["complete-dotnet"].forwarding_protocol
+      cdn_frontdoor_origin_group_id = local.enable_custom_reroute_reversal ? azurerm_cdn_frontdoor_origin_group.rsd["complete-ruby"].id : azurerm_cdn_frontdoor_origin_group.rsd["complete-dotnet"].id
+      forwarding_protocol           = local.enable_custom_reroute_reversal ? azurerm_cdn_frontdoor_route.rsd["complete-ruby"].forwarding_protocol : azurerm_cdn_frontdoor_route.rsd["complete-dotnet"].forwarding_protocol
       cache_behavior                = "Disabled"
     }
 
     response_header_action {
       header_action = "Append"
       header_name   = "X-Backend-Origin-Rerouted"
-      value         = "dotnet"
+      value         = local.enable_custom_reroute_reversal ? "ruby" : "dotnet"
     }
 
     dynamic "request_header_action" {
@@ -262,11 +296,20 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
     }
 
     dynamic "cookies_condition" {
-      for_each = lookup(each.value, "require_cookie", false) ? [1] : []
+      for_each = lookup(each.value, "require_cookie", false) && local.enable_custom_reroute_reversal != true ? [1] : []
 
       content {
         cookie_name = "dotnet-bypass"
         operator    = "Any"
+      }
+    }
+
+    dynamic "cookies_condition" {
+      for_each = lookup(each.value, "require_cookie", false) && local.enable_custom_reroute_reversal == true ? [1] : []
+
+      content {
+        cookie_name = "dotnet-bypass"
+        operator    = "Not Any"
       }
     }
 

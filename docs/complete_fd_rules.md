@@ -5,6 +5,10 @@ The source application is [ruby complete](https://github.com/DFE-Digital/dfe-com
 
 Traffic is redirected to the [dotnet application](https://github.com/DFE-Digital/complete-conversions-transfers-changes) for the routes specified.
 
+> **IMPORTANT**  
+> 
+> As of release 12 (see [version history](https://github.com/DFE-Digital/rsd-frontdoor/blob/main/docs/complete_fd_rules.md#version-history)), the frontdoor configuration will be reversed on develop - test and prod to follow shortly - meaning that the source application will be dotnet, with the redirect target being ruby.
+
 ## Key
 
 ✅ - included. Hitting this route in ruby app will redirect through front door to dotnet for this environment  
@@ -111,6 +115,21 @@ At present, these tasks are:
 
 
 ## Version history:
+**12 - 2025-10-27**  
+>**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***  
+>**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* Important note! \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***  
+>**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*** 
+> 
+> This release marks a significant change in the front door terraform.  
+> This is the first release that will see the ruby to complete frontdoor reversed.  
+> Instead of traffic being sent from ruby to .net, this will now be the other way round.  
+> The reversal is release on dev environment only at the moment  
+- add a new variable `enable_custom_reroute_reversal` in \[env\].tfvars to toggle front door reversal for this environment. **N.B** - this is a "transition" variable. Once dev/test/prod are all reversed, we will no longer need it  
+- move forwarding ruleset from ruby to .net container when the `enable_custom_reroute_reversal` flag is true  
+- ensure that `dotnet-bypass` and `dotnet-disable` conditions still work with the reversal  
+- update routing rules to be the inverse of what they were - drop any routes that are live on dev, add any routes that are not  
+- release 3 new tasks on dev environment  
+- switch beta.dev.* and dev.* domains - not source tracked, dev.tfvars only
 
 **11 - 2025-10-21**
 - add 2 more task routes using the EndsWith pattern
