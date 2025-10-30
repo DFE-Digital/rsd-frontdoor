@@ -81,16 +81,8 @@ locals {
         "/projects/all/export/by-significant-date/"
       ]
     },
-    "projectpage" : {
-      order : 30,
-      require_cookie : false,
-      routes : [
-        "${local.complete_dotnet_project_prefix}/confirm_delete",
-      ],
-      operator : "RegEx",
-    },
     "projecttasksgroupone" : {
-      order : 40,
+      order : 30,
       require_cookie : false,
       routes : [
         "/tasks/conversion_grant",
@@ -107,7 +99,7 @@ locals {
       operator : "EndsWith",
     },
     "projecttasksgrouptwo" : {
-      order : 50,
+      order : 40,
       require_cookie : false,
       routes : [
         "/tasks/confirm_outgoing_trust_ceo_contact",
@@ -119,7 +111,7 @@ locals {
       operator : "EndsWith",
     },
     "rubyapi" : {
-      order : 60,
+      order : 50,
       require_cookie : false,
       routes : [
         "/api"
