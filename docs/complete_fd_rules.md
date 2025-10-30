@@ -70,6 +70,13 @@ At present, these tasks are:
 - rpa_policy
 - confirm_headteacher_contact
 - check_and_confirm_financial_information
+- bank_details_changing
+- academy_details
+- complete_notification_of_change
+- check_accuracy_of_higher_needs
+- land_consent_letter
+- deed_termination_church_agreement
+- deed_of_termination_for_the_master_funding_agreement
 
 ## Routes  
 
@@ -77,8 +84,9 @@ At present, these tasks are:
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
-| /projects/*/external-contacts/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/*/external-contacts/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/tasks | RegEx | ✅ | ✅ | ✅ |
+| /projects/*/confirm_delete | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /projects/\*/notes/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
 | /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ✅ | ✅ |
@@ -104,7 +112,7 @@ At present, these tasks are:
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
-| /service-support/users/* | Begins With | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /service-support/users/* | Begins With | ✅ | ⚠️ | ⚠️ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /search/user | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
@@ -115,6 +123,10 @@ At present, these tasks are:
 
 
 ## Version history:
+** 13 - 2025-10-30**
+- add 7 more task routes using the EndsWith pattern
+- add confirm delete in pre-release using a regex match. RegEx: `^projects/[^/]+/confirm_delete`
+
 **12 - 2025-10-27**  
 >**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***  
 >**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* Important note! \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***  
