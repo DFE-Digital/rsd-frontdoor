@@ -311,6 +311,14 @@ locals {
         "service-support/users",
       ]
     },
+    "confirmdeleteprerelease" : {
+      order : 180,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/confirm_delete",
+      ],
+      operator : "RegEx",
+    },
   }
   complete_dotnet_ruby_migration_paths_production = {
     "cookies" : {
@@ -496,6 +504,14 @@ locals {
       routes : [
         "service-support/users",
       ]
+    },
+    "confirmdeleteprerelease" : {
+      order : 180,
+      require_cookie : true,
+      routes : [
+        "${local.complete_dotnet_project_prefix}/confirm_delete",
+      ],
+      operator : "RegEx",
     },
   }
 

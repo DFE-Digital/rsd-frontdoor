@@ -86,6 +86,7 @@ At present, these tasks are:
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/external-contacts/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/tasks | RegEx | ✅ | ✅ | ✅ |
+| /projects/*/confirm_delete | RegEx | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
 | /projects/\*/notes/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
 | /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ✅ | ✅ |
@@ -124,6 +125,7 @@ At present, these tasks are:
 ## Version history:
 ** 13 - 2025-10-30**
 - add 7 more task routes using the EndsWith pattern
+- add confirm delete in pre-release using a regex match. RegEx: `^projects/[^/]+/confirm_delete`
 
 **12 - 2025-10-27**  
 >**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***  
