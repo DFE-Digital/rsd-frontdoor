@@ -113,8 +113,6 @@ locals {
         "/tasks/confirm_outgoing_trust_ceo_contact",
         "/tasks/request_new_urn_and_record",
         "/tasks/form_m",
-        "/tasks/deed_of_termination_for_the_master_funding_agreement",
-        "/tasks/deed_termination_church_agreement",
         "/tasks/closure_or_transfer_declaration",
         "/tasks/confirm_incoming_trust_has_completed_all_actions"
       ],
@@ -281,19 +279,33 @@ locals {
         "/tasks/risk_protection_arrangement",
         "/tasks/rpa_policy",
         "/tasks/confirm_headteacher_contact",
-        "/tasks/check_and_confirm_financial_information"
+        "/tasks/check_and_confirm_financial_information",
+        "/tasks/bank_details_changing",
+        "/tasks/academy_details",
+        "/tasks/complete_notification_of_change",
+        "/tasks/check_accuracy_of_higher_needs",
+        "/tasks/land_consent_letter",
+      ],
+      operator : "EndsWith",
+    },
+    "projecttasksgroupfour" : {
+      order : 150,
+      require_cookie : false,
+      routes : [
+        "/tasks/deed_termination_church_agreement",
+        "/tasks/deed_of_termination_for_the_master_funding_agreement"
       ],
       operator : "EndsWith",
     },
     "formamattrust" : {
-      order : 150,
+      order : 160,
       require_cookie : false,
       routes : [
         "form-a-multi-academy-trust/",
       ],
     },
     "servicesupportusersprerelease" : {
-      order : 160,
+      order : 170,
       require_cookie : true,
       routes : [
         "service-support/users",
@@ -453,19 +465,33 @@ locals {
         "/tasks/risk_protection_arrangement",
         "/tasks/rpa_policy",
         "/tasks/confirm_headteacher_contact",
-        "/tasks/check_and_confirm_financial_information"
+        "/tasks/check_and_confirm_financial_information",
+        "/tasks/bank_details_changing",
+        "/tasks/academy_details",
+        "/tasks/complete_notification_of_change",
+        "/tasks/check_accuracy_of_higher_needs",
+        "/tasks/land_consent_letter",
+      ],
+      operator : "EndsWith",
+    },
+    "projecttasksgroupfour" : {
+      order : 150,
+      require_cookie : false,
+      routes : [
+        "/tasks/deed_termination_church_agreement",
+        "/tasks/deed_of_termination_for_the_master_funding_agreement"
       ],
       operator : "EndsWith",
     },
     "formamattrust" : {
-      order : 150,
+      order : 160,
       require_cookie : false,
       routes : [
         "form-a-multi-academy-trust/",
       ],
     },
     "servicesupportusersprerelease" : {
-      order : 160,
+      order : 170,
       require_cookie : true,
       routes : [
         "service-support/users",

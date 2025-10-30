@@ -70,6 +70,13 @@ At present, these tasks are:
 - rpa_policy
 - confirm_headteacher_contact
 - check_and_confirm_financial_information
+- bank_details_changing
+- academy_details
+- complete_notification_of_change
+- check_accuracy_of_higher_needs
+- land_consent_letter
+- deed_termination_church_agreement
+- deed_of_termination_for_the_master_funding_agreement
 
 ## Routes  
 
@@ -115,6 +122,9 @@ At present, these tasks are:
 
 
 ## Version history:
+** 13 - 2025-10-30**
+- add 7 more task routes using the EndsWith pattern
+
 **12 - 2025-10-27**  
 >**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***  
 >**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* Important note! \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***  
