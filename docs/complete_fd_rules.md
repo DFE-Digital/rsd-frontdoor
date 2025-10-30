@@ -77,7 +77,7 @@ At present, these tasks are:
 | - | - | - | - | - |
 | /projects/*/academy-urn | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
-| /projects/*/external-contacts/\* | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/*/external-contacts/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/tasks | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/notes/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
@@ -104,7 +104,7 @@ At present, these tasks are:
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
-| /service-support/users/* | Begins With | 🆕✅ | 🆕⚠️ | 🆕⚠️ |
+| /service-support/users/* | Begins With | ✅ | ⚠️ | ⚠️ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /search/user | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
