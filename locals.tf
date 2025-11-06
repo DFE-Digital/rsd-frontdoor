@@ -297,20 +297,20 @@ locals {
         "form-a-multi-academy-trust/",
       ],
     },
-    "servicesupportusersprerelease" : {
+    "confirmdelete" : {
       order : 170,
-      require_cookie : true,
-      routes : [
-        "service-support/users",
-      ]
-    },
-    "confirmdeleteprerelease" : {
-      order : 180,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "${local.complete_dotnet_project_prefix}/confirm_delete",
       ],
       operator : "RegEx",
+    },
+    "servicesupportusersprerelease" : {
+      order : 180,
+      require_cookie : true,
+      routes : [
+        "service-support/users",
+      ]
     },
   }
   complete_dotnet_ruby_migration_paths_production = {
@@ -491,20 +491,20 @@ locals {
         "form-a-multi-academy-trust/",
       ],
     },
-    "servicesupportusersprerelease" : {
+    "confirmdelete" : {
       order : 170,
-      require_cookie : true,
-      routes : [
-        "service-support/users",
-      ]
-    },
-    "confirmdeleteprerelease" : {
-      order : 180,
-      require_cookie : true,
+      require_cookie : false,
       routes : [
         "${local.complete_dotnet_project_prefix}/confirm_delete",
       ],
       operator : "RegEx",
+    },
+    "servicesupportusersprerelease" : {
+      order : 180,
+      require_cookie : true,
+      routes : [
+        "service-support/users",
+      ]
     },
   }
 
