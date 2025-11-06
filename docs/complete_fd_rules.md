@@ -77,6 +77,17 @@ At present, these tasks are:
 - land_consent_letter
 - deed_termination_church_agreement
 - deed_of_termination_for_the_master_funding_agreement
+- confirm_chair_of_governors_contact
+- request_new_urn_and_record
+- confirm_outgoing_trust_ceo_contact
+- trust_modification_order
+- tenancy_at_will
+- subleases
+- share_information
+- closure_or_transfer_declaration
+- form_m
+- confirm_incoming_trust_has_completed_all_actions
+- one_hundred_and_twenty_five_year_lease
 
 ## Routes  
 
@@ -125,6 +136,7 @@ At present, these tasks are:
 ## Version history:
 ** 14 - 2025-11-06**
 - release confirm delete to test and prod.
+- add 11 more tasks routes using the EndsWith pattern
 
 
 ** 13 - 2025-10-30**

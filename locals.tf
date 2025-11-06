@@ -88,31 +88,13 @@ locals {
       routes : [
         "/tasks/conversion_grant",
         "/tasks/sponsored_support_grant",
-        "/tasks/confirm_chair_of_governors_contact",
-        "/tasks/trust_modification_order",
         "/tasks/direction_to_transfer",
-        "/tasks/one_hundred_and_twenty_five_year_lease",
-        "/tasks/subleases",
-        "/tasks/tenancy_at_will",
         "/tasks/school_completed",
-        "/tasks/share_information"
-      ],
-      operator : "EndsWith",
-    },
-    "projecttasksgrouptwo" : {
-      order : 40,
-      require_cookie : false,
-      routes : [
-        "/tasks/confirm_outgoing_trust_ceo_contact",
-        "/tasks/request_new_urn_and_record",
-        "/tasks/form_m",
-        "/tasks/closure_or_transfer_declaration",
-        "/tasks/confirm_incoming_trust_has_completed_all_actions"
       ],
       operator : "EndsWith",
     },
     "rubyapi" : {
-      order : 50,
+      order : 40,
       require_cookie : false,
       routes : [
         "/api"
@@ -286,19 +268,37 @@ locals {
       require_cookie : false,
       routes : [
         "/tasks/deed_termination_church_agreement",
-        "/tasks/deed_of_termination_for_the_master_funding_agreement"
+        "/tasks/deed_of_termination_for_the_master_funding_agreement",
+        "/tasks/confirm_chair_of_governors_contact",
+        "/tasks/request_new_urn_and_record",
+        "/tasks/confirm_outgoing_trust_ceo_contact",
+        "/tasks/trust_modification_order",
+        "/tasks/tenancy_at_will",
+        "/tasks/subleases",
+        "/tasks/share_information",
+        "/tasks/closure_or_transfer_declaration",
+      ],
+      operator : "EndsWith",
+    },
+    "projecttasksgroupfive" : {
+      order : 160,
+      require_cookie : false,
+      routes : [
+        "/tasks/form_m",
+        "/tasks/confirm_incoming_trust_has_completed_all_actions",
+        "/tasks/one_hundred_and_twenty_five_year_lease",
       ],
       operator : "EndsWith",
     },
     "formamattrust" : {
-      order : 160,
+      order : 170,
       require_cookie : false,
       routes : [
         "form-a-multi-academy-trust/",
       ],
     },
     "confirmdelete" : {
-      order : 170,
+      order : 180,
       require_cookie : false,
       routes : [
         "${local.complete_dotnet_project_prefix}/confirm_delete",
@@ -306,7 +306,7 @@ locals {
       operator : "RegEx",
     },
     "servicesupportusersprerelease" : {
-      order : 180,
+      order : 190,
       require_cookie : true,
       routes : [
         "service-support/users",
@@ -480,19 +480,37 @@ locals {
       require_cookie : false,
       routes : [
         "/tasks/deed_termination_church_agreement",
-        "/tasks/deed_of_termination_for_the_master_funding_agreement"
+        "/tasks/deed_of_termination_for_the_master_funding_agreement",
+        "/tasks/confirm_chair_of_governors_contact",
+        "/tasks/request_new_urn_and_record",
+        "/tasks/confirm_outgoing_trust_ceo_contact",
+        "/tasks/trust_modification_order",
+        "/tasks/tenancy_at_will",
+        "/tasks/subleases",
+        "/tasks/share_information",
+        "/tasks/closure_or_transfer_declaration",
+      ],
+      operator : "EndsWith",
+    },
+    "projecttasksgroupfive" : {
+      order : 160,
+      require_cookie : false,
+      routes : [
+        "/tasks/form_m",
+        "/tasks/confirm_incoming_trust_has_completed_all_actions",
+        "/tasks/one_hundred_and_twenty_five_year_lease",
       ],
       operator : "EndsWith",
     },
     "formamattrust" : {
-      order : 160,
+      order : 170,
       require_cookie : false,
       routes : [
         "form-a-multi-academy-trust/",
       ],
     },
     "confirmdelete" : {
-      order : 170,
+      order : 180,
       require_cookie : false,
       routes : [
         "${local.complete_dotnet_project_prefix}/confirm_delete",
@@ -500,7 +518,7 @@ locals {
       operator : "RegEx",
     },
     "servicesupportusersprerelease" : {
-      order : 180,
+      order : 190,
       require_cookie : true,
       routes : [
         "service-support/users",
