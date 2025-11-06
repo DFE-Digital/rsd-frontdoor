@@ -71,7 +71,8 @@ locals {
         "/auth/failure",
         "/auth/azure_activedirectory_v2",
         "/sign-in",
-        "/sign-out"
+        "/sign-out",
+        "/assets"
       ]
     },
     "exports" : {
