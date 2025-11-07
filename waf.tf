@@ -50,10 +50,11 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
         for_each = custom_rule.value["match_conditions"]
 
         content {
-          match_variable = match_condition.value["match_variable"]
-          match_values   = match_condition.value["match_values"]
-          operator       = match_condition.value["operator"]
-          selector       = match_condition.value["selector"]
+          match_variable     = match_condition.value["match_variable"]
+          match_values       = match_condition.value["match_values"]
+          operator           = match_condition.value["operator"]
+          selector           = match_condition.value["selector"]
+          negation_condition = match_condition.value["negation_condition"]
         }
       }
     }
