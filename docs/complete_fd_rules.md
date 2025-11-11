@@ -134,6 +134,10 @@ At present, these tasks are:
 
 
 ## Version history:
+** 15 - 2025-11-12**
+- update routing rules to be the inverse of what they were - drop any routes that are live on test, add any routes that are not
+- this is the equivalent of release 12 on dev, but for test
+
 ** 14 - 2025-11-06**
 - release confirm delete to test and prod.
 - add 11 more tasks routes using the EndsWith pattern
