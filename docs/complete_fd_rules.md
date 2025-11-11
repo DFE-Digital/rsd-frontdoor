@@ -138,6 +138,7 @@ At present, these tasks are:
 - update routing rules to be the inverse of what they were - drop any routes that are live on test, add any routes that are not
 - this is the equivalent of release 12 on dev, but for test environment
 - release service support users to test, as dev and test are now using same rulesets.
+- remove sign in from ruby rules on dev/test. Now directs to dotnet
 
 ** 14 - 2025-11-06**
 - release confirm delete to test and prod.

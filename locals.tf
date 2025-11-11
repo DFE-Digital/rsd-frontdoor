@@ -70,7 +70,6 @@ locals {
         "/auth/:provider/callback",
         "/auth/failure",
         "/auth/azure_activedirectory_v2",
-        "/sign-in",
         "/sign-out",
         "/assets"
       ]
