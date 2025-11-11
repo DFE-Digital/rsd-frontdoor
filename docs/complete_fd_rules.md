@@ -97,7 +97,7 @@ At present, these tasks are:
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/external-contacts/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/tasks | RegEx | ✅ | ✅ | ✅ |
-| /projects/*/confirm_delete | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/*/confirm_delete | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/notes/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
 | /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ✅ | ✅ |
