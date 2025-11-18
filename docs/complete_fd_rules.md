@@ -97,7 +97,7 @@ At present, these tasks are:
 | /projects/*/internal-contacts/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/external-contacts/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/*/tasks | RegEx | ✅ | ✅ | ✅ |
-| /projects/*/confirm_delete | RegEx | ✅ | ⚠️ → ✅ | ⚠️ → ✅ |
+| /projects/*/confirm_delete | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/notes/\* | RegEx | ✅ | ✅ | ✅ |
 | /projects/\*/date_history/\*** | Regex | ✅ | ✅ | ✅ |
 | /projects/\*/tasks/{task_identifiers} | Regex | ✅ | ✅ | ✅ |
@@ -123,7 +123,7 @@ At present, these tasks are:
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
-| /service-support/users/* | Begins With | ✅ | ⚠️ | ⚠️ |
+| /service-support/users/* | Begins With | ✅ | ⚠️ → ✅ | ⚠️ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /search/user | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
@@ -134,6 +134,12 @@ At present, these tasks are:
 
 
 ## Version history:
+** 15 - 2025-11-12**
+- update routing rules to be the inverse of what they were - drop any routes that are live on test, add any routes that are not
+- this is the equivalent of release 12 on dev, but for test environment
+- release service support users to test, as dev and test are now using same rulesets.
+- remove sign in from ruby rules on dev/test. Now directs to dotnet
+
 ** 14 - 2025-11-06**
 - release confirm delete to test and prod.
 - add 11 more tasks routes using the EndsWith pattern

@@ -304,15 +304,6 @@ resource "azurerm_cdn_frontdoor_rule" "complete_dotnet_ruby_migration" {
       }
     }
 
-    dynamic "cookies_condition" {
-      for_each = lookup(each.value, "require_cookie", false) && local.enable_custom_reroute_reversal == true ? [1] : []
-
-      content {
-        cookie_name = "dotnet-bypass"
-        operator    = "Not Any"
-      }
-    }
-
     dynamic "request_header_condition" {
       for_each = length(lookup(each.value, "require_header", {})) > 0 ? [1] : []
 
