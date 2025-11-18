@@ -81,19 +81,8 @@ locals {
         "/projects/all/export/by-significant-date/"
       ]
     },
-    "projecttasksgroupone" : {
-      order : 30,
-      require_cookie : false,
-      routes : [
-        "/tasks/conversion_grant",
-        "/tasks/sponsored_support_grant",
-        "/tasks/direction_to_transfer",
-        "/tasks/school_completed",
-      ],
-      operator : "EndsWith",
-    },
     "rubyapi" : {
-      order : 40,
+      order : 30,
       require_cookie : false,
       routes : [
         "/api"
@@ -286,6 +275,10 @@ locals {
         "/tasks/form_m",
         "/tasks/confirm_incoming_trust_has_completed_all_actions",
         "/tasks/one_hundred_and_twenty_five_year_lease",
+        "/tasks/conversion_grant",
+        "/tasks/sponsored_support_grant",
+        "/tasks/direction_to_transfer",
+        "/tasks/school_completed",
       ],
       operator : "EndsWith",
     },
