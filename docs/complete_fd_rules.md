@@ -70,7 +70,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
-| /service-support/users/* | Begins With | ✅ | ⚠️ → ✅ | ⚠️ |
+| /service-support/users/* | Begins With | ✅ | ✅ | ⚠️ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /search/user | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
