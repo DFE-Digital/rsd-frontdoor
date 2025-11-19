@@ -36,59 +36,6 @@ It is possible to ignore all of the rerouting rules in your local browser, which
 
 By providing the request cookie `dotnet-disable`, all routes will revert to ruby rather than redirecting to .net.
 
-## Task identifiers
-
-We are releasing various tasks through the front door - a list of tasks which will progressively get longer.
-
-For brevity, I've just referenced these tasks as {task_identifiers} in the Routes table (see below).
-
-The full "route" looks something like this: **/projects/\*/tasks/{task_identifiers}** - where {task_identifiers} matches one of the promoted tasks.
-
-At present, these tasks are:
-- handover
-- stakeholder_kick_off
-- proposed_capacity_of_the_academy
-- supplemental_funding_agreement
-- articles_of_association
-- deed_of_variation
-- conditions_met
-- redact_and_send
-- redact_and_send_documents
-- receive_grant_payment_certificate
-- declaration_of_expenditure_certificate
-- deed_of_novation_and_variation
-- confirm_date_academy_opened
-- confirm_date_academy_transferred
-- church_supplemental_agreement
-- commercial_transfer_agreement
-- main_contact
-- land_questionnaire
-- land_registry
-- master_funding_agreement
-- confirm_incoming_trust_ceo_contact
-- risk_protection_arrangement
-- rpa_policy
-- confirm_headteacher_contact
-- check_and_confirm_financial_information
-- bank_details_changing
-- academy_details
-- complete_notification_of_change
-- check_accuracy_of_higher_needs
-- land_consent_letter
-- deed_termination_church_agreement
-- deed_of_termination_for_the_master_funding_agreement
-- confirm_chair_of_governors_contact
-- request_new_urn_and_record
-- confirm_outgoing_trust_ceo_contact
-- trust_modification_order
-- tenancy_at_will
-- subleases
-- share_information
-- closure_or_transfer_declaration
-- form_m
-- confirm_incoming_trust_has_completed_all_actions
-- one_hundred_and_twenty_five_year_lease
-
 ## Routes  
 
 | Route | Operator | Dev | Test | Prod |  
@@ -123,7 +70,7 @@ At present, these tasks are:
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
-| /service-support/users/* | Begins With | ✅ | ⚠️ → ✅ | ⚠️ |
+| /service-support/users/* | Begins With | ✅ | ✅ | ⚠️ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /search/user | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
@@ -134,6 +81,9 @@ At present, these tasks are:
 
 
 ## Version history:
+** 16 - 2025-11-19**
+- release final 4 tasks. All tasks now live on dev, test and prod.
+
 ** 15 - 2025-11-12**
 - update routing rules to be the inverse of what they were - drop any routes that are live on test, add any routes that are not
 - this is the equivalent of release 12 on dev, but for test environment
