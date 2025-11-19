@@ -81,6 +81,11 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 
 
 ## Version history:
+** 17 - 2025-11-19**
+- production - update routing rules to be the inverse of what they were - drop any routes that are live on prod, add any routes that are not
+- this is the equivalent of release 12/15 on dev/test, but for prod environment
+- ensure sign-in assets & service support users are still routed to ruby
+
 ** 16 - 2025-11-19**
 - release final 4 tasks. All tasks now live on dev, test and prod.
 
