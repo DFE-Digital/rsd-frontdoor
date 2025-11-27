@@ -73,15 +73,8 @@ locals {
         "/assets"
       ]
     },
-    "exports" : {
-      order : 20,
-      require_cookie : false,
-      routes : [
-        "/projects/all/export/by-significant-date/"
-      ]
-    },
     "rubyapi" : {
-      order : 30,
+      order : 20,
       require_cookie : false,
       routes : [
         "/api"
@@ -100,15 +93,8 @@ locals {
         "/assets"
       ]
     },
-    "exports" : {
-      order : 20,
-      require_cookie : false,
-      routes : [
-        "/projects/all/export/by-significant-date/"
-      ]
-    },
     "rubyapi" : {
-      order : 30,
+      order : 20,
       require_cookie : false,
       routes : [
         "/api"
