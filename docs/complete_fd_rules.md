@@ -70,7 +70,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 | /projects/service-support/with-academy-urn/* | Begins With | ✅ | ✅ | ✅ |
 | /projects/service-support/without-academy-urn/* | Begins With | ✅ |  ✅ | ✅ |
 | /service-support/local-authorities/* | Begins With | ✅ | ✅ | ✅ |
-| /service-support/users/* | Begins With | ✅ | ✅ | ⚠️ |
+| /service-support/users/* | Begins With | ✅ | ✅ | ⚠️ → ✅ |
 | /search | RegEx | ✅ | ✅ | ✅ |
 | /search/user | RegEx | ✅ | ✅ | ✅ |
 | /cookies (GET) | Begins With | ✅ | ✅ | ✅ |
@@ -83,6 +83,7 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 ## Version history:
 ** 18 - 2025-11-27**
 - release sign-in page to prod. Remove /sign-in from ruby auth rule.
+- release service support users to prod. Remove service support users from ruby rules on prod.
 
 ** 17 - 2025-11-19**
 - production - update routing rules to be the inverse of what they were - drop any routes that are live on prod, add any routes that are not

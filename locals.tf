@@ -114,13 +114,6 @@ locals {
         "/api"
       ],
     },
-    "servicesupportusers" : {
-      order : 40,
-      require_cookie : false,
-      routes : [
-        "service-support/users",
-      ]
-    },
   }
 
   complete_dotnet_ruby_migration_all = {
