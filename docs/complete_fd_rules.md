@@ -81,6 +81,9 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 
 
 ## Version history:
+** 18 - 2025-11-27**
+- release sign-in page to prod. Remove /sign-in from ruby auth rule.
+
 ** 17 - 2025-11-19**
 - production - update routing rules to be the inverse of what they were - drop any routes that are live on prod, add any routes that are not
 - this is the equivalent of release 12/15 on dev/test, but for prod environment
