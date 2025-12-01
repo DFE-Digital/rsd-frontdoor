@@ -73,15 +73,8 @@ locals {
         "/assets"
       ]
     },
-    "exports" : {
-      order : 20,
-      require_cookie : false,
-      routes : [
-        "/projects/all/export/by-significant-date/"
-      ]
-    },
     "rubyapi" : {
-      order : 30,
+      order : 20,
       require_cookie : false,
       routes : [
         "/api"
@@ -97,30 +90,15 @@ locals {
         "/auth/failure",
         "/auth/azure_activedirectory_v2",
         "/sign-out",
-        "/assets",
-        "/sign-in"
-      ]
-    },
-    "exports" : {
-      order : 20,
-      require_cookie : false,
-      routes : [
-        "/projects/all/export/by-significant-date/"
+        "/assets"
       ]
     },
     "rubyapi" : {
-      order : 30,
+      order : 20,
       require_cookie : false,
       routes : [
         "/api"
       ],
-    },
-    "servicesupportusers" : {
-      order : 40,
-      require_cookie : false,
-      routes : [
-        "service-support/users",
-      ]
     },
   }
 
