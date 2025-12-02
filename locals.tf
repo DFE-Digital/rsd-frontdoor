@@ -1,6 +1,5 @@
 locals {
   environment                    = var.environment
-  azure_environment              = strcontains(local.environment, "d") ? "development" : strcontains(local.environment, "t") ? "test" : strcontains(local.environment, "p") ? "production" : ""
   azure_location                 = var.azure_location
   tags                           = var.tags
   existing_resource_group        = var.existing_resource_group
