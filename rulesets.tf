@@ -191,7 +191,7 @@ resource "azurerm_cdn_frontdoor_rule" "host_redirects" {
  * - Ash Davies 27/01/2025
  */
 resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
-  count = local.enable_frontdoor ? 1 : 0
+  count = local.enable_frontdoor && local.enable_custom_reroute_ruleset == true ? 1 : 0
 
   name                     = "completedotnetreroute"
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
@@ -199,7 +199,7 @@ resource "azurerm_cdn_frontdoor_rule_set" "complete_dotnet_ruby_migration" {
 
 resource "azurerm_cdn_frontdoor_rule" "dotnet_disable_override" {
   /* If reversing the front door, don't include this rule */
-  count      = local.enable_custom_reroute_reversal == true ? 0 : 1
+  count      = local.enable_custom_reroute_ruleset == false || local.enable_custom_reroute_reversal == true ? 0 : 1
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
   name                      = "dotnetdisableoverride"
@@ -225,7 +225,7 @@ resource "azurerm_cdn_frontdoor_rule" "dotnet_disable_override" {
 
 resource "azurerm_cdn_frontdoor_rule" "dotnet_disable_override_reverse" {
   /* If reversing the front door, include this rule */
-  count      = local.enable_custom_reroute_reversal == true ? 1 : 0
+  count      = local.enable_custom_reroute_ruleset == true && local.enable_custom_reroute_reversal == true ? 1 : 0
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
   name                      = "dotnetdisableoverridereverse"
