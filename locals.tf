@@ -61,26 +61,6 @@ locals {
   enable_custom_reroute_ruleset  = var.enable_custom_reroute_ruleset
   enable_custom_reroute_reversal = var.enable_custom_reroute_reversal
 
-  complete_dotnet_ruby_migration_paths_development_test = {
-    "rubyauth" : {
-      order : 10,
-      require_cookie : false,
-      routes : [
-        "/auth/:provider/callback",
-        "/auth/failure",
-        "/auth/azure_activedirectory_v2",
-        "/sign-out",
-        "/assets"
-      ]
-    },
-    "rubyapi" : {
-      order : 20,
-      require_cookie : false,
-      routes : [
-        "/api"
-      ],
-    },
-  }
   complete_dotnet_ruby_migration_paths_prod = {
     "rubyauth" : {
       order : 10,
@@ -103,9 +83,7 @@ locals {
   }
 
   complete_dotnet_ruby_migration_all = {
-    development = local.complete_dotnet_ruby_migration_paths_development_test
-    test        = local.complete_dotnet_ruby_migration_paths_development_test
-    production  = local.complete_dotnet_ruby_migration_paths_prod
+    production = local.complete_dotnet_ruby_migration_paths_prod
   }
 
   complete_dotnet_ruby_migration_paths = lookup(local.complete_dotnet_ruby_migration_all, local.azure_environment, {})
