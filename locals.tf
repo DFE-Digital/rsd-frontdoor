@@ -1,6 +1,5 @@
 locals {
   environment                    = var.environment
-  azure_environment              = strcontains(local.environment, "d") ? "development" : strcontains(local.environment, "t") ? "test" : strcontains(local.environment, "p") ? "production" : ""
   azure_location                 = var.azure_location
   tags                           = var.tags
   existing_resource_group        = var.existing_resource_group
@@ -56,34 +55,4 @@ locals {
   waf_rate_limiting_duration_in_minutes = var.waf_rate_limiting_duration_in_minutes
   waf_rate_limiting_threshold           = var.waf_rate_limiting_threshold
   waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
-
-
-  enable_custom_reroute_ruleset  = var.enable_custom_reroute_ruleset
-  enable_custom_reroute_reversal = var.enable_custom_reroute_reversal
-
-  complete_dotnet_ruby_migration_paths_prod = {
-    "rubyauth" : {
-      order : 10,
-      require_cookie : false,
-      routes : [
-        "/auth/:provider/callback",
-        "/auth/failure",
-        "/auth/azure_activedirectory_v2",
-        "/sign-out"
-      ]
-    },
-    "rubyapi" : {
-      order : 20,
-      require_cookie : false,
-      routes : [
-        "/api"
-      ],
-    },
-  }
-
-  complete_dotnet_ruby_migration_all = {
-    production = local.complete_dotnet_ruby_migration_paths_prod
-  }
-
-  complete_dotnet_ruby_migration_paths = lookup(local.complete_dotnet_ruby_migration_all, local.azure_environment, {})
 }

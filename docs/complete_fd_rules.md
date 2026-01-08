@@ -81,6 +81,17 @@ By providing the request cookie `dotnet-disable`, all routes will revert to ruby
 
 
 ## Version history:
+
+**19 - 2025-12-02**  
+>**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***  
+>**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* Important note! \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\***  
+>**\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*** 
+> 
+> This release marks a significant change in the front door terraform.  
+> The custom rulset and configuration for complete (ruby to .NET and vice versa) will be destroyed  
+
+- destroy all remaining rules, rulesets related to complete
+
 ** 18 - 2025-11-27**
 - release sign-in page to prod. Remove /sign-in from ruby auth rule.
 - release service support users to prod. Remove service support users from ruby rules on prod.
