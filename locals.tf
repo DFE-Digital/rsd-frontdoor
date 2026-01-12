@@ -5,7 +5,6 @@ locals {
   existing_resource_group        = var.existing_resource_group
   resource_group                 = local.existing_resource_group == "" ? azurerm_resource_group.rsd_frontdoor[0] : data.azurerm_resource_group.existing_resource_group[0]
   enable_resource_group_lock     = var.enable_resource_group_lock
-  key_vault_access_ipv4          = var.key_vault_access_ipv4
   tfvars_filename                = var.tfvars_filename
   enable_frontdoor               = var.enable_frontdoor
   frontdoor_sku                  = var.frontdoor_sku
@@ -55,4 +54,7 @@ locals {
   waf_rate_limiting_duration_in_minutes = var.waf_rate_limiting_duration_in_minutes
   waf_rate_limiting_threshold           = var.waf_rate_limiting_threshold
   waf_rate_limiting_bypass_ip_list      = var.waf_rate_limiting_bypass_ip_list
+
+  is_windows = can(regex("^[A-Za-z]:", abspath(path.root)))
+  bash       = local.is_windows ? "C:/Program Files/Git/bin/bash.exe" : "/bin/bash"
 }

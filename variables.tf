@@ -138,11 +138,6 @@ variable "frontdoor_enable_health_probe_logs" {
   default     = false
 }
 
-variable "key_vault_access_ipv4" {
-  description = "List of IPv4 Addresses that are permitted to access the Key Vault"
-  type        = list(string)
-}
-
 variable "tfvars_filename" {
   description = "tfvars filename. This file is uploaded and stored encrypted within Key Vault, to ensure that the latest tfvars are stored in a shared place."
   type        = string
