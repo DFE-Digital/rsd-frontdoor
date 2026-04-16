@@ -24,9 +24,10 @@ locals {
   custom_domains = flatten([
     for origin_key, origin in var.frontdoor_origins : [
       for domain in origin.custom_domains : {
-        origin_key = origin_key
-        hostname   = domain
-        zone_name  = one([for z in origin.managed_dns_zones : z.name if strcontains(domain, z.name)])
+        origin_key        = origin_key
+        hostname          = domain
+        zone_name         = one([for z in origin.managed_dns_zones : z.name if strcontains(domain, z.name)])
+        existing_endpoint = origin.existing_endpoint
       }
     ]
   ])
@@ -38,10 +39,11 @@ locals {
   frontdoor_custom_domain_map = {
     for domain_info in local.custom_domains :
     "${domain_info.origin_key}:${domain_info.hostname}" => {
-      name        = replace("${domain_info.origin_key}:${domain_info.hostname}", "/[^[:alnum:]]/", "-")
-      hostname    = domain_info.hostname
-      origin_key  = domain_info.origin_key
-      dns_zone_id = domain_info.zone_name != null ? try(data.azurerm_dns_zone.zone[domain_info.zone_name].id, null) : null
+      name              = replace("${domain_info.origin_key}:${domain_info.hostname}", "/[^[:alnum:]]/", "-")
+      hostname          = domain_info.hostname
+      origin_key        = domain_info.origin_key
+      dns_zone_id       = domain_info.zone_name != null ? try(data.azurerm_dns_zone.zone[domain_info.zone_name].id, null) : null
+      existing_endpoint = domain_info.existing_endpoint
     }
   }
   frontdoor_enable_access_logs          = var.frontdoor_enable_access_logs

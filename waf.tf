@@ -117,7 +117,9 @@ resource "azurerm_cdn_frontdoor_security_policy" "waf" {
         }
 
         dynamic "domain" {
-          for_each = azurerm_cdn_frontdoor_endpoint.rsd
+          for_each = {
+            for k, v in azurerm_cdn_frontdoor_endpoint.rsd : k => v if local.frontdoor_origins[k]["existing_endpoint"] == null
+          }
 
           content {
             cdn_frontdoor_domain_id = domain.value.id
@@ -128,4 +130,6 @@ resource "azurerm_cdn_frontdoor_security_policy" "waf" {
       }
     }
   }
+
+    depends_on = [azurerm_cdn_frontdoor_endpoint.rsd]
 }

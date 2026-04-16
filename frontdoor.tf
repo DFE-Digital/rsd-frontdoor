@@ -80,7 +80,7 @@ resource "azurerm_cdn_frontdoor_custom_domain_association" "rsd" {
   for_each = local.frontdoor_custom_domain_map
 
   cdn_frontdoor_custom_domain_id = azurerm_cdn_frontdoor_custom_domain.rsd[each.key].id
-  cdn_frontdoor_route_ids        = [azurerm_cdn_frontdoor_route.rsd[each.value.origin_key].id]
+  cdn_frontdoor_route_ids        = each.value.existing_endpoint != null ? [azurerm_cdn_frontdoor_route.rsd[each.value["existing_endpoint"]].id] : [azurerm_cdn_frontdoor_route.rsd[each.value.origin_key].id]
 }
 
 resource "azurerm_cdn_frontdoor_route" "rsd" {
