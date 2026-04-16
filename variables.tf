@@ -62,6 +62,7 @@ variable "frontdoor_sku" {
 variable "frontdoor_origins" {
   description = "Map of FrontDoor origin objects to add to the FrontDoor CDN"
   type = map(object({
+    existing_endpoint   = optional(string, null)
     origin_host         = string
     origin_host_header  = optional(string, null)
     custom_domains      = optional(list(string), [])
