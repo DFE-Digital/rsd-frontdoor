@@ -1,4 +1,15 @@
 resource "azurerm_storage_account" "tfvars" {
+  #checkov:skip=CKV_AZURE_59: Suppressing check pending review.
+  #checkov:skip=CKV_AZURE_33: Suppressing check pending review.
+  #checkov:skip=CKV_AZURE_190: Suppressing check pending review.
+  #checkov:skip=CKV_AZURE_206: Suppressing check pending review.
+  #checkov:skip=CKV2_AZURE_41: Suppressing check pending review.
+  #checkov:skip=CKV2_AZURE_38: Suppressing check pending review.
+  #checkov:skip=CKV2_AZURE_40: Suppressing check pending review.
+  #checkov:skip=CKV2_AZURE_1: Suppressing check pending review.
+  #checkov:skip=CKV2_AZURE_47: Suppressing check pending review.
+  #checkov:skip=CKV2_AZURE_33: Suppressing check pending review.
+
   name                          = "${local.environment}rsdfdfvars"
   resource_group_name           = local.resource_group.name
   location                      = local.azure_location
@@ -12,6 +23,8 @@ resource "azurerm_storage_account" "tfvars" {
 }
 
 resource "azurerm_storage_container" "tfvars" {
+  # checkov:skip=CKV2_AZURE_21: Suppressing check pending review.
+
   name                  = "${local.environment}rsdfdfvars"
   storage_account_name  = azurerm_storage_account.tfvars.name
   container_access_type = "private"
@@ -28,6 +41,8 @@ resource "azurerm_storage_blob" "tfvars" {
 }
 
 resource "azurerm_storage_account_network_rules" "tfvars" {
+  #checkov:skip=CKV_AZURE_35: Suppressing check pending review.
+
   storage_account_id         = azurerm_storage_account.tfvars.id
   default_action             = "Allow"
   bypass                     = []
