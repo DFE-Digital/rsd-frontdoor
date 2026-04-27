@@ -1,17 +1,19 @@
 locals {
-  per_origin_custom_rules = merge([
-    for key, origin in local.frontdoor_origins : {
-      for name, rule in origin.waf_custom_rules : "${key}:${name}" => rule
-    } if length(origin.waf_custom_rules) > 0
-  ]...)
+  per_origin_custom_rules = merge(flatten([
+    for profile_name, profile_origins in local.frontdoor_profiles : [
+      for origin_name, origin_values in profile_origins : {
+        for name, rule in origin_values["waf_custom_rules"] : "${origin_name}:${name}" => rule
+      } if length(origin_values["waf_custom_rules"]) > 0
+    ]
+  ])...)
 }
 
 resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
-  count = local.enable_frontdoor ? 1 : 0
+  for_each = local.enable_frontdoor ? local.frontdoor_profiles : {}
 
-  name                = "${replace(local.environment, "/[^[:alnum:]]/", "")}rsdfrontdoorwaf"
+  name                = "${replace(local.environment, "/[^[:alnum:]]/", "")}${replace(each.key, "-", "")}waf"
   resource_group_name = local.resource_group.name
-  sku_name            = azurerm_cdn_frontdoor_profile.rsd[0].sku_name
+  sku_name            = azurerm_cdn_frontdoor_profile.rsd[each.key].sku_name
   enabled             = local.enable_frontdoor_waf
   mode                = local.waf_mode
 
@@ -98,18 +100,20 @@ resource "azurerm_cdn_frontdoor_firewall_policy" "waf" {
 
 
 resource "azurerm_cdn_frontdoor_security_policy" "waf" {
-  count = local.enable_frontdoor && length(azurerm_cdn_frontdoor_endpoint.rsd) > 0 ? 1 : 0
+  for_each = local.enable_frontdoor && length(azurerm_cdn_frontdoor_endpoint.rsd) > 0 ? local.frontdoor_profiles : {}
 
-  name                     = "${replace(local.environment, "/[^[:alnum:]]/", "-")}-rsd-frontdoor-global-policy"
-  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+  name                     = "${replace(local.environment, "/[^[:alnum:]]/", "-")}-${each.key}-global-policy"
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[each.key].id
 
   security_policies {
     firewall {
-      cdn_frontdoor_firewall_policy_id = azurerm_cdn_frontdoor_firewall_policy.waf[0].id
+      cdn_frontdoor_firewall_policy_id = azurerm_cdn_frontdoor_firewall_policy.waf[each.key].id
 
       association {
         dynamic "domain" {
-          for_each = azurerm_cdn_frontdoor_custom_domain.rsd
+          for_each = {
+            for k, v in azurerm_cdn_frontdoor_custom_domain.rsd : k => v if element(split("/", v.cdn_frontdoor_profile_id), -1) == "${local.environment}-${each.key}"
+          }
 
           content {
             cdn_frontdoor_domain_id = domain.value.id
@@ -117,7 +121,9 @@ resource "azurerm_cdn_frontdoor_security_policy" "waf" {
         }
 
         dynamic "domain" {
-          for_each = azurerm_cdn_frontdoor_endpoint.rsd
+          for_each = {
+            for k, v in azurerm_cdn_frontdoor_endpoint.rsd : k => v if element(split("/", v.cdn_frontdoor_profile_id), -1) == "${local.environment}-${each.key}"
+          }
 
           content {
             cdn_frontdoor_domain_id = domain.value.id
