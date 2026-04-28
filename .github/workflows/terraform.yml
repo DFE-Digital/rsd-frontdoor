@@ -27,14 +27,6 @@ jobs:
             exit 1
           fi
 
-      - name: Validate Terraform docs
-        uses: terraform-docs/gh-actions@v1.4.1
-        with:
-          config-file: .terraform-docs.yml
-          output-file: README.md
-          output-method: inject
-          fail-on-diff: true
-
       - name: Remove azure backend
         run: rm ./backend.tf
 
@@ -63,3 +55,22 @@ jobs:
 
       - name: Run TFLint
         run: tflint -f compact
+
+  terraform-docs-validation:
+    name: Terraform Docs validation
+    needs: terraform-validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Generate Terraform docs
+        uses: terraform-docs/gh-actions@v1.4.1
+        with:
+          working-dir: .
+          config-file: .terraform-docs.yml
+          output-file: README.md
+          output-method: inject
+          fail-on-diff: true
