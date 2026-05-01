@@ -1,7 +1,7 @@
 resource "azurerm_log_analytics_workspace" "diagnostics" {
-  count = local.enable_frontdoor ? 1 : 0
+  for_each = local.enable_frontdoor ? local.frontdoor_profiles : {}
 
-  name                = "${azurerm_cdn_frontdoor_profile.rsd[0].name}-logs"
+  name                = "${azurerm_cdn_frontdoor_profile.rsd[each.key].name}-logs"
   resource_group_name = local.resource_group.name
   location            = local.resource_group.location
   sku                 = "PerGB2018"
@@ -10,11 +10,11 @@ resource "azurerm_log_analytics_workspace" "diagnostics" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "cdn" {
-  count = local.enable_frontdoor ? 1 : 0
+  for_each = local.enable_frontdoor ? local.frontdoor_profiles : {}
 
-  name                       = "${azurerm_cdn_frontdoor_profile.rsd[0].name}-diagnostics"
-  target_resource_id         = azurerm_cdn_frontdoor_profile.rsd[0].id
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.diagnostics[0].id
+  name                       = "${azurerm_cdn_frontdoor_profile.rsd[each.key].name}-diagnostics"
+  target_resource_id         = azurerm_cdn_frontdoor_profile.rsd[each.key].id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.diagnostics[each.key].id
 
   dynamic "enabled_log" {
     for_each = local.frontdoor_enable_waf_logs ? [1] : []

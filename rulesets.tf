@@ -1,16 +1,16 @@
 resource "azurerm_cdn_frontdoor_rule_set" "vdp" {
-  count = local.enable_frontdoor && local.enable_frontdoor_vdp_redirects ? 1 : 0
+  for_each = local.enable_frontdoor && local.enable_frontdoor_vdp_redirects ? local.frontdoor_profiles : {}
 
   name                     = "dfevdpredirects"
-  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[each.key].id
 }
 
 resource "azurerm_cdn_frontdoor_rule" "vdp_security_txt" {
-  count = local.enable_frontdoor && local.enable_frontdoor_vdp_redirects ? 1 : 0
+  for_each = local.enable_frontdoor && local.enable_frontdoor_vdp_redirects ? local.frontdoor_profiles : {}
 
   depends_on                = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
   name                      = "securitytxtredirect"
-  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.vdp[0].id
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.vdp[each.key].id
   order                     = 1
   behavior_on_match         = "Continue"
 
@@ -33,11 +33,11 @@ resource "azurerm_cdn_frontdoor_rule" "vdp_security_txt" {
 }
 
 resource "azurerm_cdn_frontdoor_rule" "vdp_thanks_txt" {
-  count = local.enable_frontdoor && local.enable_frontdoor_vdp_redirects ? 1 : 0
+  for_each = local.enable_frontdoor && local.enable_frontdoor_vdp_redirects ? local.frontdoor_profiles : {}
 
   depends_on                = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
   name                      = "thankstxtredirect"
-  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.vdp[0].id
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.vdp[each.key].id
   order                     = 2
   behavior_on_match         = "Continue"
 
@@ -60,18 +60,18 @@ resource "azurerm_cdn_frontdoor_rule" "vdp_thanks_txt" {
 }
 
 resource "azurerm_cdn_frontdoor_rule_set" "security" {
-  count = local.enable_frontdoor ? 1 : 0
+  for_each = local.enable_frontdoor && local.enable_frontdoor_vdp_redirects ? local.frontdoor_profiles : {}
 
   name                     = "enforcesecurityheaders"
-  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[each.key].id
 }
 
 resource "azurerm_cdn_frontdoor_rule" "security" {
-  count = local.enable_frontdoor ? 1 : 0
+  for_each = local.enable_frontdoor && local.enable_frontdoor_vdp_redirects ? local.frontdoor_profiles : {}
 
   depends_on                = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
   name                      = "owasp"
-  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.security[0].id
+  cdn_frontdoor_rule_set_id = azurerm_cdn_frontdoor_rule_set.security[each.key].id
   order                     = 1
   behavior_on_match         = "Continue"
 
@@ -89,14 +89,22 @@ resource "azurerm_cdn_frontdoor_rule" "security" {
 }
 
 resource "azurerm_cdn_frontdoor_rule_set" "response_headers" {
-  for_each = local.enable_frontdoor ? { for key, origin in local.frontdoor_origins : key => origin.add_http_response_headers if(length(origin.add_http_response_headers) > 0 || length(origin.remove_http_response_headers) > 0) } : {}
+  for_each = local.enable_frontdoor ? merge([
+    for profile_name, profile_origins in local.frontdoor_profiles : {
+      for origin_name, origin_values in profile_origins : origin_name => merge({ profile_name = profile_name }, origin_values) if(length(origin_values["add_http_response_headers"]) > 0 || length(origin_values["remove_http_response_headers"]) > 0)
+    }
+  ]...) : {}
 
   name                     = "${replace(each.key, "/[^[:alnum:]]/", "")}responseheaders"
-  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[each.value["profile_name"]].id
 }
 
 resource "azurerm_cdn_frontdoor_rule" "remove_response_headers" {
-  for_each = local.enable_frontdoor ? { for key, origin in local.frontdoor_origins : key => origin.remove_http_response_headers if length(origin.remove_http_response_headers) > 0 } : {}
+  for_each = local.enable_frontdoor ? merge([
+    for profile_name, profile_origins in local.frontdoor_profiles : {
+      for origin_name, origin_values in profile_origins : origin_name => origin_values["remove_http_response_headers"] if length(origin_values["remove_http_response_headers"]) > 0
+    }
+  ]...) : {}
 
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
@@ -118,7 +126,11 @@ resource "azurerm_cdn_frontdoor_rule" "remove_response_headers" {
 }
 
 resource "azurerm_cdn_frontdoor_rule" "add_response_headers" {
-  for_each = local.enable_frontdoor ? { for key, origin in local.frontdoor_origins : key => origin.add_http_response_headers if length(origin.add_http_response_headers) > 0 } : {}
+  for_each = local.enable_frontdoor ? merge([
+    for profile_name, profile_origins in local.frontdoor_profiles : {
+      for origin_name, origin_values in profile_origins : origin_name => origin_values["add_http_response_headers"] if length(origin_values["add_http_response_headers"]) > 0
+    }
+  ]...) : {}
 
   depends_on = [azurerm_cdn_frontdoor_origin_group.rsd, azurerm_cdn_frontdoor_origin.rsd]
 
@@ -141,10 +153,14 @@ resource "azurerm_cdn_frontdoor_rule" "add_response_headers" {
 }
 
 resource "azurerm_cdn_frontdoor_rule_set" "host_redirects" {
-  for_each = local.enable_frontdoor && length(local.frontdoor_host_redirects) > 0 ? local.frontdoor_host_redirects : {}
+  for_each = local.enable_frontdoor && length(local.frontdoor_host_redirects) > 0 ? merge([
+    for profile_name, profile_origins in local.frontdoor_profiles : {
+      for origin_name, origin_values in profile_origins : origin_name => { profile_name = profile_name } if origin_values["redirects"] != null && length(origin_values["redirects"]) > 0
+    }
+  ]...) : {}
 
   name                     = "${replace(each.key, "/[^[:alnum:]]/", "")}hostredirects"
-  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[0].id
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.rsd[each.value["profile_name"]].id
 }
 
 resource "azurerm_cdn_frontdoor_rule" "host_redirects" {
